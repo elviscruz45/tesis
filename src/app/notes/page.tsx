@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/Note";
+import NavBar from "./NavBar";
 
 export const metadata: Metadata = {
-  title: "Tesis-Notes",
+  title: "Notes",
 };
 
 export default async function NotesPages() {
@@ -18,16 +19,19 @@ export default async function NotesPages() {
     },
   });
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {allNotes.map((note: any) => (
-        <Note note={note} key={note.id} />
-      ))}
-      {allNotes.length === 0 && (
-        <div className="col-span-full text-center">
-          {"You don't have any notes yet. Why don't you create one?"}
-        </div>
-      )}
-    </div>
+    <>
+      <NavBar />
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {allNotes.map((note: any) => (
+          <Note note={note} key={note.id} />
+        ))}
+        {allNotes.length === 0 && (
+          <div className="col-span-full text-center">
+            {"You don't have any notes yet. Why don't you create one?"}
+          </div>
+        )}
+      </div>
+    </>
   );
 
   // return <div>{JSON.stringify(allNotes)} </div>;

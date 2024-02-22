@@ -20,3 +20,15 @@ model Note {
 
   @@map("notes")
 }
+
+
+model SectionContent {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  section   String
+  content   String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sectionContent")
+}

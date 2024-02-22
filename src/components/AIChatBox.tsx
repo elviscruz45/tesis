@@ -60,7 +60,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <ChatMessage
               message={{
                 role: "assistant",
-                content: "Thinking...",
+                content: "Pensando...",
               }}
             />
           )}
@@ -75,7 +75,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           {!error && messages.length === 0 && (
             <div className="flex h-full items-center justify-center gap-3">
               <Bot />
-              Ask the AI a question about your notes
+              Pregunta algo sobre toda la informacion a la IA
             </div>
           )}
         </div>
@@ -93,10 +93,10 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Say something..."
+            placeholder="Escribe Algo..."
             ref={inputRef}
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit">Enviar</Button>
         </form>
       </div>
     </div>
@@ -128,7 +128,7 @@ function ChatMessage({
       >
         {content}
       </p>
-      {!isAiMessage && user?.imageUrl && (
+      {/* {!isAiMessage && user?.imageUrl && (
         <Image
           src={user.imageUrl}
           alt="User image"
@@ -136,7 +136,7 @@ function ChatMessage({
           height={100}
           className="ml-2 h-10 w-10 rounded-full object-cover"
         />
-      )}
+      )} */}
     </div>
   );
 }

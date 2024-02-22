@@ -16,7 +16,6 @@ export async function getEmbedding(text: string) {
   });
   const embedding = response.data[0].embedding;
   if (!embedding) throw new Error("No embedding found");
-  console.log(embedding);
 
   return embedding;
 }

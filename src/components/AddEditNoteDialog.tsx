@@ -29,7 +29,6 @@ export default function AddEditNoteDialog({
   noteToEdit,
 }: AddEditNoteDialogProps) {
   const [deleteInProgress, setDeleteInProgress] = useState(false);
-
   const router = useRouter();
   const form = useForm<CreateNoteSchema>({
     resolver: zodResolver(createNoteSchema),
@@ -39,9 +38,6 @@ export default function AddEditNoteDialog({
     },
   });
   async function onSubmit(input: CreateNoteSchema) {
-    console.log("1111");
-    console.log("noteToEdit", noteToEdit);
-
     try {
       if (noteToEdit) {
         const response = await fetch("/api/notes", {
@@ -97,7 +93,7 @@ export default function AddEditNoteDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add Notes</DialogTitle>
+          <DialogTitle>Section</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -106,7 +102,7 @@ export default function AddEditNoteDialog({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Note title</FormLabel>
+                  <FormLabel>Pregunta</FormLabel>
                   <FormControl>
                     <Input placeholder="Note title" {...field} />
                   </FormControl>
@@ -118,7 +114,7 @@ export default function AddEditNoteDialog({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Note content</FormLabel>
+                  <FormLabel>Informacion y Docs</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Note title" {...field} />
                   </FormControl>

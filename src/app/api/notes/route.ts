@@ -2,7 +2,7 @@ import {
   createNoteSchema,
   updateNoteSchema,
   deleteNoteSchema,
-} from "./../../../lib/validation/note";
+} from "../../../lib/validation/note";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import { getEmbedding } from "../../../lib/openai";
@@ -45,7 +45,6 @@ export async function POST(req: Request) {
           metadata: { userId },
         },
       ]);
-
       return note;
     });
 
@@ -146,6 +145,11 @@ export async function DELETE(req: Request) {
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  return Response.json({ message: "Hello" });
+}
+
 async function getEmbeddingForNote(title: string, content: string | undefined) {
   return getEmbedding(title + "\n\n" + content ?? "");
 }

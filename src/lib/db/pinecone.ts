@@ -7,7 +7,7 @@ if (!apiKey) {
 }
 
 const pinecone = new Pinecone({
-  //   environment: "gcp-starter",
+  // environment: "gcp-starter",
   apiKey,
 });
 
