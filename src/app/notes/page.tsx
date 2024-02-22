@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/Note";
+import Note from "@/components/section/Note";
 import NavBar from "./NavBar";
 
 export const metadata: Metadata = {

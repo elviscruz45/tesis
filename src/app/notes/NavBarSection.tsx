@@ -10,7 +10,7 @@ import AddEditNoteDialog from "@/components/AddEditNoteDialog";
 import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { useTheme } from "next-themes";
 import { dark } from "@clerk/themes";
-import AIChatButton from "@/components/AIChatButton";
+import AIChatButton from "@/components/chatTesis/AIChatButton";
 
 export default function NavBarSection(params: any) {
   const { theme } = useTheme();

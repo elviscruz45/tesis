@@ -2,14 +2,14 @@
 
 import { Note as NoteModel } from "@prisma/client";
 import { useState } from "react";
-import AddEditNoteDialog from "./AddEditNoteDialog";
+import AddEditNoteDialog from "../AddEditNoteDialog";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../ui/card";
 import Link from "next/link";
 
 interface NoteProps {

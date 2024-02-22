@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/Note";
-import Dedicatoria from "@/components/Dedicatoria";
+import Note from "@/components/section/Note";
+import Dedicatoria from "@/components/section/Dedicatoria";
 import NavBarSection from "../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import MarcoTeorico from "@/components/MarcoTeorico";
-import Antecedentes from "@/components/Antecedentes";
+import MarcoTeorico from "@/components/section/MarcoTeorico";
+import Antecedentes from "@/components/section/Antecedentes";
 
 export const metadata: Metadata = {
   title: "Section",

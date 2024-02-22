@@ -5,8 +5,8 @@ import { useChat } from "ai/react";
 import { Bot, Trash, XCircle } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 interface AIChatBoxProps {
   open: boolean;
