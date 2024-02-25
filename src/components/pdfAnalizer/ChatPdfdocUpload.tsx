@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ChatWithPdf from "./ChatPDF";
-
-const UploadPdfByUrl = ({ url }: { url: string }) => {
+import { Button } from "../ui/button";
+type FileUploadProps = {
+  analizar: boolean;
+  resumir: boolean;
+};
+const UploadPdfByUrl = ({
+  url,
+  analizar,
+  resumir,
+}: {
+  url: string;
+  analizar: boolean;
+  resumir: boolean;
+}) => {
   // const [pdfUrl, setPdfUrl] = useState("");
   const [sourceId, setSourceId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -15,10 +27,15 @@ const UploadPdfByUrl = ({ url }: { url: string }) => {
     setError(null);
     console.log("url", url);
 
+    // const prueba =
+    //   "https://link.springer.com/content/pdf/10.1007/s00445-019-1336-3.pdf";
+
     try {
       const response = await axios.post(
         "https://api.chatpdf.com/v1/sources/add-url",
+        // { url: prueba },
         { url: url },
+
         {
           headers: {
             "x-api-key": "sec_CGNMZENbOBE46FZvWlGfmGCLoqy9vgiI", // Replace with your actual API key
@@ -39,16 +56,11 @@ const UploadPdfByUrl = ({ url }: { url: string }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="pdfUrl">Enter PDF URL:</label> */}
-        {/* <input
-        type="text"
-        id="pdfUrl"
-        value={pdfUrl}
-        onChange={(e) => setPdfUrl(e.target.value)}
-      /> */}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Uploading..." : "Analizar PDF"}
-        </button>
+        {analizar && (
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Uploading..." : "Analizar PDF"}
+          </Button>
+        )}
         {sourceId && (
           <p>
             Source ID: {sourceId} {typeof sourceId}
@@ -56,8 +68,7 @@ const UploadPdfByUrl = ({ url }: { url: string }) => {
         )}
         {error && <p className="error">{error}</p>}
       </form>
-
-      <ChatWithPdf sourceId={sourceId} />
+      {resumir && <ChatWithPdf sourceId={sourceId} />}{" "}
     </>
   );
 };

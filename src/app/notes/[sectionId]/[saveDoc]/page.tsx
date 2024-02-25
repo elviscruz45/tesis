@@ -3,13 +3,12 @@ import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/section/Note";
 import Dedicatoria from "@/components/section/Dedicatoria";
-import NavBarSection from "../NavBarSection";
+import NavBarSection from "../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import MarcoTeorico from "@/components/section/MarcoTeorico";
 import Antecedentes from "@/components/section/antecedentes/Antecedentes";
 import Informacion from "@/components/section/informacion/Informacion";
-import RetriveInformacion from "@/components/section/SourceInformacion/RetriveInformacion";
 export const metadata: Metadata = {
   title: "Section",
 };
@@ -33,32 +32,28 @@ export default async function Section({ params }: any) {
   });
 
   console.log("allSection", allSection);
-  return (
-    <>
-      <NavBarSection />
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-      {sectionName === "dedicatoria" && (
-        <Dedicatoria
-          contentData={allSection[0]}
-          // setSectionPageName={setSectionPageName}
-          // open={showEditDialog}
-          // setOpen={setShowEditDialog}
-          // noteToEdit={params}
-        />
-      )}
-      {sectionName === "marco_teorico" && <MarcoTeorico />}
-      {sectionName === "21_antecedentes_de_la_investigacion" && (
-        <Antecedentes />
-      )}
-      {sectionName === "busqueda_de_informacion" && (
-        <Informacion sectionName={sectionName} />
-      )}
+  return <div>hello</div>;
 
-      {sectionName === "informacion_guardada" && (
-        <RetriveInformacion sectionName={sectionName} />
-      )}
-    </>
-  );
+  // return (
+  //   <>
+  //     <NavBarSection />
+  //     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+  //     {sectionName === "dedicatoria" && (
+  //       <Dedicatoria
+  //         contentData={allSection[0]}
+  //         // setSectionPageName={setSectionPageName}
+  //         // open={showEditDialog}
+  //         // setOpen={setShowEditDialog}
+  //         // noteToEdit={params}
+  //       />
+  //     )}
+  //     {sectionName === "marco_teorico" && <MarcoTeorico />}
+  //     {sectionName === "21_antecedentes_de_la_investigacion" && (
+  //       <Antecedentes />
+  //     )}
+  //     {sectionName === "informacion" && <Informacion />}
+  //   </>
+  // );
 
   // return <div>{JSON.stringify(allNotes)} </div>;
 }

@@ -25,10 +25,24 @@ model Note {
 model SectionContent {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   section   String
-  content   String
+  content   String?
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("sectionContent")
+}
+
+
+model InfoSaved {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   Json?
+    PDFlink   String?
+
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("infoSaved")
 }

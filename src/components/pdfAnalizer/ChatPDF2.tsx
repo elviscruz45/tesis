@@ -23,15 +23,9 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
         {
           sourceId,
           messages: [
-            // {
-            //   role: "user",
-            //   content:
-            //     "podrias predecir con datos especificos que podria escribir para el dia 24 de febrero iterando los datos de los dias anteriores ",
-            // },
             {
               role: "user",
-              content:
-                "En 500 palabras, crea subtitulos de cada seccion y resume cada sección (incluyendo las referencias que consideres necesarias para este resumen, no hace falta mencionar a todas) y las cifras (si es que las hay)",
+              content: message,
             },
           ],
         },
@@ -56,7 +50,7 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
 
   return (
     <form onSubmit={handleSubmit} className="m-3  gap-1">
-      {/* <label htmlFor="message">Message:</label>
+      <label htmlFor="message">Message:</label>
       <br />
 
       <Input
@@ -65,17 +59,13 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
         placeholder="Preguntar sobre el Archivo..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-      /> */}
+      />
       <br />
 
       <Button type="submit" disabled={isLoading}>
-        {isLoading ? "Pensado para Responder..." : "Generate"}
+        {isLoading ? "Sending..." : "Generate"}
       </Button>
-      <br />
-      <br />
-
-      <div>Respuesta:</div>
-      {response && <p> {response}</p>}
+      {response && <p>Chat response: {response}</p>}
       {errores && <p className="error">{errores}</p>}
     </form>
   );

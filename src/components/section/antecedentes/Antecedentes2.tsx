@@ -11,15 +11,21 @@ import {
   DialogContent,
   DialogTitle,
   DialogFooter,
-} from "../ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import LoadingButton from "../ui/loading-button";
+} from "../../ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "../../ui/form";
+import { Input } from "../../ui/input";
+import { Textarea } from "../../ui/textarea";
+import LoadingButton from "../../ui/loading-button";
 import { useRouter } from "next/navigation";
 import { Note } from "@prisma/client";
 import { useChat } from "ai/react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Message } from "ai";
 import { useUser } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
@@ -28,7 +34,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import prisma from "@/lib/db/prisma";
 import { auth } from "@clerk/nextjs";
 import { useState } from "react";
-import { FileUpload } from "../pdfAnalizer/Upload";
+import { FileUpload } from "../../pdfAnalizer/Upload";
 // import FileUpload from "./FilesUpload";
 
 interface Antedentes {
@@ -198,7 +204,7 @@ export default function Antecedentes({
           Guardar Respuesta
         </Button>
       )}
-      <FileUpload />
+      {/* <FileUpload /> */}
     </>
   );
 }
