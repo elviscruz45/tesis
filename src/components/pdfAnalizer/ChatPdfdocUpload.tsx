@@ -57,15 +57,15 @@ const UploadPdfByUrl = ({
     <>
       <form onSubmit={handleSubmit}>
         {analizar && (
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Uploading..." : "Analizar PDF"}
+          <Button type="submit" disabled={isLoading || !!sourceId}>
+            {isLoading
+              ? "Uploading..."
+              : !!sourceId
+                ? "Analisis Completado"
+                : "Analizar PDF"}
           </Button>
         )}
-        {sourceId && (
-          <p>
-            Source ID: {sourceId} {typeof sourceId}
-          </p>
-        )}
+
         {error && <p className="error">{error}</p>}
       </form>
       {resumir && <ChatWithPdf sourceId={sourceId} />}{" "}

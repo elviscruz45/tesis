@@ -10,6 +10,9 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
   const [response, setResponse] = useState(null);
   const [errores, setErrores] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [initialPrompt, setInitialPrompt] = useState(
+    "En 500 palabras, crea subtitulos de cada seccion y resume cada sección (incluyendo las referencias que consideres necesarias para este resumen, no hace falta mencionar a todas) y las cifras (si es que las hay)",
+  );
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -30,8 +33,7 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
             // },
             {
               role: "user",
-              content:
-                "En 500 palabras, crea subtitulos de cada seccion y resume cada sección (incluyendo las referencias que consideres necesarias para este resumen, no hace falta mencionar a todas) y las cifras (si es que las hay)",
+              content: initialPrompt,
             },
           ],
         },
@@ -56,7 +58,12 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
 
   return (
     <form onSubmit={handleSubmit} className="m-3  gap-1">
-      {/* <label htmlFor="message">Message:</label>
+      <br />
+
+      <br />
+      <div>{initialPrompt}</div>
+      <br />
+      <label htmlFor="message">Cambiar Prompt:</label>
       <br />
 
       <Input
@@ -64,16 +71,13 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
         id="message"
         placeholder="Preguntar sobre el Archivo..."
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      /> */}
+        onChange={(e) => setInitialPrompt(e.target.value)}
+      />
       <br />
-
       <Button type="submit" disabled={isLoading}>
-        {isLoading ? "Pensado para Responder..." : "Generate"}
+        {isLoading ? "Pensado para Responder..." : "Generar Resumen"}
       </Button>
       <br />
-      <br />
-
       <div>Respuesta:</div>
       {response && <p> {response}</p>}
       {errores && <p className="error">{errores}</p>}
