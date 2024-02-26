@@ -6,7 +6,7 @@ const makeMendeleyApiRequest = async (query: any, token: string) => {
   const url = `https://api.mendeley.com/search/catalog`;
   //   const apiKey = token;
   const apiKey =
-    "MSwxNzA4ODk4NzA1MDcwLCwxNzc5MSxhbGwsLG1YTDM5a0tYNS05RzFWdllaR2o5VTM4WGN2dw";
+    "MSwxNzA4OTEzNDc4OTQxLCwxNzc5MSxhbGwsLHBHLUNaY3NWMG5PZnBzXzhVLXFMeTdpaXhxZw";
 
   try {
     const response = await axios.get(url, {

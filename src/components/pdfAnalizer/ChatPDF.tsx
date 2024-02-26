@@ -4,7 +4,13 @@ import { set } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
+const ChatWithPdf = ({
+  sourceId,
+  prompt,
+}: {
+  sourceId: string;
+  prompt?: any;
+}) => {
   // const [sourceId, setSourceId] = useState(""); // Replace with actual source ID
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState(null);
@@ -33,7 +39,7 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
             // },
             {
               role: "user",
-              content: initialPrompt,
+              content: prompt ?? initialPrompt,
             },
           ],
         },
@@ -48,9 +54,7 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
       setResponse(response.data.content);
     } catch (error) {
       console.error("Error sending chat message:", error);
-      // setError({ message: error });
       setErrores("An error occurred.");
-      // setErrores(error?.message || "An error occurred.");
     } finally {
       setIsLoading(false);
     }
@@ -60,10 +64,8 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
     <form onSubmit={handleSubmit} className="m-3  gap-1">
       <br />
 
-      <br />
-      <div>{initialPrompt}</div>
-      <br />
-      <label htmlFor="message">Cambiar Prompt:</label>
+      <div className="text-center  underline">{prompt ?? initialPrompt}</div>
+      {/* <label htmlFor="message">Cambiar Prompt:</label>
       <br />
 
       <Input
@@ -72,13 +74,17 @@ const ChatWithPdf = ({ sourceId }: { sourceId: string }) => {
         placeholder="Preguntar sobre el Archivo..."
         value={message}
         onChange={(e) => setInitialPrompt(e.target.value)}
-      />
+      /> */}
       <br />
-      <Button type="submit" disabled={isLoading}>
-        {isLoading ? "Pensado para Responder..." : "Generar Resumen"}
-      </Button>
+      <div className="text-center  underline">
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Pensado para Responder..." : "Generar Resultado"}
+        </Button>
+      </div>
       <br />
-      <div>Respuesta:</div>
+      <br />
+
+      {/* <div className="text-center  underline">Respuesta:</div> */}
       {response && <p> {response}</p>}
       {errores && <p className="error">{errores}</p>}
     </form>

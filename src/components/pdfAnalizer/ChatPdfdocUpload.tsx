@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import ChatWithPdf from "./ChatPDF";
 import { Button } from "../ui/button";
-type FileUploadProps = {
-  analizar: boolean;
-  resumir: boolean;
-};
+// type FileUploadProps = {
+//   analizar: boolean;
+//   resumir: boolean;
+//   prompts: any;
+// };
 const UploadPdfByUrl = ({
   url,
   analizar,
   resumir,
+  prompts,
 }: {
   url: string;
   analizar: boolean;
   resumir: boolean;
+  prompts?: any;
 }) => {
   // const [pdfUrl, setPdfUrl] = useState("");
   const [sourceId, setSourceId] = useState<string>("");
@@ -68,7 +71,11 @@ const UploadPdfByUrl = ({
 
         {error && <p className="error">{error}</p>}
       </form>
-      {resumir && <ChatWithPdf sourceId={sourceId} />}{" "}
+      {/* {resumir && <ChatWithPdf sourceId={sourceId} />} */}
+      <ChatWithPdf sourceId={sourceId} prompt={prompts?.titulo} />
+      <ChatWithPdf sourceId={sourceId} prompt={prompts?.resumen} />
+      <ChatWithPdf sourceId={sourceId} prompt={prompts?.referencias} />
+      <ChatWithPdf sourceId={sourceId} prompt={prompts?.datosAutores} />
     </>
   );
 };
