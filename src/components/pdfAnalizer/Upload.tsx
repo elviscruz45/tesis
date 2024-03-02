@@ -67,32 +67,40 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     <>
       <div>
         <input type="file" onChange={handleChange} className="white" />
-        <br />
         <progress
           value={progress}
           max="100"
           className="h-4 w-full bg-blue-500"
         />
+        <div className="flex items-center justify-center space-x-4 self-center">
+          {image && (
+            <div className="flex items-center justify-center space-x-4 self-center">
+              <Button
+                className="m-3  gap-1"
+                disabled={isSaved}
+                onClick={() => handleUpload()}
+              >
+                {isSaved && progress === 100
+                  ? "Guardado"
+                  : isSaved && progress < 100
+                    ? "Subiendo..."
+                    : "Subir Archivo"}
+              </Button>
+            </div>
+          )}
+
+          <br />
+
+          {url && (
+            <Link href={url} target="_blank" rel="noopener noreferrer">
+              <Button className="m-3  gap-1">Open PDF</Button>
+            </Link>
+          )}
+        </div>
         <br />
 
-        <Button
-          className="m-3  gap-1"
-          disabled={isSaved}
-          onClick={() => handleUpload()}
-        >
-          {isSaved ? "Guardado" : "Subir Archivo"}
-        </Button>
-
-        <br />
-        {url && (
-          <Link href={url} target="_blank" rel="noopener noreferrer">
-            <Button className="m-3  gap-1">Open PDF</Button>
-          </Link>
-        )}
+        <UploadPdfByUrl url={url} analizar={analizar} resumir={resumir} />
       </div>
-      <br />
-
-      <UploadPdfByUrl url={url} analizar={analizar} resumir={resumir} />
     </>
   );
 };

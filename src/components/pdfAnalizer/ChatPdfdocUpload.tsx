@@ -72,10 +72,15 @@ const UploadPdfByUrl = ({
         {error && <p className="error">{error}</p>}
       </form>
       {/* {resumir && <ChatWithPdf sourceId={sourceId} />} */}
-      <ChatWithPdf sourceId={sourceId} prompt={prompts?.titulo} />
-      <ChatWithPdf sourceId={sourceId} prompt={prompts?.resumen} />
-      <ChatWithPdf sourceId={sourceId} prompt={prompts?.referencias} />
-      <ChatWithPdf sourceId={sourceId} prompt={prompts?.datosAutores} />
+
+      {resumir && (
+        <>
+          <ChatWithPdf sourceId={sourceId} prompt={prompts?.titulo} />
+          <ChatWithPdf sourceId={sourceId} prompt={prompts?.resumen} />
+          <ChatWithPdf sourceId={sourceId} prompt={prompts?.referencias} />
+          <ChatWithPdf sourceId={sourceId} prompt={prompts?.datosAutores} />
+        </>
+      )}
     </>
   );
 };

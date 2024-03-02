@@ -7,12 +7,12 @@ import Link from "next/link";
 const prompts = {
   titulo: "¿Cuál es el título del artículo, traducelo al español",
   resumen:
-    "Con la maxima cantidad de palabras que puedas usar, crea subtitulos de cada seccion, menos la seccion de referencias. Luego resume cada sección, incluye referencias de otros autores que estan en las referencias del libro. Incluye cifras si es que las hay",
+    "Con 500 palabras,  crea subtitulos de cada seccion, menos la seccion de referencias. Luego resume cada sección, incluye referencias de otros autores que estan en las referencias del libro. Incluye cifras si es que las hay",
 
   referencias:
     "De esta lista de referencias, indica cuáles has mencionado en este texto. (dame toda la información, no solo los autores)  ",
   datosAutores:
-    "Ahora quiero que me indiques los datos de esta investigación: DOI, autores (en esta forma, apellido, nombre: Pérez, G.) , revista, volumen, número, páginas. (SOLO ESOS DATOS) ",
+    "De este PDF, indicame los autores  apellidos, nombre, revista, volumen de la revista, el numero de la ultima pagina. ",
 };
 
 export const ResultItem = ({ result }: any) => {

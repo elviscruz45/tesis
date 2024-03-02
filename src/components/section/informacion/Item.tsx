@@ -48,29 +48,31 @@ export const ResultItem = ({ result }: any) => {
       <a href={result.link} target="_blank" rel="noopener noreferrer">
         {result.link}
       </a>
-      <Button onClick={() => goToMendely(result?.link)}>Ver en Mendely</Button>
-      <br />
-      <br />
-      <Button onClick={() => goToSCIHUB(result?.identifiers.doi)}>
-        Ver en Sci-Hub
-      </Button>
-      <br />
+      <div className="flex items-center justify-center space-x-4 self-center">
+        <Button onClick={() => goToMendely(result?.link)}>
+          Ver en Mendely
+        </Button>
+        <br />
+        <br />
+        <Button onClick={() => goToSCIHUB(result?.identifiers.doi)}>
+          Ver en Sci-Hub
+        </Button>
+      </div>
       <br />
       <FileUpload analizar={false} resumir={false} setUrlPDF={setUrlPDF} />
-      {urlPDF && (
-        <Button
-          onClick={() => {
-            saveToMongoDB(result);
-            setIsSaved(true);
-          }}
-          disabled={isSaved}
-        >
-          {isSaved ? "Guardado" : "Guardar"}
-        </Button>
-      )}
-      <br />
-      <br />
-      <br />
+      <div className="flex items-center justify-center space-x-4 self-center">
+        {urlPDF && (
+          <Button
+            onClick={() => {
+              saveToMongoDB(result);
+              setIsSaved(true);
+            }}
+            disabled={isSaved}
+          >
+            {isSaved ? "Guardando..." : "Guardar Informacion en la nube"}
+          </Button>
+        )}
+      </div>
       <br />
     </div>
   );

@@ -124,8 +124,7 @@ export default function Informacion({
       <div className=" text-center text-2xl ">Informacion</div>
 
       <br />
-      <br />
-      <div> Crear Nuevo Token</div>
+      <div> Activar busqueda en Mendeley</div>
       {/* <Input
         // value={input}
         onChange={(e: any) => setNewMendeleyToken(e.target.value)}
@@ -141,11 +140,8 @@ export default function Informacion({
       <br />
 
       <div className="font-bold"> Busqueda de Informacion</div>
-      <br />
 
       <MendeleyRequest token={token} sectionName={sectionName} />
-      <br />
-      <br />
       <br />
     </>
   );

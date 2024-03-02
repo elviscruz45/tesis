@@ -90,7 +90,6 @@ const MendeleyRequest = ({
           placeholder="Años de Antiguedad..."
           // ref={inputRef}
         /> */}
-        <br />
 
         <Input
           // value={input}
@@ -107,9 +106,14 @@ const MendeleyRequest = ({
           // ref={inputRef}
         />
         <br />
-        <Button onClick={() => handleSearch()} disabled={isLoading}>
-          {isLoading ? "Buscando las mejores respuestas" : "Buscar en Mendeley"}{" "}
-        </Button>
+        <div className=" flex justify-center ">
+          <Button onClick={() => handleSearch()} disabled={isLoading}>
+            {isLoading
+              ? "Buscando las mejores respuestas"
+              : "Buscar en Mendeley"}{" "}
+          </Button>
+        </div>
+
         <br />
         <br />
 
