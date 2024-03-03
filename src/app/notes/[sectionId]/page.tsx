@@ -10,6 +10,7 @@ import MarcoTeorico from "@/components/section/MarcoTeorico";
 import Antecedentes from "@/components/section/antecedentes/Antecedentes";
 import Informacion from "@/components/section/informacion/Informacion";
 import RetriveInformacion from "@/components/section/SourceInformacion/RetriveInformacion";
+import RetriveInformacionMarcoTeorico from "@/components/section/MarcoTeoricoformacion/RetriveInformacion";
 export const metadata: Metadata = {
   title: "Section",
 };
@@ -54,8 +55,11 @@ export default async function Section({ params }: any) {
         <Informacion sectionName={sectionName} />
       )}
 
-      {sectionName === "informacion_guardada" && (
+      {sectionName === "informacion_guardada_antecedentes" && (
         <RetriveInformacion sectionName={sectionName} />
+      )}
+      {sectionName === "informacion_guardada_marco_teorico" && (
+        <RetriveInformacionMarcoTeorico sectionName={sectionName} />
       )}
     </>
   );

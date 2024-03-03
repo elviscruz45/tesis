@@ -124,7 +124,7 @@ export default function Informacion({
       <div className=" text-center text-2xl ">Informacion</div>
 
       <br />
-      <div> Activar busqueda en Mendeley</div>
+      {/* <div> Activar busqueda en Mendeley</div> */}
       {/* <Input
         // value={input}
         onChange={(e: any) => setNewMendeleyToken(e.target.value)}
@@ -134,7 +134,7 @@ export default function Informacion({
       <br />
 
       <Button onClick={() => ActivateToken()} disabled={isActivated}>
-        {isActivated ? " Token Activado" : " Activar Token"}
+        {isActivated ? " Token Activado" : " Activar busqueda en Mendeley"}
       </Button>
       <br />
       <br />

@@ -3,15 +3,16 @@ import axios from "axios";
 import { set } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import CustomizedChatWithPdf from "./CustomizedChatPDF";
 
-const ChatWithPdf = ({
-  sourceId,
-  prompt,
-}: {
-  sourceId: string;
-  prompt?: any;
-}) => {
+// const CustomizedChatWithPdf = ({
+//   sourceId,
+//   prompt,
+// }: {
+//   sourceId: string;
+//   prompt?: any;
+// }) => {
+
+const CustomizedChatWithPdf = ({ sourceId }: { sourceId: string }) => {
   // const [sourceId, setSourceId] = useState(""); // Replace with actual source ID
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState(null);
@@ -33,11 +34,6 @@ const ChatWithPdf = ({
         {
           sourceId,
           messages: [
-            // {
-            //   role: "user",
-            //   content:
-            //     "podrias predecir con datos especificos que podria escribir para el dia 24 de febrero iterando los datos de los dias anteriores ",
-            // },
             {
               role: "user",
               content: prompt ?? initialPrompt,
@@ -62,27 +58,14 @@ const ChatWithPdf = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="m-3  gap-1">
-      <br />
-      {/* {true && <CustomizedChatWithPdf sourceId={sourceId} />} */}
-      <br />
-
-      <div className="text-center  underline">{prompt ?? initialPrompt}</div>
-
-      <br />
-      <div className="text-center  underline">
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Pensado para Responder..." : "Generar Resultado"}
-        </Button>
-      </div>
-      <br />
-      <br />
-
-      {/* <div className="text-center  underline">Respuesta:</div> */}
-      {response && <p> {response}</p>}
-      {errores && <p className="error">{errores}</p>}
-    </form>
+    <Input
+      type="text"
+      id="message"
+      placeholder="Pregunta sobre el Archivo..."
+      value={message}
+      onChange={(e) => setCustomizedPrompt(e.target.value)}
+    />
   );
 };
 
-export default ChatWithPdf;
+export default CustomizedChatWithPdf;

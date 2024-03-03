@@ -69,7 +69,18 @@ export const ResultItem = ({ result }: any) => {
             }}
             disabled={isSaved}
           >
-            {isSaved ? "Guardando..." : "Guardar Informacion en la nube"}
+            {isSaved ? "Guardando..." : "Guardar en Antecedentes"}
+          </Button>
+        )}
+        {urlPDF && (
+          <Button
+            onClick={() => {
+              saveToMongoDB(result);
+              setIsSaved(true);
+            }}
+            disabled={isSaved}
+          >
+            {isSaved ? "Guardando..." : "Guardar en Marco Teorico"}
           </Button>
         )}
       </div>

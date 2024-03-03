@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import ChatWithPdf from "./ChatPDF";
 import { Button } from "../ui/button";
+import CustomizedChatWithPdf from "./CustomizedChatPDF";
+
 // type FileUploadProps = {
 //   analizar: boolean;
 //   resumir: boolean;
@@ -72,6 +74,8 @@ const UploadPdfByUrl = ({
         {error && <p className="error">{error}</p>}
       </form>
       {/* {resumir && <ChatWithPdf sourceId={sourceId} />} */}
+      <br />
+      {resumir && <CustomizedChatWithPdf sourceId={sourceId} />}
 
       {resumir && (
         <>
