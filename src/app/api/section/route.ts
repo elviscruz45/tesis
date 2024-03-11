@@ -3,7 +3,7 @@ import {
   CreateDedicatoriaSchema,
   updateDedicatoriaSchema,
   deleteDedicatoriaSchema,
-} from "../../../lib/validation/dedicatoria";
+} from "../../../lib/validation/sectionContent";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import { getEmbedding } from "../../../lib/openai";
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       console.error(parseResult.error);
       return Response.json({ error: "Invalid input" }, { status: 400 });
     }
-    const { section, content } = parseResult.data;
+    const { section, content, title, area } = parseResult.data;
     const { userId } = auth();
     console.log("POST222222");
 
@@ -33,7 +33,10 @@ export async function POST(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const embedding = await getEmbeddingForSectionDedicatoria(section, content);
+    const embedding = await getEmbeddingForSectionDedicatoria(
+      section || "",
+      content,
+    );
 
     const sectionContent = await prisma.$transaction(async (tx: any) => {
       const sectionContent = await tx.sectionContent.create({
@@ -41,17 +44,19 @@ export async function POST(req: Request) {
           section,
           content,
           userId,
+          title,
+          area,
         },
       });
       console.log("POST33333");
 
-      await notesIndex.upsert([
-        {
-          id: sectionContent.id,
-          values: embedding,
-          metadata: { userId },
-        },
-      ]);
+      // await notesIndex.upsert([
+      //   {
+      //     id: sectionContent.id,
+      //     values: embedding,
+      //     metadata: { userId },
+      //   },
+      // ]);
       return sectionContent;
     });
     console.log("POST44444");
@@ -93,7 +98,10 @@ export async function PUT(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const embedding = await getEmbeddingForSectionDedicatoria(section, content);
+    const embedding = await getEmbeddingForSectionDedicatoria(
+      section || "",
+      content,
+    );
 
     const updatedNote = await prisma.$transaction(async (tx: any) => {
       const updatedNote = await tx.sectionContent.update({

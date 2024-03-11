@@ -11,9 +11,10 @@
   "dependencies": {
     "@clerk/nextjs": "^4.29.5",
     "@clerk/themes": "^1.7.9",
+    "@formkit/drag-and-drop": "^0.0.25",
     "@hookform/resolvers": "^3.3.4",
     "@pinecone-database/pinecone": "^2.0.1",
-    "@prisma/client": "^5.9.0",
+    "@prisma/client": "^5.10.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.0.2",

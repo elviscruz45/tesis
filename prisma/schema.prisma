@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Note {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId 
   title     String
   content   String?
   userId    String
@@ -25,6 +25,8 @@ model Note {
 model SectionContent {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   section   String
+  area      String
+    title     String
   content   String?
   userId    String
   createdAt DateTime @default(now())
@@ -38,11 +40,43 @@ model InfoSaved {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   Json?
-    PDFlink   String?
-
+  schema    String?
+  PDFlink   String?
+  area      String?
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("infoSaved")
 }
+
+
+
+
+// model Note {
+//   id        String   @id @default(auto()) @map("_id") @db.ObjectId 
+//   title     String
+//   content   String?
+//   userId    String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   sectionContent SectionContent[]
+
+//   @@map("notes")
+// }
+
+
+// model SectionContent {
+//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+//   section   String
+//   area      String
+//     title     String
+//   content   String?
+//   userId    String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   noteId    String?   @unique @map("note_id") @db.ObjectId
+//   note      Note?     @relation(fields: [noteId], references: [id])
+
+//   @@map("sectionContent")
+// }

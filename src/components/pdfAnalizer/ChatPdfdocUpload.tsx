@@ -14,11 +14,13 @@ const UploadPdfByUrl = ({
   analizar,
   resumir,
   prompts,
+  setSchemaMarcoTeorico,
 }: {
   url: string;
   analizar: boolean;
   resumir: boolean;
   prompts?: any;
+  setSchemaMarcoTeorico?: any;
 }) => {
   // const [pdfUrl, setPdfUrl] = useState("");
   const [sourceId, setSourceId] = useState<string>("");
@@ -75,14 +77,15 @@ const UploadPdfByUrl = ({
       </form>
       {/* {resumir && <ChatWithPdf sourceId={sourceId} />} */}
       <br />
-      {resumir && <CustomizedChatWithPdf sourceId={sourceId} />}
+      {/* {resumir && <CustomizedChatWithPdf sourceId={sourceId} />} */}
 
       {resumir && (
         <>
-          <ChatWithPdf sourceId={sourceId} prompt={prompts?.titulo} />
-          <ChatWithPdf sourceId={sourceId} prompt={prompts?.resumen} />
-          <ChatWithPdf sourceId={sourceId} prompt={prompts?.referencias} />
-          <ChatWithPdf sourceId={sourceId} prompt={prompts?.datosAutores} />
+          <ChatWithPdf
+            sourceId={sourceId}
+            prompt={prompts?.titulo}
+            setSchemaMarcoTeorico={setSchemaMarcoTeorico}
+          />
         </>
       )}
     </>

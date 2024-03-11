@@ -1,16 +1,19 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/section/Note";
-import Dedicatoria from "@/components/section/Dedicatoria";
+import Note from "@/components/area/Note";
+import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import MarcoTeorico from "@/components/section/MarcoTeorico";
-import Antecedentes from "@/components/section/antecedentes/Antecedentes";
-import Informacion from "@/components/section/informacion/Informacion";
-import RetriveInformacion from "@/components/section/SourceInformacion/RetriveInformacion";
-import RetriveInformacionMarcoTeorico from "@/components/section/MarcoTeoricoformacion/RetriveInformacion";
+import SearchInfoAntecedentes from "@/components/area/SearchInfoAntecedentes/Informacion";
+import RetrieveAntecedentes from "@/components/area/RetrieveAntecedentes/RetriveInformacion";
+import RetriveInformacionMarcoTeorico from "@/components/area/RetrieveMarcoTeorico/RetriveInformacion";
+import SearchInfoMarcoTeorico from "@/components/area/SearchInfoMarcoTeorico/Informacion";
+import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDocumentos/RetriveInformacion";
+import Tesis from "@/components/area/TesisConsolidado/tesis";
+import NavBarConsolidado from "../NavBarConsolidado";
+
 export const metadata: Metadata = {
   title: "Section",
 };
@@ -36,7 +39,11 @@ export default async function Section({ params }: any) {
   console.log("allSection", allSection);
   return (
     <>
-      <NavBarSection />
+      {sectionName === "10consolidado" ? (
+        <NavBarConsolidado />
+      ) : (
+        <NavBarSection />
+      )}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
       {sectionName === "dedicatoria" && (
         <Dedicatoria
@@ -47,20 +54,24 @@ export default async function Section({ params }: any) {
           // noteToEdit={params}
         />
       )}
-      {sectionName === "marco_teorico" && <MarcoTeorico />}
-      {sectionName === "21_antecedentes_de_la_investigacion" && (
-        <Antecedentes />
+
+      {sectionName === "busqueda_de_informacion_antecedentes" && (
+        <SearchInfoAntecedentes sectionName={sectionName} />
       )}
-      {sectionName === "busqueda_de_informacion" && (
-        <Informacion sectionName={sectionName} />
+      {sectionName === "busqueda_de_informacion_marco_teorico" && (
+        <SearchInfoMarcoTeorico sectionName={sectionName} />
       )}
 
       {sectionName === "informacion_guardada_antecedentes" && (
-        <RetriveInformacion sectionName={sectionName} />
+        <RetrieveAntecedentes sectionName={sectionName} />
       )}
       {sectionName === "informacion_guardada_marco_teorico" && (
         <RetriveInformacionMarcoTeorico sectionName={sectionName} />
       )}
+      {sectionName === "otros_documentos" && (
+        <RetriveInformacionOtrosDocumentos sectionName={sectionName} />
+      )}
+      {sectionName === "10consolidado" && <Tesis sectionName={sectionName} />}
     </>
   );
 

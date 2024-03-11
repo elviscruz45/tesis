@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       console.error(parseResult.error);
       return Response.json({ error: "Invalid input" }, { status: 400 });
     }
-    const { title, content, PDFlink } = parseResult.data;
+    const { title, content, PDFlink, area, schema } = parseResult.data;
     const { userId } = auth();
     console.log("POST222222");
 
@@ -32,13 +32,15 @@ export async function POST(req: Request) {
     // const embedding = await getEmbeddingForSectionDedicatoria(section, content);
 
     const InfoContent = await prisma.$transaction(async (tx: any) => {
-      console.log("POST333333", title, content, userId, PDFlink);
+      console.log("POST777777", title, content, userId, PDFlink, area, schema);
       const InfoContent = await tx.infoSaved.create({
         data: {
           title,
           content,
           userId,
           PDFlink,
+          area,
+          schema,
         },
       });
       console.log("POST444444");

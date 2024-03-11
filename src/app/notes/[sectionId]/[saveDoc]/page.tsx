@@ -1,20 +1,18 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/section/Note";
-import Dedicatoria from "@/components/section/Dedicatoria";
+import Note from "@/components/area/Note";
+import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import MarcoTeorico from "@/components/section/MarcoTeorico";
-import Antecedentes from "@/components/section/antecedentes/Antecedentes";
-import Informacion from "@/components/section/informacion/Informacion";
+import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
 export const metadata: Metadata = {
   title: "Section",
 };
 
 export default async function Section({ params }: any) {
-  const sectionName = params?.sectionId;
+  const sectionName = params?.saveDoc;
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);
   //   const sectionPage = navigation.query.sectionPage;
@@ -25,35 +23,21 @@ export default async function Section({ params }: any) {
   //   console.log("sectionPageName111112222333", sectionPageName);
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allSection = await prisma.sectionContent.findMany({
+  const totalContent = await prisma.sectionContent.findMany({
     where: {
-      section: params?.sectionId,
+      section: params?.saveDoc,
     },
   });
 
-  console.log("allSection", allSection);
-  return <div>hello</div>;
-
-  // return (
-  //   <>
-  //     <NavBarSection />
-  //     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-  //     {sectionName === "dedicatoria" && (
-  //       <Dedicatoria
-  //         contentData={allSection[0]}
-  //         // setSectionPageName={setSectionPageName}
-  //         // open={showEditDialog}
-  //         // setOpen={setShowEditDialog}
-  //         // noteToEdit={params}
-  //       />
-  //     )}
-  //     {sectionName === "marco_teorico" && <MarcoTeorico />}
-  //     {sectionName === "21_antecedentes_de_la_investigacion" && (
-  //       <Antecedentes />
-  //     )}
-  //     {sectionName === "informacion" && <Informacion />}
-  //   </>
-  // );
+  return (
+    <>
+      <NavBarSection />
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+      {sectionName === "marco_teorico" && (
+        <MarcoTeorico totalContent={totalContent} />
+      )}
+    </>
+  );
 
   // return <div>{JSON.stringify(allNotes)} </div>;
 }

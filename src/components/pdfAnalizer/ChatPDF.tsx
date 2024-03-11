@@ -8,9 +8,11 @@ import CustomizedChatWithPdf from "./CustomizedChatPDF";
 const ChatWithPdf = ({
   sourceId,
   prompt,
+  setSchemaMarcoTeorico,
 }: {
   sourceId: string;
   prompt?: any;
+  setSchemaMarcoTeorico?: any;
 }) => {
   // const [sourceId, setSourceId] = useState(""); // Replace with actual source ID
   const [message, setMessage] = useState("");
@@ -53,6 +55,7 @@ const ChatWithPdf = ({
       );
 
       setResponse(response.data.content);
+      setSchemaMarcoTeorico(response.data.content);
     } catch (error) {
       console.error("Error sending chat message:", error);
       setErrores("An error occurred.");

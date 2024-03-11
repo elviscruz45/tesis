@@ -27,6 +27,8 @@ export const createInfoSavedSchema = z.object({
     })
     .optional(),
   PDFlink: z.string().optional(),
+  area: z.string().optional(),
+  schema: z.string().optional(),
 });
 
 export type CreateInfoSavedSchema = z.infer<typeof createInfoSavedSchema>;

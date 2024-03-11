@@ -17,11 +17,13 @@ type FileUploadProps = {
   analizar: boolean;
   resumir: boolean;
   setUrlPDF: (url: string) => void;
+  setFileName?: any;
 };
 export const FileUpload: React.FC<FileUploadProps> = ({
   analizar,
   resumir,
   setUrlPDF,
+  setFileName,
 }) => {
   const [image, setImage] = useState<File | null>(null);
   const [url, setUrl] = useState<string>("");
@@ -31,6 +33,9 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setImage(e.target.files[0]);
+      if (setFileName) {
+        setFileName(e.target.files[0].name);
+      }
     }
     console.log("handleChange -> handleChange");
   };
