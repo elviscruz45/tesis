@@ -4,6 +4,8 @@ import { set } from "zod";
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 // import CustomizedChatWithPdf from "./CustomizedChatPDF";
+import { Bot, Save } from "lucide-react";
+import OptionList from "./ListOptions";
 
 const ChatWithPdf = ({
   sourceId,
@@ -35,11 +37,6 @@ const ChatWithPdf = ({
         {
           sourceId,
           messages: [
-            // {
-            //   role: "user",
-            //   content:
-            //     "podrias predecir con datos especificos que podria escribir para el dia 24 de febrero iterando los datos de los dias anteriores ",
-            // },
             {
               role: "user",
               content: prompt ?? initialPrompt,
@@ -63,26 +60,54 @@ const ChatWithPdf = ({
       setIsLoading(false);
     }
   };
+  const onSave = async () => {
+    const area = "antecedentes";
+    const content = response;
 
+    try {
+      const response = await fetch("/api/section", {
+        method: "POST",
+        body: JSON.stringify({
+          title: prompt,
+          content: content,
+          section: "antecedentes",
+          area: area,
+        }),
+      });
+      if (!response.ok) throw new Error("Status Code" + response.status);
+    } catch (error) {
+      console.error(error);
+      alert("Sucedio algo mal, por favor intente de nuevo.");
+    }
+  };
   return (
-    <form onSubmit={handleSubmit} className="m-3  gap-1">
-      {/* {true && <CustomizedChatWithPdf sourceId={sourceId} />} */}
+    <>
+      <form onSubmit={handleSubmit} className="m-3  gap-1">
+        {/* {true && <CustomizedChatWithPdf sourceId={sourceId} />} */}
 
-      {/* <div className="text-center  underline">{prompt ?? initialPrompt}</div> */}
+        {/* <div className="text-center  underline">{prompt ?? initialPrompt}</div> */}
 
-      <br />
-      <div className="text-center  underline">
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Pensado para Responder..." : "Preguntar"}
+        <br />
+        <div className="text-center  underline">
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Pensado para Responder..." : "Preguntar"}
+          </Button>
+        </div>
+        <br />
+        <br />
+
+        {/* <div className="text-center  underline">Respuesta:</div> */}
+        {response && <p> {response}</p>}
+        {errores && <p className="error">{errores}</p>}
+      </form>
+      <OptionList />
+
+      {response && (
+        <Button size="sm" className="m-3 " onClick={() => onSave()}>
+          <Save size={20} />
         </Button>
-      </div>
-      <br />
-      <br />
-
-      {/* <div className="text-center  underline">Respuesta:</div> */}
-      {response && <p> {response}</p>}
-      {errores && <p className="error">{errores}</p>}
-    </form>
+      )}
+    </>
   );
 };
 

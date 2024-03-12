@@ -26,7 +26,6 @@ export default async function RetriveInformacionMarcoTeorico({
       section: "marco_teorico",
     },
   });
-  console.log("allInfo", allInfo);
 
   return (
     <>

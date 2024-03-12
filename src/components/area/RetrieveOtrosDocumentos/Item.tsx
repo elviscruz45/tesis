@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/buttonsmall";
-import UploadPdfByUrl from "@/components/pdfAnalizer/ChatPdfdocUpload";
 import { FileUpload } from "@/components/pdfAnalizer/Upload";
 import Link from "next/link";
 import { resourceLimits } from "worker_threads";
