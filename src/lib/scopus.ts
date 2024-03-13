@@ -21,8 +21,6 @@ const makeScopusApiRequest = async (query: any) => {
       const parsedData = await parser.parseStringPromise(response.data);
 
       // Access and process the parsed data here:
-      console.log("parsedData", parsedData);
-      //   console.log(parsedData); // Example: log the parsed data
 
       // Return the parsed data to your component
       return parsedData;

@@ -32,7 +32,6 @@ const UploadPdfByUrl = ({
 
     setIsLoading(true);
     setError(null);
-    console.log("url", url);
 
     // const prueba =
     //   "https://link.springer.com/content/pdf/10.1007/s00445-019-1336-3.pdf";

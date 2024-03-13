@@ -76,10 +76,8 @@ export default function SearchInformacionMarcoTeorico({
       );
       setData(response.data);
       setToken(response.data.access_token);
-      console.log("TOKENNNNN", response.data);
     } catch (errors) {
       setErrors(errors);
-      console.log("TOKENNNNNERROR", errors);
     } finally {
       setTimeout(() => {
         setIsActivated(false);

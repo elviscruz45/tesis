@@ -55,13 +55,10 @@ export default function Dedicatoria({
   const pathname = usePathname();
   const regex = /\/([^\/]+)$/; // Match anything after the last slash
   const match = pathname?.match(regex) || [];
-  console.log("match1111", match[1]);
-  console.log("messages[1]?.content", messages);
 
   // let sectionPageName
   // if (match) {
   //   const dedicatoria = match[1];
-  //   console.log("pathname", dedicatoria);
   // }
 
   // const { user } = useUser();
@@ -77,17 +74,14 @@ export default function Dedicatoria({
     },
   });
   // async function onSubmit(input: CreateDedicatoriaSchema) {
-  //   console.log("1111");
-  //   console.log("noteToEdit");
+
   // }
 
   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   console.log("input", input);
   //   e.preventDefault();
   // };
 
   // async function onSubmit(input: CreateDedicatoriaSchema) {
-  //   console.log("noteToEdit", noteToEdit);
 
   //   try {
   //     // if (noteToEdit) {
@@ -121,8 +115,6 @@ export default function Dedicatoria({
 
   const onSave = async () => {
     try {
-      console.log("onsave111");
-
       if (!contentData) {
         const response = await fetch("/api/section", {
           method: "POST",
@@ -133,7 +125,6 @@ export default function Dedicatoria({
         });
         if (!response.ok) throw new Error("Status Code" + response.status);
       } else {
-        console.log("sdlfashdflasdjflkjdsafdsfsd", contentData);
         const response = await fetch("/api/section", {
           method: "PUT",
           body: JSON.stringify({
@@ -144,12 +135,10 @@ export default function Dedicatoria({
         });
         if (!response.ok) throw new Error("Status Code" + response.status);
       }
-      console.log("onsave2222");
       // form.reset();
       // }
       // handleSubmit(input);
       router.refresh();
-      console.log("onsave3333");
 
       // setOpen(false);
     } catch (error) {

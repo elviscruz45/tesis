@@ -41,7 +41,6 @@ export default function Abstract() {
     setSaving(true);
 
     try {
-      console.log("onsave sadfadsf");
       const response = await fetch("/api/saveInformation", {
         method: "POST",
         body: JSON.stringify({

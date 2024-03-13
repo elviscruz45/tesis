@@ -37,7 +37,6 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         setFileName(e.target.files[0].name);
       }
     }
-    console.log("handleChange -> handleChange");
   };
   const handleUpload = () => {
     try {

@@ -9,17 +9,14 @@ export const ResultItem = ({ result }: any) => {
   const [savingAntecedentes, setSavingAntecedentes] = useState(false);
   const [savingMarcoTeorico, setSavingMarcoTeorico] = useState(false);
   const [schemaMarcoTeorico, setSchemaMarcoTeorico] = useState<any>(null);
-  console.log("schemaMarcoTeorico", schemaMarcoTeorico);
 
   const saveToMongoDB = async (result: any, area: string) => {
-    // console.log(result);
     // if (area === "Antecedentes") {
     //   setSavingAntecedentes(true);
     // } else {
     //   setSavingMarcoTeorico(true);
     // }
     // try {
-    //   console.log("onsave111");
     //   const response = await fetch("/api/saveInformation", {
     //     method: "POST",
     //     body: JSON.stringify({

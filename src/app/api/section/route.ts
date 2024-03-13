@@ -10,14 +10,8 @@ import { getEmbedding } from "../../../lib/openai";
 import { notesIndex } from "@/lib/db/pinecone";
 
 export async function POST(req: Request) {
-  console.log("POST Activated");
-
   try {
-    console.log("body");
-
     const body = await req.json();
-    console.log("body Section", body);
-    console.log("POST11111111", body);
 
     const parseResult = createDedicatoriaSchema.safeParse(body);
 
@@ -27,7 +21,6 @@ export async function POST(req: Request) {
     }
     const { section, content, title, area } = parseResult.data;
     const { userId } = auth();
-    console.log("POST222222");
 
     if (!userId) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
@@ -48,7 +41,6 @@ export async function POST(req: Request) {
           area,
         },
       });
-      console.log("POST33333");
 
       // await notesIndex.upsert([
       //   {
@@ -59,7 +51,6 @@ export async function POST(req: Request) {
       // ]);
       return sectionContent;
     });
-    console.log("POST44444");
 
     return Response.json({ sectionContent }, { status: 201 });
   } catch (error) {
@@ -71,10 +62,8 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    console.log("PUTBODY", body);
 
     const parseResult = updateDedicatoriaSchema.safeParse(body);
-    console.log("PUT111111", parseResult);
 
     if (!parseResult.success) {
       console.error(parseResult.error);
@@ -82,7 +71,6 @@ export async function PUT(req: Request) {
     }
 
     const { id, section, content } = parseResult.data;
-    console.log("PUTaaaaa", section);
 
     const sectionContent = await prisma.sectionContent.findUnique({
       where: { id },

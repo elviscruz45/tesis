@@ -93,7 +93,7 @@ export default function AddEditNoteDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Section</DialogTitle>
+          <DialogTitle>Crear Nueva Seccion</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -102,7 +102,7 @@ export default function AddEditNoteDialog({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Pregunta</FormLabel>
+                  <FormLabel>Titulo</FormLabel>
                   <FormControl>
                     <Input placeholder="Note title" {...field} />
                   </FormControl>
@@ -114,7 +114,7 @@ export default function AddEditNoteDialog({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Informacion y Docs</FormLabel>
+                  <FormLabel>Descripcion</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Note title" {...field} />
                   </FormControl>

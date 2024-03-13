@@ -13,7 +13,6 @@ export const ResultItem = ({ result }: any) => {
   const saveToMongoDB = async () => {
     // const area = "antecedentes";
     // try {
-    //   console.log("onsave111");
     //   const response = await fetch("/api/section", {
     //     method: "POST",
     //     body: JSON.stringify({

@@ -92,8 +92,6 @@ export async function POST(req: Request) {
 //       },
 //     });
 
-//     console.log("Relevant notes found: ", relevantNotes);
-
 //     const systemMessage: ChatCompletionMessage = {
 //       role: "system",
 //       content:

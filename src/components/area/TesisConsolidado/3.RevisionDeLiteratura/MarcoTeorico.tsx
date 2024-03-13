@@ -60,7 +60,6 @@ export default function MarcoTeorico({
       content: "",
     },
   });
-  console.log("totalContent", totalContent);
   return (
     <>
       {totalContent.map((result: any) => (

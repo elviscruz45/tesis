@@ -7,22 +7,15 @@ import { ChatCompletionMessage } from "openai/resources/index.mjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  console.log("POST");
-
   try {
-    console.log("aaaaaaaaaaaa");
-
     const { model, stream, messages } = req.body;
-    console.log("bbbbbbbbb");
 
     const response = await openai.chat.completions.create({
       messages,
       model,
     });
-    console.log("cccccccc");
 
     res.status(200).json(response);
-    console.log("ddddddddd");
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
@@ -55,8 +48,6 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 //         },
 //       },
 //     });
-
-//     console.log("Relevant notes found: ", relevantNotes);
 
 //     const systemMessage: ChatCompletionMessage = {
 //       role: "system",

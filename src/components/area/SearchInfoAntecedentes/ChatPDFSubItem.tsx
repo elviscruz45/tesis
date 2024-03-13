@@ -27,7 +27,6 @@ const SubItemChatWithPdf = ({
 
   const [customizedPrompt, setCustomizedPrompt] = useState("");
 
-  console.log("responseabc123", response);
   const lines = response?.split("\n") || [];
 
   const handleSubmit = async (e: any) => {
@@ -75,7 +74,6 @@ const SubItemChatWithPdf = ({
     const content = response;
 
     try {
-      console.log("onsave111");
       const response = await fetch("/api/section", {
         method: "POST",
         body: JSON.stringify({

@@ -24,7 +24,6 @@ export default async function RetriveInformacion({
       area: "antecedentes",
     },
   });
-  console.log("allInfo", allInfo);
 
   return (
     <>

@@ -35,7 +35,6 @@ export default function Note({ note }: NoteProps) {
 
   // function goToSectionPage(title: string) {
   //   title = title.trim().replace(/\s+/g, "-").replace(/\./g, "").toLowerCase();
-  //   console.log("title", title);
   //   //go to another page
   //   // const dynamicRoute={`/notes/${title}`}
   // }

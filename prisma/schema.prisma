@@ -13,6 +13,14 @@ datasource db {
 model Note {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId 
   title     String
+  title2    String?
+  title3    String?
+  title4    String?
+  title5    String?
+  title6    String?
+  title7    String?
+  title8    String?
+  Nivel     String?
   content   String?
   userId    String
   createdAt DateTime @default(now())
@@ -21,12 +29,20 @@ model Note {
   @@map("notes")
 }
 
-
+//parrafos guardados
 model SectionContent {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   section   String
   area      String
-    title     String
+  title     String
+  title2    String?
+  title3    String?
+  title4    String?
+  title5    String?
+  title6    String?
+  title7    String?
+  title8    String?
+  Nivel     String?
   content   String?
   userId    String
   createdAt DateTime @default(now())
@@ -35,7 +51,7 @@ model SectionContent {
   @@map("sectionContent")
 }
 
-
+//documentos pdf guardados y metadata
 model InfoSaved {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String

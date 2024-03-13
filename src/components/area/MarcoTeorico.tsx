@@ -52,8 +52,6 @@ export default function MarcoTeorico({
   const pathname = usePathname();
   const regex = /\/([^\/]+)$/; // Match anything after the last slash
   const match = pathname?.match(regex) || [];
-  console.log("match1111", match[1]);
-  console.log("messages[1]?.content", messages);
 
   const router = useRouter();
   const form = useForm<CreateDedicatoriaSchema>({
@@ -65,8 +63,6 @@ export default function MarcoTeorico({
 
   const onSave = async () => {
     try {
-      console.log("onsave111");
-
       if (!contentData) {
         const response = await fetch("/api/section", {
           method: "POST",
@@ -77,7 +73,6 @@ export default function MarcoTeorico({
         });
         if (!response.ok) throw new Error("Status Code" + response.status);
       } else {
-        console.log("sdlfashdflasdjflkjdsafdsfsd", contentData);
         const response = await fetch("/api/section", {
           method: "PUT",
           body: JSON.stringify({
@@ -88,10 +83,8 @@ export default function MarcoTeorico({
         });
         if (!response.ok) throw new Error("Status Code" + response.status);
       }
-      console.log("onsave2222");
 
       router.refresh();
-      console.log("onsave3333");
     } catch (error) {
       console.error(error);
       alert("Sucedio algo mal, por favor intente de nuevo.");

@@ -21,8 +21,6 @@ const makeMendeleyApiRequest = async (query: any, token: string) => {
       },
     });
 
-    console.log("MENDELY", response.data);
-
     return response.data;
   } catch (error) {
     console.error("Error fetching Mendeley documents:", error);

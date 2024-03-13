@@ -10,8 +10,6 @@ import { getEmbedding } from "../../../lib/openai";
 import { notesIndex } from "@/lib/db/pinecone";
 
 export async function POST(req: Request) {
-  console.log("POST Activated");
-
   try {
     const body = await req.json();
     const parseResult = createInfoSavedSchema.safeParse(body);
@@ -22,17 +20,14 @@ export async function POST(req: Request) {
     }
     const { title, content, PDFlink, area, schema } = parseResult.data;
     const { userId } = auth();
-    console.log("POST222222");
 
     if (!userId) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
-    console.log("POST333333");
 
     // const embedding = await getEmbeddingForSectionDedicatoria(section, content);
 
     const InfoContent = await prisma.$transaction(async (tx: any) => {
-      console.log("POST777777", title, content, userId, PDFlink, area, schema);
       const InfoContent = await tx.infoSaved.create({
         data: {
           title,
@@ -43,7 +38,6 @@ export async function POST(req: Request) {
           schema,
         },
       });
-      console.log("POST444444");
       // await notesIndex.upsert([
       //   {
       //     id: sectionContent.id,
@@ -53,7 +47,6 @@ export async function POST(req: Request) {
       // ]);
       return InfoContent;
     });
-    console.log("POST555555");
 
     return Response.json({ InfoContent }, { status: 201 });
   } catch (error) {
@@ -65,10 +58,8 @@ export async function POST(req: Request) {
 // export async function PUT(req: Request) {
 //   try {
 //     const body = await req.json();
-//     console.log("PUTBODY", body);
 
 //     const parseResult = updateInfoSavedSchema.safeParse(body);
-//     // console.log("PUT111111", parseResult);
 
 //     if (!parseResult.success) {
 //       console.error(parseResult.error);
@@ -76,7 +67,6 @@ export async function POST(req: Request) {
 //     }
 
 //     const { id, title, content } = parseResult.data;
-//     console.log("PUTaaaaa", title);
 
 //     const sectionContent = await prisma.sectionContent.findUnique({
 //       where: { id },

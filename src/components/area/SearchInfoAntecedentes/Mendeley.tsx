@@ -21,10 +21,6 @@ const MendeleyRequest = ({
   const [isLoading, setIsLoading] = useState(false);
   // const [saveSearch, setSaveSearch] = useState<any>([]);
 
-  // console.log(year);
-  console.log(text);
-  console.log(area);
-
   const handleSearch = async () => {
     if (!text) {
       setError("Please enter a search term");
@@ -43,9 +39,9 @@ const MendeleyRequest = ({
   };
 
   // const saveToMongoDB = async (result: any) => {
-  //   console.log(result);
+
   //   try {
-  //     console.log("onsave111");
+
   //     const response = await fetch("/api/saveInformation", {
   //       method: "POST",
   //       body: JSON.stringify({
@@ -63,7 +59,6 @@ const MendeleyRequest = ({
   // const handleSaveSearch = (item: any) => {
   //   setSaveSearch(() => [...saveSearch, item]);
   // };
-  // console.log("saveSearchaaaaaaa", saveSearch);
 
   // const goToSCIHUB = (doi: string) => {
   //   // window.location.href = `https://sci-hub.se/${doi}`;

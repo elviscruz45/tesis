@@ -13,10 +13,7 @@ export const ResultItem = ({ result }: any) => {
   const [newData, setNewData] = useState<string>("");
 
   const updateToMongoDB = async () => {
-    console.log(result);
-
     // try {
-    //   console.log("onsave111");
     //   const response = await fetch("/api/saveInformation", {
     //     method: "PUT",
     //     body: JSON.stringify({
@@ -59,7 +56,6 @@ export const ResultItem = ({ result }: any) => {
             "indicame cual es tu carrera profesional que terminaste para hacer la dedicatoria mas personalizada",
         },
       ];
-      console.log("1111111111OPENAOAIAIIS");
       const response = await fetch("/api/openai", {
         method: "POST",
         headers: {
@@ -71,11 +67,8 @@ export const ResultItem = ({ result }: any) => {
           messages: [systemMessage, ...userAssitantMessage],
         }),
       });
-      console.log("22222222OPENAOAIAIIS");
 
       const data = await response.json();
-      console.log(data);
-      console.log("333333333OPENAOAIAIIS");
     } catch (error) {
       console.error("Error sending chat message:", error);
       // setErrores("An error occurred.");

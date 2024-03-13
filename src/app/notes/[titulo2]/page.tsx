@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
-import NavBar from "./NavBar";
-import SideNavbar from "./SideNavbar";
+import NavBar from "../NavBar";
+import SideNavbar from "../SideNavbar";
 
 export const metadata: Metadata = {
   title: "Notes",

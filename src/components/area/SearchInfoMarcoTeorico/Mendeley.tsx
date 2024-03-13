@@ -21,10 +21,6 @@ const MendeleyRequest = ({
   const [isLoading, setIsLoading] = useState(false);
   // const [saveSearch, setSaveSearch] = useState<any>([]);
 
-  // console.log(year);
-  console.log(text);
-  console.log(area);
-
   const handleSearch = async () => {
     if (!text) {
       setError("Please enter a search term");

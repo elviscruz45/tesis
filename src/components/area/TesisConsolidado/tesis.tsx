@@ -47,10 +47,6 @@ function formatSectionPage(title: string): string {
 }
 
 export default function Tesis({ sectionName }: any) {
-  console.log("sectionName");
-
-  console.log(sectionName);
-
   const SeccionesPreliminares = [
     "Resumen",
     "Abstract",
@@ -97,7 +93,6 @@ export default function Tesis({ sectionName }: any) {
     useDragAndDrop<HTMLUListElement, string>(SeccionesPreliminares, {
       group: "SeccionesPreliminares",
     });
-  console.log("SeccionesPreliminaresTodos", SeccionesPreliminaresTodos);
 
   const [PlanteamientoDelProblemaList, PlanteamientoDelProblemaTodos] =
     useDragAndDrop<HTMLUListElement, string>(PlanteamientoDelProblema, {

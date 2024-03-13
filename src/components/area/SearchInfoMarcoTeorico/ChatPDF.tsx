@@ -26,7 +26,6 @@ const ChatWithPdf = ({
 
   const [customizedPrompt, setCustomizedPrompt] = useState("");
 
-  console.log("responseabc123", response);
   const lines = response?.split("\n") || [];
 
   const handleSubmit = async (e: any) => {
@@ -71,7 +70,6 @@ const ChatWithPdf = ({
   };
   // const onSave = async () => {
   //   try {
-  //     console.log("onsave111");
 
   //     // if (!contentData) {
   //     //   const response = await fetch("/api/antecedentes", {
