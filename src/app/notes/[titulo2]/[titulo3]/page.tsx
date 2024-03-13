@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
+import NoteNivel4 from "@/components/area/NoteNivel3";
+
 import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../NavBarSection";
 // import { useState } from "react";
@@ -14,13 +16,17 @@ import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDo
 import Tesis from "@/components/area/TesisConsolidado/tesis";
 import NavBarConsolidado from "../../NavBarConsolidado";
 import SideNavbar from "../../SideNavbar";
+import NavBar from "../../NavBar";
 
 export const metadata: Metadata = {
   title: "Section",
 };
 
 export default async function Section({ params }: any) {
-  const sectionName = params?.sectionId;
+  const titulo3 = params?.titulo3;
+  const titulo2 = params?.titulo2;
+  console.log("sdfasdf", titulo2);
+
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);
   //   const sectionPage = navigation.query.sectionPage;
@@ -30,54 +36,27 @@ export default async function Section({ params }: any) {
 
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allSection = await prisma.sectionContent.findMany({
-    where: {
-      section: params?.sectionId,
-    },
+  const allNotes = await prisma.note.findMany({
+    where: { userId, title2: titulo2, title3: titulo3, Nivel: "3" },
   });
-
   return (
     <div className="flex flex-row">
-      <div className="basis-1/5">
+      <div className=" basis-1/5 overflow-y-auto ">
         <SideNavbar />
       </div>
-      <div className="basis-4/5">
-        {sectionName === "10consolidado" ? (
-          <NavBarConsolidado />
-        ) : (
-          <NavBarSection />
-        )}
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-        {sectionName === "dedicatoria" && (
-          <Dedicatoria
-            contentData={allSection[0]}
-            // setSectionPageName={setSectionPageName}
-            // open={showEditDialog}
-            // setOpen={setShowEditDialog}
-            // noteToEdit={params}
-          />
-        )}
-
-        {sectionName === "busqueda_de_informacion_antecedentes" && (
-          <SearchInfoAntecedentes sectionName={sectionName} />
-        )}
-        {sectionName === "busqueda_de_informacion_marco_teorico" && (
-          <SearchInfoMarcoTeorico sectionName={sectionName} />
-        )}
-
-        {sectionName === "informacion_guardada_antecedentes" && (
-          <RetrieveAntecedentes sectionName={sectionName} />
-        )}
-        {sectionName === "informacion_guardada_marco_teorico" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
-        )}
-        {sectionName === "otros_documentos" && (
-          <RetriveInformacionOtrosDocumentos sectionName={sectionName} />
-        )}
-        {sectionName === "10consolidado" && <Tesis sectionName={sectionName} />}
+      <div className="basis-4/5 overflow-y-auto ">
+        <NavBar />
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {allNotes.map((note: any) => (
+            <NoteNivel4 note={note} key={note.id} />
+          ))}
+          {allNotes.length === 0 && (
+            <div className=" text-center">
+              {"You don't have any notes yet. Why don't you create one?"}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-
-  // return <div>{JSON.stringify(allNotes)} </div>;
 }

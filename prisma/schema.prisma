@@ -13,8 +13,8 @@ datasource db {
 model Note {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId 
   title     String
-  title2    String?
-  title3    String?
+  title2    String
+  title3    String
   title4    String?
   title5    String?
   title6    String?

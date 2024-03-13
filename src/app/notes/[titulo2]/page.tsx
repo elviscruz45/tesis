@@ -9,7 +9,9 @@ export const metadata: Metadata = {
   title: "Notes",
 };
 
-export default async function NotesPages() {
+export default async function NotesPages({ params }: any) {
+  const sectionName = params?.titulo2;
+  console.log(sectionName);
   const { userId } = auth();
 
   if (!userId) throw new Error("You must be logged in to view this page");
@@ -17,6 +19,8 @@ export default async function NotesPages() {
   const allNotes = await prisma.note.findMany({
     where: {
       userId,
+      Nivel: "2",
+      title2: sectionName,
     },
   });
   return (

@@ -3,11 +3,11 @@ import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
 import Dedicatoria from "@/components/area/Dedicatoria";
-import NavBarSection from "../../../NavBarSection";
+import NavBarSection from "../../../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
-import SideNavbar from "../../../SideNavbar";
+import SideNavbar from "../../../../SideNavbar";
 export const metadata: Metadata = {
   title: "Section",
 };

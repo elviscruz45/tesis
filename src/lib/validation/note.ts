@@ -3,6 +3,14 @@ import { z } from "zod";
 export const createNoteSchema = z.object({
   //   id: z.string(),
   title: z.string().min(1, { message: "id must be at least 1 character long" }),
+  title2: z
+    .string()
+    .min(1, { message: "id must be at least 1 character long" }),
+
+  title3: z
+    .string()
+    .min(1, { message: "id must be at least 1 character long" }),
+
   content: z.string().optional(),
   userId: z.string().optional(),
 

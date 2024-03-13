@@ -16,9 +16,8 @@ interface NoteProps {
   note: NoteModel;
 }
 
-export default function Note({ note }: NoteProps) {
-  const sectionPage = note.title3
-
+export default function NoteNivel4({ note }: NoteProps) {
+  const sectionPage = note.title
     .trim()
     .replace(/\s+/g, "_")
     .replace(/\./g, "")
@@ -28,6 +27,7 @@ export default function Note({ note }: NoteProps) {
     .replace(/ó/g, "o")
     .replace(/ú/g, "u")
     .toLowerCase();
+
   const [showEditDialog, setShowEditDialog] = useState(false);
   const wasUpdated = note.updatedAt > note.createdAt;
   const createdUpdatedAtTimestamp = (
@@ -42,7 +42,7 @@ export default function Note({ note }: NoteProps) {
 
   return (
     <>
-      <Link href={`/notes/${note.title2}/${sectionPage}`}>
+      <Link href={`/notes/${note.title2}/${note.title3}/${sectionPage}`}>
         <Card
           className="cursor-pointer transition-shadow hover:shadow-lg"
           // onClick={() => setShowEditDialog(true)}
