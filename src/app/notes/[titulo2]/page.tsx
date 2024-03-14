@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/area/Note";
-import NavBar from "../NavBar";
+import NoteNivel2 from "@/components/area/NoteNivel2";
+import NavBarNivel2 from "../NavBarNivel2";
 import SideNavbar from "../SideNavbar";
 
 export const metadata: Metadata = {
@@ -29,10 +29,10 @@ export default async function NotesPages({ params }: any) {
         <SideNavbar />
       </div>
       <div className="basis-4/5 overflow-y-auto ">
-        <NavBar />
+        <NavBarNivel2 sectionName={sectionName} />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {allNotes.map((note: any) => (
-            <Note note={note} key={note.id} />
+            <NoteNivel2 note={note} key={note.id} />
           ))}
           {allNotes.length === 0 && (
             <div className=" text-center">

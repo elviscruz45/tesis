@@ -21,20 +21,29 @@ export default async function RetriveInformacionOtrosDocumentos({
   const { userId } = auth();
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allInfo = await prisma.infoSaved.findMany({
+  const allDocuments = await prisma.infoSaved.findMany({
     where: {
       userId,
       // section: "marco_teorico",
     },
   });
 
+  const categoryList = await prisma.note.findMany({
+    where: {
+      userId,
+      Nivel: "3",
+      // section: "marco_teorico",
+    },
+  });
+
   return (
     <>
-      {allInfo.map((result: any, index) => (
+      {allDocuments.map((result: any, index) => (
         <ResultItem
           key={result?.identifiers?.doi}
           result={result}
           index={index}
+          categoryList={categoryList}
         />
       ))}
     </>

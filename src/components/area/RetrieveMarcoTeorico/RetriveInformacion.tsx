@@ -23,7 +23,8 @@ export default async function RetriveInformacionMarcoTeorico({
   const allInfo = await prisma.sectionContent.findMany({
     where: {
       userId,
-      section: "marco_teorico",
+      title4: "informacion_guardada_marco_teorico",
+      Nivel: "4",
     },
   });
 

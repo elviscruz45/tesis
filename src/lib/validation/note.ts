@@ -5,11 +5,14 @@ export const createNoteSchema = z.object({
   title: z.string().min(1, { message: "id must be at least 1 character long" }),
   title2: z
     .string()
-    .min(1, { message: "id must be at least 1 character long" }),
+    .min(1, { message: "id must be at least 1 character long" })
+    .optional(),
 
   title3: z
     .string()
-    .min(1, { message: "id must be at least 1 character long" }),
+    .min(1, { message: "id must be at least 1 character long" })
+    .optional(),
+  Nivel: z.string().optional(),
 
   content: z.string().optional(),
   userId: z.string().optional(),

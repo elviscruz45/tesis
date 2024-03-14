@@ -3,7 +3,20 @@ import { z } from "zod";
 export const createDedicatoriaSchema = z.object({
   //   id: z.string(),
   title: z.string().min(1, { message: "id must be at least 1 character long" }),
+  title2: z
+    .string()
+    .min(1, { message: "id must be at least 1 character long" })
+    .optional(),
 
+  title3: z
+    .string()
+    .min(1, { message: "id must be at least 1 character long" })
+    .optional(),
+  title4: z
+    .string()
+    .min(1, { message: "id must be at least 1 character long" })
+    .optional(),
+  Nivel: z.string().optional(),
   section: z.string().optional(),
   area: z.string().optional(),
   content: z.string().min(1, { message: "Debe contener al menos 1 letra" }),

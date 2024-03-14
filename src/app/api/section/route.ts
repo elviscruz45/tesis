@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       console.error(parseResult.error);
       return Response.json({ error: "Invalid input" }, { status: 400 });
     }
-    const { section, content, title, area } = parseResult.data;
+    const { section, content, title, area, title4, Nivel } = parseResult.data;
     const { userId } = auth();
 
     if (!userId) {
@@ -38,6 +38,8 @@ export async function POST(req: Request) {
           content,
           userId,
           title,
+          title4,
+          Nivel,
           area,
         },
       });

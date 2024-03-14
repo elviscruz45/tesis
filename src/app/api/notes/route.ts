@@ -9,8 +9,12 @@ import { getEmbedding } from "../../../lib/openai";
 import { notesIndex } from "@/lib/db/pinecone";
 
 export async function POST(req: Request) {
+  console.log("POST");
   try {
+    console.log("11111POST");
+
     const body = await req.json();
+    console.log("2222 POST");
 
     const parseResult = createNoteSchema.safeParse(body);
 
@@ -18,25 +22,32 @@ export async function POST(req: Request) {
       console.error(parseResult.error);
       return Response.json({ error: "Invalid input" }, { status: 400 });
     }
+    console.log("33333 POST");
 
-    const { title, content } = parseResult.data;
+    const { title, content, title2, title3, Nivel } = parseResult.data;
 
     const { userId } = auth();
+    console.log("44444 POST");
 
     if (!userId) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const embedding = await getEmbeddingForNote(title, content);
+    console.log("555 POST");
 
     const note = await prisma.$transaction(async (tx: any) => {
       const note = await tx.note.create({
         data: {
           title,
+          title2,
+          title3,
+          Nivel,
           content,
           userId,
         },
       });
+      console.log("66666 POST");
 
       await notesIndex.upsert([
         {

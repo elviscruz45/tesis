@@ -11,23 +11,22 @@ const ChatWithPdf = ({
   sourceId,
   prompt,
   setSchemaMarcoTeorico,
+  categoryList,
 }: {
   sourceId: string;
   prompt?: any;
   setSchemaMarcoTeorico?: any;
+  categoryList?: any;
 }) => {
   // const [sourceId, setSourceId] = useState(""); // Replace with actual source ID
   const [message, setMessage] = useState("");
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState("");
   const [errores, setErrores] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [initialPrompt, setInitialPrompt] = useState(
-    "En 500 palabras, crea subtitulos de cada seccion y resume cada sección (incluyendo las referencias que consideres necesarias para este resumen, no hace falta mencionar a todas) y las cifras (si es que las hay)",
-  );
-  const [customizedPrompt, setCustomizedPrompt] = useState("");
+  const [option, setOption] = useState("");
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
     setIsLoading(true);
     setErrores(null);
 
@@ -39,7 +38,9 @@ const ChatWithPdf = ({
           messages: [
             {
               role: "user",
-              content: prompt ?? initialPrompt,
+              content: `En un parrafo con maxima cantidad de palabras posibles,
+               resumir en el idioma español el siguiente tema del archivo: ${prompt}.
+             Incluir datos numericos,estadisticos y la referencia en formato APA`,
             },
           ],
         },
@@ -50,11 +51,11 @@ const ChatWithPdf = ({
           },
         },
       );
-
-      setResponse(response.data.content);
-      setSchemaMarcoTeorico(response.data.content);
+      setResponse(response.data.content.split("\n\n"));
+      console.log("response", response.data.content);
     } catch (error) {
-      console.error("Error sending chat message:", error);
+      console.log(error);
+
       setErrores("An error occurred.");
     } finally {
       setIsLoading(false);
@@ -62,16 +63,18 @@ const ChatWithPdf = ({
   };
   const onSave = async () => {
     const area = "antecedentes";
-    const content = response;
+    const content = response[0] || "";
 
     try {
       const response = await fetch("/api/section", {
         method: "POST",
         body: JSON.stringify({
           title: prompt,
+          title4: option,
           content: content,
-          section: "antecedentes",
-          area: area,
+          section: "anonimo",
+          area: "anonimo",
+          Nivel: "4",
         }),
       });
       if (!response.ok) throw new Error("Status Code" + response.status);
@@ -84,8 +87,6 @@ const ChatWithPdf = ({
     <>
       <form onSubmit={handleSubmit} className="m-3  gap-1">
         {/* {true && <CustomizedChatWithPdf sourceId={sourceId} />} */}
-
-        {/* <div className="text-center  underline">{prompt ?? initialPrompt}</div> */}
 
         <br />
         <div className="text-center  underline">
@@ -100,8 +101,9 @@ const ChatWithPdf = ({
         {response && <p> {response}</p>}
         {errores && <p className="error">{errores}</p>}
       </form>
-      <OptionList />
-
+      {response && (
+        <OptionList categoryList={categoryList} setOption={setOption} />
+      )}
       {response && (
         <Button size="sm" className="m-3 " onClick={() => onSave()}>
           <Save size={20} />

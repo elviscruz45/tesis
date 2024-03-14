@@ -17,17 +17,18 @@ interface NoteProps {
 }
 
 export default function Note({ note }: NoteProps) {
-  const sectionPage = note.title3
-
-    .trim()
-    .replace(/\s+/g, "_")
-    .replace(/\./g, "")
-    .replace(/á/g, "a")
-    .replace(/é/g, "e")
-    .replace(/í/g, "i")
-    .replace(/ó/g, "o")
-    .replace(/ú/g, "u")
-    .toLowerCase();
+  const sectionPage =
+    note?.title3 ||
+    ""
+      .trim()
+      .replace(/\s+/g, "_")
+      .replace(/\./g, "")
+      .replace(/á/g, "a")
+      .replace(/é/g, "e")
+      .replace(/í/g, "i")
+      .replace(/ó/g, "o")
+      .replace(/ú/g, "u")
+      .toLowerCase();
   const [showEditDialog, setShowEditDialog] = useState(false);
   const wasUpdated = note.updatedAt > note.createdAt;
   const createdUpdatedAtTimestamp = (

@@ -30,12 +30,6 @@ export default async function Section({ params }: any) {
 
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  // const allSection = await prisma.sectionContent.findMany({
-  //   where: {
-  //     section: params?.sectionId,
-  //   },
-  // });
-
   return (
     <div className="flex flex-row">
       <div className="basis-1/5">

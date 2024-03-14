@@ -9,7 +9,7 @@ import axios from "axios";
 import { Input } from "../../ui/input";
 import ChatWithPdf from "./ChatPDF";
 
-export const ResultItem = ({ result, index }: any) => {
+export const ResultItem = ({ result, index, categoryList }: any) => {
   const [sourceId, setSourceId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -50,13 +50,13 @@ export const ResultItem = ({ result, index }: any) => {
       <div>
         <br />
       </div>
-      {/* <div key={result?.title} className="text-xl">
-        {result.title}
-      </div> */}
+
       <div key={result?.content} className="">
         <a href={result.PDFlink} target="_blank" rel="noopener noreferrer">
           {index}. {result.title}
         </a>
+        <div>- Tipo: {result.content.type}</div>
+        <div>- Source: {result.content.source}</div>
       </div>
       <br />
 
@@ -79,9 +79,19 @@ export const ResultItem = ({ result, index }: any) => {
             value={customizedPrompt}
             onChange={(e) => setCustomizedPrompt(e.target.value)}
           />
-          <ChatWithPdf sourceId={sourceId} prompt={customizedPrompt} />
+          {customizedPrompt.length > 0 && (
+            <ChatWithPdf
+              sourceId={sourceId}
+              prompt={customizedPrompt}
+              categoryList={categoryList}
+            />
+          )}{" "}
         </>
       )}
+      <br />
+      <br />
+      <br />
+      <div className="dark my-4 border-b border-gray-100 pb-4" />
     </>
   );
 };

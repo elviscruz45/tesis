@@ -10,17 +10,33 @@ const OptionList = ({
   sourceId,
   prompt,
   setSchemaMarcoTeorico,
+  categoryList,
+  setOption,
 }: {
   sourceId?: string;
   prompt?: any;
   setSchemaMarcoTeorico?: any;
+  categoryList?: any;
+  setOption?: any;
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  let options: [] = categoryList.map((item: any) =>
+    item.title
+      .trim()
+      .replace(/\s+/g, "_")
+      .replace(/\./g, "")
+      .replace(/á/g, "a")
+      .replace(/é/g, "e")
+      .replace(/í/g, "i")
+      .replace(/ó/g, "o")
+      .replace(/ú/g, "u")
+      .toLowerCase(),
+  );
 
   const handleChange = (event: any) => {
     setSelectedOption(event.target.value);
+    setOption(event.target.value);
   };
 
   return (
@@ -29,6 +45,8 @@ const OptionList = ({
       <p> Guardar en: {selectedOption}</p>
 
       <select id="select" value={selectedOption} onChange={handleChange}>
+        <option value="">Selecciona la ubicacion en el documento</option>
+
         {options.map((option, index) => (
           <option key={index} value={option}>
             {option}

@@ -4,6 +4,7 @@ import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
 import NavBar from "./NavBar";
 import SideNavbar from "./SideNavbar";
+import NavBarInicio from "./NavBarInicio";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -25,7 +26,7 @@ export default async function NotesPages() {
         <SideNavbar />
       </div>
       <div className="basis-4/5 overflow-y-auto ">
-        <NavBar />
+        <NavBarInicio />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {allNotes.map((note: any) => (
             <Note note={note} key={note.id} />

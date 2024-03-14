@@ -21,7 +21,8 @@ export default async function RetriveInformacion({
   const allInfo = await prisma.sectionContent.findMany({
     where: {
       userId,
-      area: "antecedentes",
+      title4: "informacion_guardada_antecedentes",
+      Nivel: "4",
     },
   });
 

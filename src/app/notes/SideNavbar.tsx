@@ -36,6 +36,8 @@ function SideNavbar() {
           className={`peer:transition dark fixed -left-96 top-0 z-20 h-screen w-1/2 p-6 delay-150  duration-200 ease-out peer-focus:left-0 lg:left-0 lg:w-60`}
         >
           <div className="item-center flex flex-col justify-start">
+            <br />
+
             <h1
               className={`dark w-full cursor-pointer border-b pb-4 text-center text-base font-bold`}
             >
@@ -43,26 +45,29 @@ function SideNavbar() {
             </h1>
 
             <div className="my-4 overflow-y-auto border-b border-gray-100 pb-4">
-              <Link href={"/notes"} className="">
-                <div className="group  m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
-                  <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
-                  <h3
-                    className={`dark text-base font-semibold group-hover:text-white `}
-                  >
-                    Inicio
-                  </h3>
-                </div>
-              </Link>
-              <Link href={"/notes/documentacion"} className="">
-                <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
-                  <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
-                  <h3
-                    className={`dark text-base font-semibold group-hover:text-white `}
-                  >
-                    Documentacion
-                  </h3>
-                </div>
-              </Link>
+              <div className=" my-4 border-b border-gray-100 pb-4">
+                <Link href={"/notes"} className="">
+                  <div className="group  m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
+                    <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
+                    <h3
+                      className={`dark text-base font-semibold group-hover:text-white `}
+                    >
+                      Inicio
+                    </h3>
+                  </div>
+                </Link>
+                <Link href={"/notes/documentacion"} className="">
+                  <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
+                    <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
+                    <h3
+                      className={`dark text-base font-semibold group-hover:text-white `}
+                    >
+                      Docs
+                    </h3>
+                  </div>
+                </Link>
+              </div>
+
               <Link href={"/notes/preliminares"} className="">
                 <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
                   <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />

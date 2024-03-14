@@ -78,6 +78,8 @@ const SubItemChatWithPdf = ({
         method: "POST",
         body: JSON.stringify({
           title: line,
+          title4: "informacion_guardada_marco_teorico",
+          Nivel: "4",
           content: content,
           section: "marco_teorico",
           area: area,
@@ -96,14 +98,11 @@ const SubItemChatWithPdf = ({
         {
           sourceId,
           messages: [
-            // {
-            //   role: "user",
-            //   content:
-            //     "podrias predecir con datos especificos que podria escribir para el dia 24 de febrero iterando los datos de los dias anteriores ",
-            // },
             {
               role: "user",
-              content: `Este texto estara en el marco teorico de una tesis cientifica, Completar y parafrasear lo siguiente : ${line} , incluir datos o cifras si hubiese y la referencia y si es posible en formato APA`,
+              content: `Este texto estara en el marco teorico de una tesis cientifica,
+              Completar y parafrasear lo siguiente : ${line} , 
+              incluir datos o cifras si hubiese y la referencia y si es posible en formato APA`,
             },
           ],
         },

@@ -60,7 +60,7 @@ const ChatWithPdf = ({
       );
 
       setResponse(response.data.content);
-      setSchemaMarcoTeorico(response.data.content);
+      // setSchemaMarcoTeorico(response.data.content);
     } catch (error) {
       console.error("Error sending chat message:", error);
       setErrores("An error occurred.");

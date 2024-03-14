@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
-import NoteNivel4 from "@/components/area/NoteNivel3";
-
+import NoteNivel3 from "@/components/area/NoteNivel3";
 import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../NavBarSection";
 // import { useState } from "react";
@@ -17,6 +16,7 @@ import Tesis from "@/components/area/TesisConsolidado/tesis";
 import NavBarConsolidado from "../../NavBarConsolidado";
 import SideNavbar from "../../SideNavbar";
 import NavBar from "../../NavBar";
+import NavBarNivel3 from "../../NavBarNivel3";
 
 export const metadata: Metadata = {
   title: "Section",
@@ -37,7 +37,7 @@ export default async function Section({ params }: any) {
   if (!userId) throw new Error("You must be logged in to view this page");
 
   const allNotes = await prisma.note.findMany({
-    where: { userId, title2: titulo2, title3: titulo3, Nivel: "3" },
+    where: { userId, title3: titulo3, Nivel: "3" },
   });
   return (
     <div className="flex flex-row">
@@ -45,10 +45,15 @@ export default async function Section({ params }: any) {
         <SideNavbar />
       </div>
       <div className="basis-4/5 overflow-y-auto ">
-        <NavBar />
+        <NavBarNivel3 sectionName={titulo2} titulo3={titulo3} />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {allNotes.map((note: any) => (
-            <NoteNivel4 note={note} key={note.id} />
+            <NoteNivel3
+              note={note}
+              key={note.id}
+              titulo3={titulo3}
+              titulo2={titulo2}
+            />
           ))}
           {allNotes.length === 0 && (
             <div className=" text-center">

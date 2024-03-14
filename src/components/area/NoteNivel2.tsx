@@ -2,7 +2,7 @@
 
 import { Note as NoteModel } from "@prisma/client";
 import { useState } from "react";
-import AddEditNoteDialogNivel3 from "../AddEditNoteDialogNivel3";
+import AddEditNoteDialog from "../AddEditNoteDialog";
 import {
   Card,
   CardContent,
@@ -14,12 +14,10 @@ import Link from "next/link";
 
 interface NoteProps {
   note: NoteModel;
-  titulo3?: string;
-  titulo2?: string;
 }
 
-export default function NoteNivel3({ note, titulo2, titulo3 }: NoteProps) {
-  const sectionPage = note.title
+export default function NoteNivel2({ note }: NoteProps) {
+  const sectionPage = note?.title
     .trim()
     .replace(/\s+/g, "_")
     .replace(/\./g, "")
@@ -29,7 +27,6 @@ export default function NoteNivel3({ note, titulo2, titulo3 }: NoteProps) {
     .replace(/ó/g, "o")
     .replace(/ú/g, "u")
     .toLowerCase();
-
   const [showEditDialog, setShowEditDialog] = useState(false);
   const wasUpdated = note.updatedAt > note.createdAt;
   const createdUpdatedAtTimestamp = (
@@ -44,7 +41,7 @@ export default function NoteNivel3({ note, titulo2, titulo3 }: NoteProps) {
 
   return (
     <>
-      <Link href={`/notes/${note.title2}/${note.title3}/${sectionPage}`}>
+      <Link href={`/notes/${note.title2}/${sectionPage}`}>
         <Card
           className="cursor-pointer transition-shadow hover:shadow-lg"
           // onClick={() => setShowEditDialog(true)}
@@ -61,11 +58,11 @@ export default function NoteNivel3({ note, titulo2, titulo3 }: NoteProps) {
             <p className="whitespace-pre-line">{note.content}</p>
           </CardContent>
         </Card>
-        {/* <AddEditNoteDialogNivel3
-          open={showEditDialog}
-          setOpen={setShowEditDialog}
-          noteToEdit={note}
-        /> */}
+        {/* <AddEditNoteDialog
+        open={showEditDialog}
+        setOpen={setShowEditDialog}
+        noteToEdit={note}
+      /> */}
       </Link>
     </>
   );
