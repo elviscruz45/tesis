@@ -1,8 +1,8 @@
-"use client";
-import {
-  createDedicatoriaSchema,
-  CreateDedicatoriaSchema,
-} from "@/lib/validation/sectionContent";
+// "use client";
+// import {
+//   createDedicatoriaSchema,
+//   CreateDedicatoriaSchema,
+// } from "@/lib/validation/sectionContent";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -52,12 +52,12 @@ export default function PruebaHipotesis({
   const match = pathname?.match(regex) || [];
 
   const router = useRouter();
-  const form = useForm<CreateDedicatoriaSchema>({
-    resolver: zodResolver(createDedicatoriaSchema),
-    defaultValues: {
-      content: "",
-    },
-  });
+  // const form = useForm<CreateDedicatoriaSchema>({
+  //   resolver: zodResolver(createDedicatoriaSchema),
+  //   defaultValues: {
+  //     content: "",
+  //   },
+  // });
 
   const saveToMongoDB = async (area: string) => {
     setSaving(true);

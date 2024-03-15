@@ -6,7 +6,7 @@ import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
+// import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
 import SideNavbar from "../../../../SideNavbar";
 export const metadata: Metadata = {
   title: "Section",
@@ -37,9 +37,9 @@ export default async function Section({ params }: any) {
       <div className="basis-4/5">
         <NavBarSection />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-        {sectionName === "marco_teorico" && (
+        {/* {sectionName === "marco_teorico" && (
           <MarcoTeorico totalContent={totalContent} />
-        )}
+        )} */}
       </div>
     </div>
   );

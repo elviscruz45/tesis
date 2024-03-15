@@ -79,7 +79,7 @@ const ChatWithPdf = ({
         <br />
         <div className="text-center  underline">
           <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Pensado para Responder..." : "Generar Resultado"}
+            {isLoading ? "Pensando..." : "Generar Resultado"}
           </Button>
           {/* <Button size="sm" className="m-3 " onClick={() => onSave()}>
             <Save size={20} />

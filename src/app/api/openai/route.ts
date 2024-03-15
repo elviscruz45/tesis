@@ -6,16 +6,38 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ChatCompletionMessage } from "openai/resources/index.mjs";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   try {
-    const { model, stream, messages } = req.body;
+    const body = await req.json();
+    const messages: ChatCompletionMessage[] = body.messages;
 
-    const response = await openai.chat.completions.create({
-      messages,
-      model,
+    const completion = await openai.chat.completions.create({
+      messages: [...messages],
+      model: "gpt-3.5-turbo-0125",
+      temperature: 1,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
     });
 
-    res.status(200).json(response);
+    const content = completion.choices[0].message.content;
+    return new Response(JSON.stringify(content), { status: 200 });
+
+    // console.log("POST 111");
+    // console.log("reqbody", req.body);
+    // const { model, stream, messages } = req.body;
+    // console.log("POST 222");
+
+    // const response = await openai.chat.completions.create({
+    //   messages,
+    //   model,
+    //   stream,
+    // });
+    // console.log("POST 333");
+
+    // res.status(200).json(response);
+    // console.log("POST 444");
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });

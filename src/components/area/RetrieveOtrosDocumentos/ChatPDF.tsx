@@ -24,6 +24,9 @@ const ChatWithPdf = ({
   const [errores, setErrores] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [option, setOption] = useState("");
+  const [guardadoExitoso, setGuardadoExitoso] = useState(false);
+  const [isLoadingguardadoExitoso, setIsLoadingguardadoExitoso] =
+    useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -64,8 +67,9 @@ const ChatWithPdf = ({
   const onSave = async () => {
     const area = "antecedentes";
     const content = response[0] || "";
-
     try {
+      setIsLoadingguardadoExitoso(true);
+
       const response = await fetch("/api/section", {
         method: "POST",
         body: JSON.stringify({
@@ -78,6 +82,9 @@ const ChatWithPdf = ({
         }),
       });
       if (!response.ok) throw new Error("Status Code" + response.status);
+      setIsLoadingguardadoExitoso(false);
+
+      setGuardadoExitoso(true);
     } catch (error) {
       console.error(error);
       alert("Sucedio algo mal, por favor intente de nuevo.");
@@ -91,7 +98,7 @@ const ChatWithPdf = ({
         <br />
         <div className="text-center  underline">
           <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Pensado para Responder..." : "Preguntar"}
+            {isLoading ? "Pensando..." : "Preguntar"}
           </Button>
         </div>
         <br />
@@ -104,10 +111,18 @@ const ChatWithPdf = ({
       {response && (
         <OptionList categoryList={categoryList} setOption={setOption} />
       )}
-      {response && (
-        <Button size="sm" className="m-3 " onClick={() => onSave()}>
+      {response && option && (
+        <Button
+          size="sm"
+          className="m-3 "
+          onClick={() => onSave()}
+          disabled={isLoadingguardadoExitoso || guardadoExitoso}
+        >
           <Save size={20} />
         </Button>
+      )}
+      {guardadoExitoso && (
+        <p className="text-center text-green-500">Guardado Exitoso</p>
       )}
     </>
   );

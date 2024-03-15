@@ -52,7 +52,12 @@ export const ResultItem = ({ result, index, categoryList }: any) => {
       </div>
 
       <div key={result?.content} className="">
-        <a href={result.PDFlink} target="_blank" rel="noopener noreferrer">
+        <a
+          href={result.PDFlink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold"
+        >
           {index}. {result.title}
         </a>
         <div>- Tipo: {result.content.type}</div>

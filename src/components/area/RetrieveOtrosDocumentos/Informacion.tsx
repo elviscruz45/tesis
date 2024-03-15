@@ -1,7 +1,7 @@
 "use client";
 import {
-  createDedicatoriaSchema,
-  CreateDedicatoriaSchema,
+  createContentSchema,
+  CreateContentSchema,
 } from "@/lib/validation/sectionContent";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -55,8 +55,8 @@ export default function OtrosDocumentos({
   const match = pathname?.match(regex) || [];
 
   const router = useRouter();
-  const form = useForm<CreateDedicatoriaSchema>({
-    resolver: zodResolver(createDedicatoriaSchema),
+  const form = useForm<CreateContentSchema>({
+    resolver: zodResolver(createContentSchema),
     defaultValues: {
       content: "",
     },

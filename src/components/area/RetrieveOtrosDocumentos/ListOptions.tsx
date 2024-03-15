@@ -42,7 +42,8 @@ const OptionList = ({
   return (
     <div>
       {/* <label htmlFor="select">Choose an option:</label> */}
-      <p> Guardar en: {selectedOption}</p>
+      <br />
+      <p> Guardar en: </p>
 
       <select id="select" value={selectedOption} onChange={handleChange}>
         <option value="">Selecciona la ubicacion en el documento</option>

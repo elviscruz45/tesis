@@ -1,8 +1,8 @@
 import {
-  createDedicatoriaSchema,
-  CreateDedicatoriaSchema,
-  updateDedicatoriaSchema,
-  deleteDedicatoriaSchema,
+  createContentSchema,
+  CreateContentSchema,
+  updateContentSchema,
+  deleteContentSchema,
 } from "../../../lib/validation/sectionContent";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const parseResult = createDedicatoriaSchema.safeParse(body);
+    const parseResult = createContentSchema.safeParse(body);
 
     if (!parseResult.success) {
       console.error(parseResult.error);
@@ -62,17 +62,20 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
+  console.log("PUT111");
   try {
+    console.log("PUT 222");
+
     const body = await req.json();
 
-    const parseResult = updateDedicatoriaSchema.safeParse(body);
+    const parseResult = updateContentSchema.safeParse(body);
 
     if (!parseResult.success) {
       console.error(parseResult.error);
       return Response.json({ error: "Invalid input" }, { status: 400 });
     }
 
-    const { id, section, content } = parseResult.data;
+    const { id, Nivel, title, content } = parseResult.data;
 
     const sectionContent = await prisma.sectionContent.findUnique({
       where: { id },
@@ -88,27 +91,28 @@ export async function PUT(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const embedding = await getEmbeddingForSectionDedicatoria(
-      section || "",
-      content,
-    );
+    // const embedding = await getEmbeddingForSectionDedicatoria(
+    //   section || "",
+    //   content,
+    // );
 
     const updatedNote = await prisma.$transaction(async (tx: any) => {
       const updatedNote = await tx.sectionContent.update({
         where: { id },
         data: {
-          section,
+          Nivel,
+          title,
           content,
         },
       });
 
-      await notesIndex.upsert([
-        {
-          id,
-          values: embedding,
-          metadata: { userId },
-        },
-      ]);
+      // await notesIndex.upsert([
+      //   {
+      //     id,
+      //     values: embedding,
+      //     metadata: { userId },
+      //   },
+      // ]);
 
       return updatedNote;
     });

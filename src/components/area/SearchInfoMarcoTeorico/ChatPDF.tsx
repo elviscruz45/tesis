@@ -148,7 +148,7 @@ const ChatWithPdf = ({
         <br />
         <div className="text-center  underline">
           <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Pensado para Responder..." : "Generar Resultado"}
+            {isLoading ? "Pensando..." : "Generar Resultado"}
           </Button>
         </div>
         <br />

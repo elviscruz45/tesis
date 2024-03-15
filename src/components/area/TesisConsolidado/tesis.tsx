@@ -1,7 +1,7 @@
 "use client";
 import {
-  createDedicatoriaSchema,
-  CreateDedicatoriaSchema,
+  createContentSchema,
+  CreateContentSchema,
 } from "@/lib/validation/sectionContent";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,10 +15,10 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { FileUpload } from "../../pdfAnalizer/Upload";
 import { useState } from "react";
 import axios from "axios";
-import SeccionPreliminar from "./1.seccionesPreliminares/inicio";
-import PlanteamientoProblema from "./2.PlanteamientoDelProblema/inicio";
-import RevisionLiteratura from "./3.RevisionDeLiteratura/inicio";
-import PlanteamientoMetodologico from "./4.PlanteamientoMetodologico/inicio";
+// import SeccionPreliminar from "./1.seccionesPreliminares/inicio";
+// import PlanteamientoProblema from "./2.PlanteamientoDelProblema/inicio";
+// import RevisionLiteratura from "./3.RevisionDeLiteratura/inicio";
+// import PlanteamientoMetodologico from "./4.PlanteamientoMetodologico/inicio";
 import Resultados from "./5.Resultados/inicio";
 import Discusion from "./6.Discusión/inicio";
 import ConclusionRecomendacion from "./7.ConclusionesRecomendaciones/inicio";
