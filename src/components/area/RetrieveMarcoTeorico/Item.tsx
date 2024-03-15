@@ -11,17 +11,19 @@ import {
   NotebookPen,
   Brain,
   Undo2,
-  Euro,
   FileCode,
+  SendHorizontal,
 } from "lucide-react";
 import openai from "@/lib/openai";
 import { ResponseCookies } from "next/dist/compiled/@edge-runtime/cookies";
 import { useRouter } from "next/navigation";
 import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
-
+import { Input } from "@/components/ui/input";
 export const ResultItem = ({ result }: any) => {
   const [newData, setNewData] = useState<string>("");
   const [showEditDialog, setShowEditDialog] = useState(false);
+  const [newQuery, setNewQuery] = useState(false);
+  const [text, setText] = useState("");
 
   const router = useRouter();
 
@@ -30,7 +32,6 @@ export const ResultItem = ({ result }: any) => {
   };
 
   const parafrasear = async () => {
-    console.log("parafrasear");
     try {
       const systemMessage: any = {
         role: "system",
@@ -42,11 +43,6 @@ export const ResultItem = ({ result }: any) => {
           role: "user",
           content: `Mejora, parafrasea y añade mas informacion para que sea mas original y no sea detectable por turnitin sobre el siguiente texto: ${result?.content}`,
         },
-        // {
-        //   role: "assistant",
-        //   content:
-        //     "indicame cual es tu carrera profesional que terminaste para hacer la dedicatoria mas personalizada",
-        // },
       ];
 
       const response = await fetch("/api/openai", {
@@ -70,36 +66,85 @@ export const ResultItem = ({ result }: any) => {
       // setErrores("An error occurred.");
     }
   };
+
+  const mostrarConsultarGPT = async () => {
+    setNewQuery((item) => !item);
+  };
+
   const estandarizar = async () => {};
 
   const guardar = async () => {
-    // try {
-    //   const response = await fetch("/api/saveInformation", {
-    //     method: "PUT",
-    //     body: JSON.stringify({
-    //       title: result?.title,
-    //       content: result,
-    //       PDFlink: urlPDF,
-    //       area: area,
-    //     }),
-    //   });
-    //   if (!response.ok) throw new Error("Status Code" + response.status);
-    //   if (area === "Antecedentes") {
-    //     setSavingAntecedentes(false);
-    //     setIsSaved(true);
-    //   } else {
-    //     setSavingMarcoTeorico(false);
-    //     setIsSaved(true);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   alert("Sucedio algo mal, por favor intente de nuevo.");
-    // }
+    console.log("result", result);
+    try {
+      const response = await fetch("/api/section", {
+        method: "PUT",
+        body: JSON.stringify({
+          id: result.id,
+          title: result?.title,
+          content: newData,
+          Nivel: "4",
+          // PDFlink: urlPDF,
+          // area: area,
+        }),
+      });
+      if (!response.ok) throw new Error("Status Code" + response.status);
+      // if (area === "Antecedentes") {
+      //   setSavingAntecedentes(false);
+      //   setIsSaved(true);
+      // } else {
+      //   setSavingMarcoTeorico(false);
+      //   setIsSaved(true);
+      // }
+      router.refresh();
+      setNewData("");
+      setNewQuery(false);
+    } catch (error) {
+      console.error(error);
+      alert("Sucedio algo mal, por favor intente de nuevo.");
+    }
   };
 
   const regresar = async () => {
     console.log("regresar");
     setNewData("");
+  };
+  const consultarGPT = async () => {
+    try {
+      const systemMessage: any = {
+        role: "system",
+        content: `Tienes el siguiente texto:${result?.content} . Eres un especialista en crear tesis para graduados profesionales. Tus respuestas deben estar diseñadas para ser incluidas en el documento de tesis. Usa adjetivos no comunes para que el texto sea original , tener muy en cuenta que el texto no debe ser detectable por turnitin, `,
+      };
+      const userAssitantMessage: any = [
+        {
+          role: "user",
+          content: `${text}`,
+        },
+        // {
+        //   role: "assistant",
+        //   content:
+        //     "indicame cual es tu carrera profesional que terminaste para hacer la dedicatoria mas personalizada",
+        // },
+      ];
+
+      const response = await fetch("/api/openai", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          stream: true,
+          messages: [systemMessage, ...userAssitantMessage],
+        }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      setNewData(data);
+    } catch (error) {
+      console.error("Error sending chat message:", error);
+      // setErrores("An error occurred.");
+    }
   };
 
   return (
@@ -113,7 +158,11 @@ export const ResultItem = ({ result }: any) => {
           <Button size="sm" className="m-3" onClick={() => parafrasear()}>
             <Bot size={20} />
           </Button>
-          <Button size="sm" className="m-3" onClick={() => parafrasear()}>
+          <Button
+            size="sm"
+            className="m-3"
+            onClick={() => mostrarConsultarGPT()}
+          >
             <FileCode size={20} />
           </Button>
           <Button size="sm" className="m-3" onClick={() => estandarizar()}>
@@ -135,6 +184,21 @@ export const ResultItem = ({ result }: any) => {
       <div key={result?.content} className="">
         {result.content}
       </div>
+      <br />
+      <br />
+      {newQuery && (
+        <div className="flex items-start text-xl">
+          <Input
+            // value={input}
+            onChange={(e: any) => setText(e.target.value)}
+            placeholder="Consultar..."
+            // ref={inputRef}
+          />
+          <Button size="sm" className="m-3 " onClick={() => consultarGPT()}>
+            <SendHorizontal size={20} />
+          </Button>
+        </div>
+      )}
 
       {newData && (
         <>

@@ -62,10 +62,7 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
-  console.log("PUT111");
   try {
-    console.log("PUT 222");
-
     const body = await req.json();
 
     const parseResult = updateContentSchema.safeParse(body);
@@ -124,42 +121,42 @@ export async function PUT(req: Request) {
   }
 }
 
-// export async function DELETE(req: Request) {
-//   try {
-//     const body = await req.json();
+export async function DELETE(req: Request) {
+  try {
+    const body = await req.json();
 
-//     const parseResult = deleteNoteSchema.safeParse(body);
+    const parseResult = deleteContentSchema.safeParse(body);
 
-//     if (!parseResult.success) {
-//       console.error(parseResult.error);
-//       return Response.json({ error: "Invalid input" }, { status: 400 });
-//     }
+    if (!parseResult.success) {
+      console.error(parseResult.error);
+      return Response.json({ error: "Invalid input" }, { status: 400 });
+    }
 
-//     const { id } = parseResult.data;
+    const { id } = parseResult.data;
 
-//     const note = await prisma.note.findUnique({ where: { id } });
+    const note = await prisma.sectionContent.findUnique({ where: { id } });
 
-//     if (!note) {
-//       return Response.json({ error: "Note not found" }, { status: 404 });
-//     }
+    if (!note) {
+      return Response.json({ error: "Note not found" }, { status: 404 });
+    }
 
-//     const { userId } = auth();
+    const { userId } = auth();
 
-//     if (!userId || userId !== note.userId) {
-//       return Response.json({ error: "Unauthorized" }, { status: 401 });
-//     }
+    if (!userId || userId !== note.userId) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-//     await prisma.$transaction(async (tx: any) => {
-//       await tx.note.delete({ where: { id } });
-//       await notesIndex.deleteOne(id);
-//     });
+    await prisma.$transaction(async (tx: any) => {
+      await tx.sectionContent.delete({ where: { id } });
+      // await notesIndex.deleteOne(id);
+    });
 
-//     return Response.json({ message: "Note deleted" }, { status: 200 });
-//   } catch (error) {
-//     console.error(error);
-//     return Response.json({ error: "Internal server error" }, { status: 500 });
-//   }
-// }
+    return Response.json({ message: "Note deleted" }, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return Response.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
 async function getEmbeddingForSectionDedicatoria(
   title: string,
   content: string | undefined,
