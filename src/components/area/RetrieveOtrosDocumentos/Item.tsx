@@ -4,7 +4,16 @@ import { Button } from "@/components/ui/buttonsmall";
 import { FileUpload } from "@/components/pdfAnalizer/Upload";
 import Link from "next/link";
 import { resourceLimits } from "worker_threads";
-import { Bot, Save } from "lucide-react";
+import {
+  Bot,
+  Save,
+  NotebookPen,
+  Brain,
+  Undo2,
+  FileCode,
+  SendHorizontal,
+  DatabaseBackup,
+} from "lucide-react";
 import axios from "axios";
 import { Input } from "../../ui/input";
 import ChatWithPdf from "./ChatPDF";
@@ -46,12 +55,12 @@ export const ResultItem = ({ result, index, categoryList }: any) => {
   };
 
   return (
-    <>
+    <div className="mb-4 rounded-lg border border-gray-300 p-6  shadow-md  ">
       <div>
         <br />
       </div>
 
-      <div key={result?.content} className="">
+      <div key={result?.content} className="  ">
         <a
           href={result.PDFlink}
           target="_blank"
@@ -96,7 +105,7 @@ export const ResultItem = ({ result, index, categoryList }: any) => {
       <br />
       <br />
       <br />
-      <div className="dark my-4 border-b border-gray-100 pb-4" />
-    </>
+      {/* <div className="dark my-4 border-b border-gray-100 pb-4" /> */}
+    </div>
   );
 };

@@ -157,12 +157,14 @@ const ChatWithPdf = ({
         {errores && <p className="error">{errores}</p>}
       </form>
       {response &&
-        lines?.map((line: string) => {
+        lines?.map((line: string, index: any) => {
           return (
-            <div className="">
-              <div className="text-xl">{line}</div>
+            <div key={index} className=" mb-2 border  ">
               {line.length > 2 && line.match(/(\d+\.)/) && (
-                <SubItemChatWithPdf sourceId={sourceId} line={line} />
+                <>
+                  <div className="text-xl">{line}</div>
+                  <SubItemChatWithPdf sourceId={sourceId} line={line} />
+                </>
               )}
             </div>
           );

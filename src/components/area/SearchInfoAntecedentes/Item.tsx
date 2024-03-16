@@ -37,7 +37,10 @@ export const ResultItem = ({ result }: any) => {
   };
 
   return (
-    <div key={result?.identifiers?.doi} className=" ">
+    <div
+      key={result?.identifiers?.doi}
+      className=" mb-4 rounded-lg border border-gray-300 p-6  shadow-md "
+    >
       Titulo: {result.title}
       <br />
       DOI: {result?.identifiers?.doi}
@@ -62,7 +65,12 @@ export const ResultItem = ({ result }: any) => {
         </Button>
       </div>
       <br />
-      <FileUpload analizar={false} resumir={false} setUrlPDF={setUrlPDF} />
+      <FileUpload
+        analizar={false}
+        resumir={false}
+        setUrlPDF={setUrlPDF}
+        result={result}
+      />
       {urlPDF && (
         <UploadPdfByUrl
           url={urlPDF}
@@ -71,7 +79,7 @@ export const ResultItem = ({ result }: any) => {
           setContentData={setContentData}
           prompts={{
             titulo:
-              "Enumerar las secciones,enumerar las subsecciones de manera detallada y traducirlas al español?",
+              "Enumerar las secciones y subsecciones de manera detallada y traducirlas al español?",
             resumen: "",
             // "Este texto es para una tesis cientifica , por lo que con 500 palabras crea subtitulos de cada seccion, menos la seccion de referencias. Luego resume cada sección, incluye referencias de otros autores que estan en las referencias del libro. Incluye cifras si es que las hay",
 
@@ -84,7 +92,7 @@ export const ResultItem = ({ result }: any) => {
         />
       )}
       <div className="flex items-center justify-center space-x-4 self-center">
-        {urlPDF && (
+        {/* {urlPDF && (
           <Button
             onClick={() => {
               saveToMongoDB();
@@ -96,20 +104,6 @@ export const ResultItem = ({ result }: any) => {
               : savingAntecedentes
                 ? "Guardando..."
                 : "Guardar en Antecedentes"}
-          </Button>
-        )}
-        {/* {urlPDF && (
-          <Button
-            onClick={() => {
-              saveToMongoDB(result, "Marco_Teorico");
-            }}
-            disabled={savingMarcoTeorico || isSaved}
-          >
-            {isSaved
-              ? "Guardado en la Nube"
-              : savingMarcoTeorico
-                ? "Guardando..."
-                : "Guardar en Marco Teorico"}
           </Button>
         )} */}
       </div>

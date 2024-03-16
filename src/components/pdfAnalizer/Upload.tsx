@@ -18,12 +18,14 @@ type FileUploadProps = {
   resumir: boolean;
   setUrlPDF: (url: string) => void;
   setFileName?: any;
+  result?: any;
 };
 export const FileUpload: React.FC<FileUploadProps> = ({
   analizar,
   resumir,
   setUrlPDF,
   setFileName,
+  result,
 }) => {
   const [image, setImage] = useState<File | null>(null);
   const [url, setUrl] = useState<string>("");
@@ -38,6 +40,30 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       }
     }
   };
+  const saveToMongoDB = async (name: any, linkUrl: any) => {
+    const area = "antecedentes";
+    try {
+      const response = await fetch("/api/saveInformation", {
+        method: "POST",
+        body: JSON.stringify({
+          title: name,
+          content: {
+            link: result.title,
+            identifier: { doi: result?.identifiers?.doi },
+            source: result.source,
+            type: result.type,
+            year: result.year,
+          },
+          PDFlink: linkUrl,
+        }),
+      });
+      if (!response.ok) throw new Error("Status Code" + response.status);
+    } catch (error) {
+      console.error(error);
+      alert("Sucedio algo mal, por favor intente de nuevo.");
+    }
+  };
+
   const handleUpload = () => {
     try {
       if (!image) return;
@@ -58,6 +84,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setUrl(downloadURL);
             setUrlPDF(downloadURL);
+            saveToMongoDB(image?.name, downloadURL);
           });
         },
       );

@@ -5,7 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { ResultItem } from "./Item";
-
+import {
+  Bot,
+  Save,
+  NotebookPen,
+  Brain,
+  Undo2,
+  FileCode,
+  SendHorizontal,
+  DatabaseBackup,
+} from "lucide-react";
 const MendeleyRequest = ({
   token,
   sectionName,
@@ -23,15 +32,18 @@ const MendeleyRequest = ({
 
   const handleSearch = async () => {
     if (!text) {
-      setError("Please enter a search term");
+      setError("Ingresa una consulta para buscar...");
       return;
     }
-    const query = `${text} in ${area}`;
+    const query = `${text}`;
     setIsLoading(true);
     try {
       const data = await makeMendeleyApiRequest(query, token);
+
       setSearchResults(data);
+      console.log("error11111", data);
     } catch (error) {
+      console.log("error11111", error);
       setError((error as Error)?.message);
     } finally {
       setIsLoading(false);
@@ -83,34 +95,40 @@ const MendeleyRequest = ({
           placeholder="Años de Antiguedad..."
           // ref={inputRef}
         /> */}
+        <div className="flex items-start text-xl">
+          <Input
+            className="border-gray-300"
+            // value={input}
+            onChange={(e: any) => setText(e.target.value)}
+            placeholder="Escribe el tema..."
+            // ref={inputRef}
+          />
+          <Button
+            size="sm"
+            className="m-3 "
+            onClick={() => handleSearch()}
+            disabled={isLoading}
+          >
+            <SendHorizontal size={20} />
+          </Button>
+        </div>
 
-        <Input
-          // value={input}
-          onChange={(e: any) => setText(e.target.value)}
-          placeholder="Escribe las variables ..."
-          // ref={inputRef}
-        />
-        <br />
-
+        {/* 
         <Input
           // value={input}
           onChange={(e: any) => setArea(e.target.value)}
           placeholder="Area de Investigacion ..."
           // ref={inputRef}
-        />
-        <br />
-        <div className=" flex justify-center ">
+        /> */}
+        {/* <div className=" flex justify-center ">
           <Button onClick={() => handleSearch()} disabled={isLoading}>
             {isLoading
               ? "Buscando las mejores respuestas"
               : "Buscar en Mendeley"}
           </Button>
-        </div>
+        </div> */}
 
-        <br />
-        <br />
-
-        {error && <p>Activar Token: {error} </p>}
+        {error && <p className="text-red-500">{error}... </p>}
         {searchResults &&
           searchResults.map((result: any) => (
             <ResultItem key={result?.identifiers?.doi} result={result} />

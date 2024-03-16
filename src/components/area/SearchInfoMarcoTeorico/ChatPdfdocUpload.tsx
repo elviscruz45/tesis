@@ -25,6 +25,7 @@ const UploadPdfByUrl = ({
   const [sourceId, setSourceId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activatePDFChat, setActivatePDFChat] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -50,6 +51,7 @@ const UploadPdfByUrl = ({
       );
 
       setSourceId(response.data.sourceId);
+      setActivatePDFChat(true);
     } catch (error: any) {
       console.error("Error adding PDF:", error);
       setError(error.message || "An error occurred.");
@@ -75,7 +77,7 @@ const UploadPdfByUrl = ({
       </form>
       <br />
 
-      {resumir && (
+      {resumir && activatePDFChat && (
         <>
           <ChatWithPdf
             sourceId={sourceId}

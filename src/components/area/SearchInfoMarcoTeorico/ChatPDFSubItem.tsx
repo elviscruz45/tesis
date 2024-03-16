@@ -21,6 +21,8 @@ const SubItemChatWithPdf = ({
   const [response, setResponse] = useState<string>("");
   const [errores, setErrores] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [saved, setSaved] = useState(false);
+
   const [initialPrompt, setInitialPrompt] = useState(
     "En 500 palabras, crea subtitulos de cada seccion y resume cada sección (incluyendo las referencias que consideres necesarias para este resumen, no hace falta mencionar a todas) y las cifras (si es que las hay)",
   );
@@ -86,6 +88,7 @@ const SubItemChatWithPdf = ({
         }),
       });
       if (!response.ok) throw new Error("Status Code" + response.status);
+      setSaved(true);
     } catch (error) {
       console.error(error);
       alert("Sucedio algo mal, por favor intente de nuevo.");
@@ -128,7 +131,12 @@ const SubItemChatWithPdf = ({
         <Button size="sm" className="m-3" onClick={() => askPdf()}>
           <Bot size={20} />
         </Button>
-        <Button size="sm" className="m-3 " onClick={() => onSave()}>
+        <Button
+          disabled={saved}
+          size="sm"
+          className="m-3 "
+          onClick={() => onSave()}
+        >
           <Save size={20} />
         </Button>
       </div>

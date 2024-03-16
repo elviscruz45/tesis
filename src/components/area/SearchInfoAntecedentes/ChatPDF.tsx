@@ -28,7 +28,8 @@ const ChatWithPdf = ({
 
   const [customizedPrompt, setCustomizedPrompt] = useState("");
 
-  const lines = response?.split("\n") || [];
+  const lines =
+    response?.split("\n").filter((line) => /(\d+\.)/.test(line)) || [];
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -70,14 +71,10 @@ const ChatWithPdf = ({
   const onSave = async () => {};
   return (
     <>
-      <form onSubmit={handleSubmit} className="m-3  gap-1">
+      <form onSubmit={handleSubmit} className="">
+        <div className=" "> {prompt ?? initialPrompt}</div>
         <br />
-        <br />
-
-        <div className="text-center  underline">{prompt ?? initialPrompt}</div>
-
-        <br />
-        <div className="text-center  underline">
+        <div className="  ">
           <Button type="submit" disabled={isLoading}>
             {isLoading ? "Pensando..." : "Generar Resultado"}
           </Button>
@@ -92,13 +89,16 @@ const ChatWithPdf = ({
       </form>
 
       {response &&
-        lines?.map((line: string) => {
+        lines?.map((line: string, index: any) => {
           return (
-            <div className="">
-              <div className="text-xl">{line}</div>
+            <div key={index} className=" mb-2 border  ">
               {line.length > 2 && line.match(/(\d+\.)/) && (
-                <SubItemChatWithPdf sourceId={sourceId} line={line} />
+                <>
+                  <div className="">{line}</div>
+                  <SubItemChatWithPdf sourceId={sourceId} line={line} />
+                </>
               )}
+              <br />
             </div>
           );
         })}

@@ -5,6 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { ResultItem } from "./Item";
+import {
+  Bot,
+  Save,
+  NotebookPen,
+  Brain,
+  Undo2,
+  FileCode,
+  SendHorizontal,
+  DatabaseBackup,
+} from "lucide-react";
 
 const MendeleyRequest = ({
   token,
@@ -47,28 +57,41 @@ const MendeleyRequest = ({
           años) que tengan en cuenta a estas dos variables.
         </div>
         <br />
-        <Input
-          // value={input}
-          onChange={(e: any) => setText(e.target.value)}
-          placeholder="Escribe las variables ..."
-          // ref={inputRef}
-        />
+
         <br />
 
-        <Input
+        <div className="flex items-start text-xl">
+          <Input
+            className="border-gray-300"
+            // value={input}
+            onChange={(e: any) => setText(e.target.value)}
+            placeholder="Escribe el tema ..."
+            // ref={inputRef}
+          />
+          <Button
+            size="sm"
+            className="m-3 "
+            onClick={() => handleSearch()}
+            disabled={isLoading}
+          >
+            <SendHorizontal size={20} />
+          </Button>
+        </div>
+
+        {/* <Input
           // value={input}
           onChange={(e: any) => setArea(e.target.value)}
           placeholder="Area de Investigacion ..."
           // ref={inputRef}
-        />
+        /> */}
         <br />
-        <div className=" flex justify-center ">
+        {/* <div className=" flex justify-center ">
           <Button onClick={() => handleSearch()} disabled={isLoading}>
             {isLoading
               ? "Buscando las mejores respuestas"
               : "Buscar en Mendeley"}{" "}
           </Button>
-        </div>
+        </div> */}
 
         <br />
         <br />

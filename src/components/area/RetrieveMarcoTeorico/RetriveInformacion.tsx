@@ -3,7 +3,6 @@ import { auth } from "@clerk/nextjs";
 import { ResultItem } from "./Item";
 import React from "react";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
-import Dragabble from "./dragabble";
 interface RetriveInformacion {
   open?: boolean;
   setOpen?: (open: boolean) => void;
@@ -77,11 +76,5 @@ export default async function RetriveInformacionMarcoTeorico({
 //         </li>
 //       ))}
 //     </ul>
-//   </div>
-// );
-
-// return (
-//   <div>
-//     <Dragabble allInfo={allInfo} />
 //   </div>
 // );

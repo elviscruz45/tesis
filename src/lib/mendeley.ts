@@ -4,9 +4,9 @@ import xml2js from "xml2js";
 
 const makeMendeleyApiRequest = async (query: any, token: string) => {
   const url = `https://api.mendeley.com/search/catalog`;
-  //   const apiKey = token;
-  const apiKey =
-    "MSwxNzEwNTY5OTAyNDU5LCwxNzc5MSxhbGwsLFNiQXMxUnNmUWVGMUgtdnloNkN3ZVRRUzRPRQ";
+  const apiKey = token;
+  // const apiKey =
+  //   "MSwxNzEwNTY5OTAyNDU5LCwxNzc5MSxhbGwsLFNiQXMxUnNmUWVGMUgtdnloNkN3ZVRRUzRPRQ";
 
   try {
     const response = await axios.get(url, {
@@ -25,7 +25,8 @@ const makeMendeleyApiRequest = async (query: any, token: string) => {
   } catch (error) {
     console.error("Error fetching Mendeley documents:", error);
     // Handle error appropriately
-    return null; // Or throw an error
+    // return null; // Or throw an error
+    throw new Error("Activar Mendely");
   }
 };
 

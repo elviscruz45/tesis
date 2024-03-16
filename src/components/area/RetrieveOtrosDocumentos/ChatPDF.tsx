@@ -83,7 +83,6 @@ const ChatWithPdf = ({
       });
       if (!response.ok) throw new Error("Status Code" + response.status);
       setIsLoadingguardadoExitoso(false);
-
       setGuardadoExitoso(true);
     } catch (error) {
       console.error(error);

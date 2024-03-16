@@ -43,6 +43,7 @@ export default function Informacion({
   const [newMendeleyToken, setNewMendeleyToken] = useState("");
   const [data, setData] = useState<any>(null);
   const [token, setToken] = useState<string>("");
+  // const [mendelytoken, setMendelyToken] = useState<any>(null);
   const [errors, setErrors] = useState<any>(null);
   const [isActivated, setIsActivated] = useState(false);
 
@@ -90,6 +91,8 @@ export default function Informacion({
 
   const ActivateToken = async () => {
     setIsActivated(true);
+
+    let authcode = `17791:${newMendeleyToken}`;
     try {
       const response = await axios.post(
         "https://api.mendeley.com/oauth/token",
@@ -100,7 +103,8 @@ export default function Informacion({
         {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `Basic ${Buffer.from("17791:jN8OnTH9NQnhAVrb").toString("base64")}`,
+            // Authorization: `Basic ${Buffer.from("17791:niiBWf8lOE0NILcq").toString("base64")}`,
+            Authorization: `Basic ${Buffer.from(authcode).toString("base64")}`,
           },
         },
       );
@@ -118,7 +122,6 @@ export default function Informacion({
   return (
     <>
       <div className=" text-center text-2xl ">Buscador Antecedentes</div>
-
       <br />
       {/* <div> Activar busqueda en Mendeley</div> */}
       {/* <Input
@@ -128,15 +131,15 @@ export default function Informacion({
         // ref={inputRef}
       /> */}
       <br />
-
       <Button onClick={() => ActivateToken()} disabled={isActivated}>
-        {isActivated ? " Token Activado" : " Activar busqueda en Mendeley"}
-      </Button>
+        {isActivated ? " Token Activado" : " Activar Mendeley"}
+      </Button>{" "}
+      &nbsp;
+      <input onChange={(e: any) => setNewMendeleyToken(e.target.value)} />
       <br />
       <br />
-
+      <br />
       <div className="font-bold"> Indicacion</div>
-
       <MendeleyRequest token={token} sectionName={sectionName} />
       <br />
     </>

@@ -50,7 +50,10 @@ export const ResultItem = ({ result }: any) => {
   };
 
   return (
-    <div key={result?.identifiers?.doi} className=" ">
+    <div
+      key={result?.identifiers?.doi}
+      className="mb-4 rounded-lg border border-gray-300 p-6  shadow-md  "
+    >
       Titulo: {result.title}
       <br />
       DOI: {result?.identifiers?.doi}
@@ -75,7 +78,12 @@ export const ResultItem = ({ result }: any) => {
         </Button>
       </div>
       <br />
-      <FileUpload analizar={false} resumir={false} setUrlPDF={setUrlPDF} />
+      <FileUpload
+        analizar={false}
+        resumir={false}
+        setUrlPDF={setUrlPDF}
+        result={result}
+      />
       {urlPDF && (
         <UploadPdfByUrl
           url={urlPDF}
