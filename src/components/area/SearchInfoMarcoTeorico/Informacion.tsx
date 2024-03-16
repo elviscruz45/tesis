@@ -45,7 +45,7 @@ export default function SearchInformacionMarcoTeorico({
   const [token, setToken] = useState<string>("");
   const [errors, setErrors] = useState<any>(null);
   const [isActivated, setIsActivated] = useState(false);
-
+  console.log("Token", data);
   const pathname = usePathname();
   const regex = /\/([^\/]+)$/;
   const match = pathname?.match(regex) || [];
@@ -70,7 +70,7 @@ export default function SearchInformacionMarcoTeorico({
         {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `Basic ${Buffer.from("17791:jN8OnTH9NQnhAVrb").toString("base64")}`,
+            Authorization: `Basic ${Buffer.from("17791:ssERlhw6Arpp5IGS").toString("base64")}`,
           },
         },
       );
