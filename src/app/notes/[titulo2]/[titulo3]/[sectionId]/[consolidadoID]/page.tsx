@@ -6,14 +6,15 @@ import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-// import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
 import SideNavbar from "../../../../SideNavbar";
+import MarcoTeorico from "@/components/area/TesisConsolidado/3.RevisionDeLiteratura/MarcoTeorico";
 export const metadata: Metadata = {
   title: "Section",
 };
 
 export default async function Section({ params }: any) {
-  const sectionName = params?.saveDoc;
+  const sectionName = params?.consolidadoID;
+  console.log("sdfasdasf", sectionName);
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);
   //   const sectionPage = navigation.query.sectionPage;
@@ -25,7 +26,9 @@ export default async function Section({ params }: any) {
 
   const totalContent = await prisma.sectionContent.findMany({
     where: {
-      section: params?.saveDoc,
+      userId,
+      Nivel: "5",
+      title4: sectionName,
     },
   });
 
@@ -37,9 +40,9 @@ export default async function Section({ params }: any) {
       <div className="basis-4/5">
         <NavBarSection />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-        {/* {sectionName === "marco_teorico" && (
+        {sectionName === "informacion_guardada_marco_teorico" && (
           <MarcoTeorico totalContent={totalContent} />
-        )} */}
+        )}
       </div>
     </div>
   );

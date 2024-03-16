@@ -33,19 +33,6 @@ interface Informacion {
   sectionName?: any;
 }
 
-function formatSectionPage(title: string): string {
-  return title
-    .trim()
-    .replace(/\s+/g, "_")
-    .replace(/\./g, "")
-    .replace(/á/g, "a")
-    .replace(/é/g, "e")
-    .replace(/í/g, "i")
-    .replace(/ó/g, "o")
-    .replace(/ú/g, "u")
-    .toLowerCase();
-}
-
 export default function Tesis({ sectionName }: any) {
   const SeccionesPreliminares = [
     "Resumen",
@@ -83,145 +70,110 @@ export default function Tesis({ sectionName }: any) {
     "Pruebas adicionales",
   ];
 
-  const Discusion = ["Discusión"];
-
-  const ConclusionesRecomendaciones = ["Conclusiones", "Recomendaciones"];
-
-  // const doneItems = ["Pickup new mix-tape from Beth"];
-
-  const [SeccionesPreliminaresList, SeccionesPreliminaresTodos] =
-    useDragAndDrop<HTMLUListElement, string>(SeccionesPreliminares, {
-      group: "SeccionesPreliminares",
-    });
-
-  const [PlanteamientoDelProblemaList, PlanteamientoDelProblemaTodos] =
-    useDragAndDrop<HTMLUListElement, string>(PlanteamientoDelProblema, {
-      group: "PlanteamientoDelProblema",
-    });
-
-  const [RevisionLiteraturaList, RevisionLiteraturaTodos] = useDragAndDrop<
-    HTMLUListElement,
-    string
-  >(RevisionLiteratura, {
-    group: "RevisionLiteratura",
-  });
-
-  const [PlanteamientoMetodologicoList, PlanteamientoMetodologicoTodos] =
-    useDragAndDrop<HTMLUListElement, string>(PlanteamientoMetodologico, {
-      group: "PlanteamientoMetodologico",
-    });
-
-  const [ResultadosList, ResultadosTodos] = useDragAndDrop<
-    HTMLUListElement,
-    string
-  >(Resultados, {
-    group: "Resultados",
-  });
-
-  const [DiscusionList, DiscusionTodos] = useDragAndDrop<
-    HTMLUListElement,
-    string
-  >(Discusion, {
-    group: "Discusion",
-  });
-
-  const [ConclusionesRecomendacionesList, ConclusionesRecomendacionesTodos] =
-    useDragAndDrop<HTMLUListElement, string>(ConclusionesRecomendaciones, {
-      group: "ConclusionesRecomendaciones",
-    });
   return (
     <>
       <div className="text-4xl">Secciones preliminares</div>
-
-      <div className="kanban-board">
-        <ul ref={SeccionesPreliminaresList}>
-          {SeccionesPreliminaresTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-              {/* <Link href={`/notes/${sectionPage}`}>{todo}</Link> */}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Resumen</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Abstract</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Dedicatoria</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Agradecimientos</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Introduccion</div>
+      </Link>
       <div className="text-4xl">Capítulo I: Planteamiento del problema </div>
-
-      <div className="kanban-board">
-        <ul ref={PlanteamientoDelProblemaList}>
-          {PlanteamientoDelProblemaTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Linea De Investigacion</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Descripcion Del Problema</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Preguntas De Investigacion</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Objetivos Del Proyecto</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Justificacion De La Investigacion</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Delimitaciones</div>
+      </Link>
       <div className="text-4xl">Capítulo II: Revisión de literatura </div>
-      <div className="kanban-board">
-        <ul ref={RevisionLiteraturaList}>
-          {RevisionLiteraturaTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              <Link href={`/notes/${sectionName}/${formatSectionPage(todo)}`}>
-                {todo}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="text-4xl">Capítulo III: Planteamiento metodológico </div>
-      <div className="kanban-board">
-        <ul ref={PlanteamientoMetodologicoList}>
-          {PlanteamientoMetodologicoTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Antecedentes de la Investigación</div>
+      </Link>
+      <Link
+        href={`/notes/consolidado/consolidado/consolidado/informacion_guardada_marco_teorico`}
+      >
+        <div>Marco Teórico</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Desarrollo de las Hipótesis</div>
+      </Link>
+      <div className="text-4xl">Capítulo III: Planteamiento Metodologico </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Diseño General de la Investigación</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Unidades de Análisis</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Variables</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Medición de las Variables</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Métodos para el análisis de datos</div>
+      </Link>
       <div className="text-4xl">Capítulo IV: Resultados </div>
-
-      <div className="kanban-board">
-        <ul ref={ResultadosList}>
-          {ResultadosTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Resultados demográficos</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Análisis de resultados descriptivos</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Prueba de hipótesis</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Pruebas adicionales</div>
+      </Link>
       <div className="text-4xl">Capítulo V: Discusión </div>
-
-      <div className="kanban-board">
-        <ul ref={DiscusionList}>
-          {DiscusionTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Discusión</div>
+      </Link>
       <div className="text-4xl">
         Capítulo VI: Conclusiones y Recomendaciones
       </div>
-
-      <div className="kanban-board">
-        <ul ref={ConclusionesRecomendacionesList}>
-          {ConclusionesRecomendacionesTodos.map((todo) => (
-            <li className="kanban-item" key={todo}>
-              {todo}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Conclusiones</div>
+      </Link>
+      <Link href={`/notes/${sectionName}/hola`}>
+        <div>Recomendaciones</div>
+      </Link>
     </>
   );
-  // return (
-  //   <>
-  //     <SeccionPreliminar />
-  //     <PlanteamientoProblema />
-  //     <RevisionLiteratura />
-  //     <PlanteamientoMetodologico />
-  //     <Resultados />
-  //     <Discusion />
-  //     <ConclusionRecomendacion />
-  //   </>
-  // );
+}
+
+function formatSectionPage(title: string): string {
+  return title
+    .trim()
+    .replace(/\s+/g, "_")
+    .replace(/\./g, "")
+    .replace(/á/g, "a")
+    .replace(/é/g, "e")
+    .replace(/í/g, "i")
+    .replace(/ó/g, "o")
+    .replace(/ú/g, "u")
+    .toLowerCase();
 }

@@ -162,26 +162,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
     console.log("regresar");
     setNewData("");
   };
-  const consolidado = async () => {
-    try {
-      const response = await fetch("/api/section", {
-        method: "POST",
-        body: JSON.stringify({
-          title: result?.title,
-          title4: "informacion_guardada_marco_teorico",
-          Nivel: "5",
-          content: result?.content,
-          section: "marco_teorico",
-          area: "marco_teorico",
-        }),
-      });
-      if (!response.ok) throw new Error("Status Code" + response.status);
-      setLoading5(true);
-    } catch (error) {
-      console.error(error);
-      alert("Sucedio algo mal, por favor intente de nuevo.");
-    }
-  };
 
   const consultarGPT = async () => {
     try {
@@ -223,7 +203,26 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
       // setErrores("An error occurred.");
     }
   };
-
+  const consolidado = async () => {
+    try {
+      const response = await fetch("/api/section", {
+        method: "POST",
+        body: JSON.stringify({
+          title: result?.title,
+          title4: "informacion_guardada_marco_teorico",
+          Nivel: "5",
+          content: result?.content,
+          section: "marco_teorico",
+          area: "marco_teorico",
+        }),
+      });
+      if (!response.ok) throw new Error("Status Code" + response.status);
+      setLoading5(true);
+    } catch (error) {
+      console.error(error);
+      alert("Sucedio algo mal, por favor intente de nuevo.");
+    }
+  };
   return (
     <>
       <div>
