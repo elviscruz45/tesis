@@ -16,7 +16,7 @@ import Link from "next/link";
 type FileUploadProps = {
   analizar: boolean;
   resumir: boolean;
-  setUrlPDF: (url: string) => void;
+  setUrlPDF?: (url: string) => void;
   setFileName?: any;
   result?: any;
 };
@@ -48,11 +48,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         body: JSON.stringify({
           title: name,
           content: {
-            link: result.title,
-            identifier: { doi: result?.identifiers?.doi },
-            source: result.source,
-            type: result.type,
-            year: result.year,
+            link: "link",
+            identifier: { doi: "doi" },
+            source: "source",
+            type: "type",
+            year: 200,
           },
           PDFlink: linkUrl,
         }),
@@ -83,7 +83,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setUrl(downloadURL);
-            setUrlPDF(downloadURL);
+            // setUrlPDF(downloadURL);
             saveToMongoDB(image?.name, downloadURL);
           });
         },

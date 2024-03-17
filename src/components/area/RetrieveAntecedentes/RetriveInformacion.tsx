@@ -28,8 +28,13 @@ export default async function RetriveInformacion({
 
   return (
     <>
-      {allInfo.map((result: any) => (
-        <ResultItem key={result?.identifiers?.doi} result={result} />
+      {allInfo.map((result: any, index) => (
+        <ResultItem
+          key={result?.identifiers?.doi}
+          result={result}
+          allInfo={allInfo}
+          index={index}
+        />
       ))}
     </>
   );

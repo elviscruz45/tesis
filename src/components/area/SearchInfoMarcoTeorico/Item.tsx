@@ -96,7 +96,7 @@ export const ResultItem = ({ result }: any) => {
             referencias: "",
             datosAutores: "",
           }}
-          setSchemaMarcoTeorico={setSchemaMarcoTeorico}
+          // setSchemaMarcoTeorico={setSchemaMarcoTeorico}
         />
       )}
       <div className="flex items-center justify-center space-x-4 self-center">

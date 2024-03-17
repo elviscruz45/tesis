@@ -2,6 +2,8 @@ import prisma from "@/lib/db/prisma";
 import { auth } from "@clerk/nextjs";
 import { ResultItem } from "./Item";
 import OtrosDocumentos from "./Informacion";
+import { FileUpload } from "@/components/pdfAnalizer/Upload";
+// import React, { useState } from "react";
 
 interface RetriveInformacion {
   open?: boolean;
@@ -17,6 +19,7 @@ export default async function RetriveInformacionOtrosDocumentos({
   sectionName,
 }: RetriveInformacion) {
   // const [deleteInProgress, setDeleteInProgress] = useState(false);
+  // const [urlPDF, setUrlPDF] = useState<string>("");
 
   const { userId } = auth();
   if (!userId) throw new Error("You must be logged in to view this page");
@@ -46,6 +49,12 @@ export default async function RetriveInformacionOtrosDocumentos({
           categoryList={categoryList}
         />
       ))}
+      <FileUpload
+        analizar={false}
+        resumir={false}
+        // setUrlPDF={setUrlPDF}
+        // result={result}
+      />
     </>
   );
 }

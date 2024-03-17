@@ -224,7 +224,7 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
     }
   };
   return (
-    <>
+    <div className="mb-4 border-2">
       <div>
         <div key={result?.title} className="flex text-xl">
           {result.title}
@@ -318,6 +318,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
         setOpen={setShowEditDialog}
         noteToEdit={result}
       />
-    </>
+    </div>
   );
 };

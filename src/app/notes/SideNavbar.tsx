@@ -56,7 +56,10 @@ function SideNavbar() {
                     </h3>
                   </div>
                 </Link>
-                <Link href={"/notes/documentacion"} className="">
+                <Link
+                  href={"/notes/documentacion/otros_documentos/documentos"}
+                  className=""
+                >
                   <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
                     <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3
