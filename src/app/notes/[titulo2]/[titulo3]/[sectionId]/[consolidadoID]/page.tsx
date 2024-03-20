@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function Section({ params }: any) {
   const sectionName = params?.consolidadoID;
-  console.log("sdfasdasf", sectionName);
+  console.log("sectionName 555", sectionName);
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);
   //   const sectionPage = navigation.query.sectionPage;
@@ -40,12 +40,16 @@ export default async function Section({ params }: any) {
       <div className="basis-4/5">
         <NavBarSection />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-        {sectionName === "informacion_guardada_marco_teorico" && (
+        <MarcoTeorico totalContent={totalContent} />
+
+        {/* {sectionName === "informacion_guardada_marco_teorico" && (
           <MarcoTeorico totalContent={totalContent} />
         )}
+        {sectionName === "informacion_guardada_antecedentes" && (
+          <MarcoTeorico totalContent={totalContent} />
+        )} */}
       </div>
     </div>
   );
-
   // return <div>{JSON.stringify(allNotes)} </div>;
 }

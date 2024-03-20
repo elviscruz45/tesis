@@ -42,11 +42,6 @@ const SubItemChatWithPdf = ({
         {
           sourceId,
           messages: [
-            // {
-            //   role: "user",
-            //   content:
-            //     "podrias predecir con datos especificos que podria escribir para el dia 24 de febrero iterando los datos de los dias anteriores ",
-            // },
             {
               role: "user",
               content: prompt ?? initialPrompt,

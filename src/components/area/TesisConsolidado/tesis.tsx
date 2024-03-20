@@ -108,7 +108,9 @@ export default function Tesis({ sectionName }: any) {
         <div>Delimitaciones</div>
       </Link>
       <div className="text-4xl">Capítulo II: Revisión de literatura </div>
-      <Link href={`/notes/${sectionName}/hola`}>
+      <Link
+        href={`/notes/consolidado/consolidado/consolidado/informacion_guardada_antecedentes`}
+      >
         <div>Antecedentes de la Investigación</div>
       </Link>
       <Link

@@ -5,17 +5,7 @@ import UploadPdfByUrl from "@/components/pdfAnalizer/ChatPdfdocUpload";
 import { FileUpload } from "@/components/pdfAnalizer/Upload";
 import Link from "next/link";
 import { resourceLimits } from "worker_threads";
-import {
-  Bot,
-  Save,
-  NotebookPen,
-  Brain,
-  Undo2,
-  FileCode,
-  SendHorizontal,
-  DatabaseBackup,
-  Pencil,
-} from "lucide-react";
+import { Pencil } from "lucide-react";
 import openai from "@/lib/openai";
 import { ResponseCookies } from "next/dist/compiled/@edge-runtime/cookies";
 import { useRouter } from "next/navigation";

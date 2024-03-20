@@ -214,6 +214,7 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
   };
   const consolidado = async () => {
     try {
+      console.log("consolidado 11111");
       const response = await fetch("/api/section", {
         method: "POST",
         body: JSON.stringify({
@@ -227,13 +228,14 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
       });
       if (!response.ok) throw new Error("Status Code" + response.status);
       setLoading5(true);
+      console.log("consolidado 222");
     } catch (error) {
       console.error(error);
       alert("Sucedio algo mal, por favor intente de nuevo.");
     }
   };
   return (
-    <div className="mb-4 border-2">
+    <div className="mb-4">
       <div>
         <div key={result?.title} className="flex text-xl">
           {result.title}

@@ -41,9 +41,11 @@ const ChatWithPdf = ({
           messages: [
             {
               role: "user",
-              content: `En un parrafo con maxima cantidad de palabras posibles,
-               resumir en el idioma español el siguiente tema del archivo: ${prompt}.
-             Incluir datos numericos,estadisticos y la referencia en formato APA`,
+              content: prompt,
+
+              //   content: `En un parrafo con maxima cantidad de palabras posibles,
+              //    resumir en el idioma español el siguiente tema del archivo: ${prompt}.
+              //  Incluir datos numericos,estadisticos y la referencia en formato APA`,
             },
           ],
         },

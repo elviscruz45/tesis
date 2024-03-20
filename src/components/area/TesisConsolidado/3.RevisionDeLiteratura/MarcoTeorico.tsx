@@ -78,9 +78,7 @@ export default function MarcoTeorico({
   // });
 
   const refresh = async () => {
-    console.log("aaaa");
     router.refresh();
-    console.log("bbbb");
   };
   const edit = async () => {
     setShowEditDialog(true);
@@ -88,7 +86,10 @@ export default function MarcoTeorico({
   return (
     <>
       {totalContent?.map((result: any, index: any) => (
-        <div className="mb-4 rounded-lg  border-gray-300 p-6  shadow-md">
+        <div
+          className="mb-4 rounded-lg  border-gray-300 p-6  shadow-md"
+          key={index}
+        >
           <MarcoTeoricoItem result={result} index={index} />
         </div>
       ))}

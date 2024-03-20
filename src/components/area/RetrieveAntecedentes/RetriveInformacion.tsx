@@ -29,12 +29,14 @@ export default async function RetriveInformacion({
   return (
     <>
       {allInfo.map((result: any, index) => (
-        <ResultItem
-          key={result?.identifiers?.doi}
-          result={result}
-          allInfo={allInfo}
-          index={index}
-        />
+        <div className="mb-4 rounded-lg border-2 border-gray-300 p-6  shadow-md">
+          <ResultItem
+            key={result?.identifiers?.doi}
+            result={result}
+            allInfo={allInfo}
+            index={index}
+          />
+        </div>
       ))}
     </>
   );

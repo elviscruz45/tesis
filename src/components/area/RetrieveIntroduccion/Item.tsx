@@ -209,7 +209,7 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
         method: "POST",
         body: JSON.stringify({
           title: result?.title,
-          title4: "informacion_guardada_marco_teorico",
+          title4: "informacion_guardada_introduccion",
           Nivel: "5",
           content: result?.content,
           section: "marco_teorico",
@@ -224,7 +224,7 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
     }
   };
   return (
-    <div className="mb-4 ">
+    <div className="mb-4 border-2">
       <div>
         <div key={result?.title} className="flex text-xl">
           {result.title}

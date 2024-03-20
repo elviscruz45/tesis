@@ -14,6 +14,7 @@ import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDo
 import Tesis from "@/components/area/TesisConsolidado/tesis";
 import NavBarConsolidado from "../../../NavBarConsolidado";
 import SideNavbar from "../../../SideNavbar";
+import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
 
 export const metadata: Metadata = {
   title: "Section",
@@ -64,6 +65,9 @@ export default async function Section({ params }: any) {
         )}
         {sectionName === "informacion_guardada_marco_teorico" && (
           <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "informacion_guardada_introduccion" && (
+          <RetriveInformacionIntroduccion sectionName={sectionName} />
         )}
         {sectionName === "documentos" && (
           <RetriveInformacionOtrosDocumentos sectionName={sectionName} />

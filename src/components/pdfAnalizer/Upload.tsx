@@ -16,7 +16,7 @@ import Link from "next/link";
 type FileUploadProps = {
   analizar: boolean;
   resumir: boolean;
-  setUrlPDF?: (url: string) => void;
+  setUrlPDF?: any;
   setFileName?: any;
   result?: any;
 };
@@ -83,7 +83,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setUrl(downloadURL);
-            // setUrlPDF(downloadURL);
+            setUrlPDF(downloadURL);
             saveToMongoDB(image?.name, downloadURL);
           });
         },
