@@ -15,6 +15,7 @@ import { toast } from "sonner";
 // const stripePromise = loadStripe(
 //   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
 // );
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 const tiers = [
   {
@@ -67,6 +68,8 @@ const tiers3 = [
 export default function SubscriptionDialog(
   props: React.ComponentProps<typeof DrawerPrimitive.Root>,
 ) {
+  initMercadoPago("TEST-e9a5d158-e13f-46a5-860f-5a62d46f7bb7");
+
   async function handleCheckout() {
     try {
       const lineItems = [
@@ -101,7 +104,7 @@ export default function SubscriptionDialog(
   return (
     <Drawer {...props}>
       <DrawerContent>
-        <div className="flex">
+        <div className="flex items-start justify-center">
           <DrawerHeader></DrawerHeader>
           <div className="isolate grid grid-cols-1 gap-8 px-3">
             {tiers.map((tier) => (
@@ -142,7 +145,7 @@ export default function SubscriptionDialog(
                   </span>
                 </p>
                 <button
-                  onClick={handleCheckout}
+                  // onClick={handleCheckout}
                   aria-describedby={tier.id}
                   className={cn(
                     tier.mostPopular
@@ -152,6 +155,12 @@ export default function SubscriptionDialog(
                   )}
                 >
                   Comenzar
+                  {/* <div id="wallet_container1">
+                    <Wallet
+                      initialization={{ preferenceId: "wallet_container1" }}
+                      customization={{ texts: { valueProp: "smart_option" } }}
+                    />
+                  </div> */}
                 </button>
                 <ul
                   role="list"
@@ -209,7 +218,7 @@ export default function SubscriptionDialog(
                   </span>
                 </p>
                 <button
-                  onClick={handleCheckout}
+                  // onClick={handleCheckout}
                   aria-describedby={tier.id}
                   className={cn(
                     tier.mostPopular
@@ -219,6 +228,12 @@ export default function SubscriptionDialog(
                   )}
                 >
                   Comenzar
+                  {/* <div id="wallet_container">
+                    <Wallet
+                      initialization={{ preferenceId: "2" }}
+                      customization={{ texts: { valueProp: "smart_option" } }}
+                    />
+                  </div> */}
                 </button>
                 <ul
                   role="list"
@@ -276,7 +291,7 @@ export default function SubscriptionDialog(
                   </span>
                 </p>
                 <button
-                  onClick={handleCheckout}
+                  // onClick={handleCheckout}
                   aria-describedby={tier.id}
                   className={cn(
                     tier.mostPopular
@@ -286,6 +301,17 @@ export default function SubscriptionDialog(
                   )}
                 >
                   Comenzar
+                  <div id="wallet_container">
+                    <Wallet
+                      initialization={{
+                        preferenceId:
+                          "255682966-0f8904ef-c009-40fc-97ae-c5b2fe726dad",
+                      }}
+                      customization={{
+                        texts: { action: "pay", valueProp: "security_details" },
+                      }}
+                    />
+                  </div>
                 </button>
                 <ul
                   role="list"

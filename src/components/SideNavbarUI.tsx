@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
 import {
@@ -18,6 +18,9 @@ import { BiMessageSquareDots } from "react-icons/bi";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import SubscriptionDialog from "@/components/subscription-dialog";
+import { MercadoPagoConfig, Preference } from "mercadopago";
+import { redirect } from "next/dist/server/api-utils";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 function SideNavbarUI() {
   const { theme } = useTheme();
@@ -27,9 +30,19 @@ function SideNavbarUI() {
   //   console.log(subscriptionDialogOpen);
   //   setSubscriptionDialogOpen((prev) => !prev);
   // };
-
   const sidebarBgColor = theme === "dark" ? "dark" : "bg-white";
   const textColor = theme === "dark" ? "text-white" : "text-gray-800";
+
+  // initMercadoPago("TEST-e9a5d158-e13f-46a5-860f-5a62d46f7bb7", {
+  //   locale: "es-AR",
+  // });
+
+  useEffect(() => {
+    initMercadoPago("TEST-e9a5d158-e13f-46a5-860f-5a62d46f7bb7", {
+      locale: "es-PE",
+    });
+  }, []);
+
   return (
     <div className="h-screen overflow-y-auto">
       <Disclosure>
@@ -181,7 +194,10 @@ function SideNavbarUI() {
               </div>
             </div>
             <div className=" my-4">
-              <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4  rounded-md border border-gray-200 p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
+              <div
+                // onClick={() => donate()}
+                className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4  rounded-md border border-gray-200 p-2 pl-5 hover:bg-gray-900 hover:shadow-lg"
+              >
                 <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
                 <h3
                   className={`dark text-base font-semibold group-hover:text-white `}
@@ -193,6 +209,12 @@ function SideNavbarUI() {
           </div>
         </div>
       </Disclosure>
+      {/* <div id="wallet_container"></div> */}
+      {/* <Wallet
+        initialization={{ preferenceId: "<PREFERENCE_ID>" }}
+        customization={{ texts: { valueProp: "smart_option" } }}
+      /> */}
+
       <SubscriptionDialog
         open={subscriptionDialogOpen}
         onOpenChange={setSubscriptionDialogOpen}

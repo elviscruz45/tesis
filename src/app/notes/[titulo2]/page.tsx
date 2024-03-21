@@ -17,13 +17,23 @@ export default async function NotesPages({ params }: any) {
 
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allNotes = await prisma.note.findMany({
+  const allNotesGeneral = await prisma.note.findMany({
     where: {
-      userId,
+      userId: "todos",
       Nivel: "2",
       title2: sectionName,
     },
   });
+
+  const allNotesUserId = await prisma.note.findMany({
+    where: {
+      userId: userId,
+      Nivel: "2",
+      title2: sectionName,
+    },
+  });
+
+  const allNotes = [...allNotesGeneral, ...allNotesUserId];
 
   if (sectionName === "consolidado") {
     return (

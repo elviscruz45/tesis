@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
@@ -15,19 +15,53 @@ import { CgProfile } from "react-icons/cg";
 import { FaRegComments } from "react-icons/fa";
 import { BiMessageSquareDots } from "react-icons/bi";
 import { useTheme } from "next-themes";
-import SubscriptionDialog from "@/components/subscription-dialog";
+// import SubscriptionDialog from "@/components/subscription-dialog";
 import SideNavbarUI from "@/components/SideNavbarUI";
+// SDK de Mercado Pago
+import { MercadoPagoConfig, Preference } from "mercadopago";
+import { redirect } from "next/dist/server/api-utils";
 
-function SideNavbar() {
-  const { theme } = useTheme();
+async function SideNavbar() {
+  // const { theme } = useTheme();
+  // Agrega credenciales
+  // // const handleSubscriptionDialogOpen = () => {
+  // //   console.log(subscriptionDialogOpen);
+  // //   setSubscriptionDialogOpen((prev) => !prev);
+  // // };
+  // const sidebarBgColor = theme === "dark" ? "dark" : "bg-white";
+  // const textColor = theme === "dark" ? "text-white" : "text-gray-800";
+  const client = new MercadoPagoConfig({
+    accessToken: process.env.MP_ACCESS_TOKEN!,
+  });
 
-  // const handleSubscriptionDialogOpen = () => {
-  //   console.log(subscriptionDialogOpen);
-  //   setSubscriptionDialogOpen((prev) => !prev);
-  // };
+  const preference = new Preference(client);
 
-  const sidebarBgColor = theme === "dark" ? "dark" : "bg-white";
-  const textColor = theme === "dark" ? "text-white" : "text-gray-800";
+  try {
+    const response = await preference.create({
+      body: {
+        items: [
+          {
+            id: "donacion",
+            title: "Mi producto",
+            quantity: 1,
+            unit_price: 20,
+          },
+        ],
+      },
+    });
+
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+
+  console.log("donate22");
+
+  // redirect(preference.sandbox_init_point!, { permanent: false });
+
+  // .then(console.log)
+  // .catch(console.log);
+
   return <SideNavbarUI />;
 }
 

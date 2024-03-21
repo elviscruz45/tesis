@@ -4,9 +4,6 @@ import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
 import SideNavbar from "./SideNavbar";
 import NavBarInicio from "./NavBarInicio";
-// SDK de Mercado Pago
-import { MercadoPagoConfig, Preference } from "mercadopago";
-import { redirect } from "next/dist/server/api-utils";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -17,35 +14,23 @@ export default async function NotesPages() {
 
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allNotes = await prisma.note.findMany({
+  const allNotesGeneral = await prisma.note.findMany({
     where: {
-      userId,
+      userId: "todos",
       Nivel: "2",
     },
   });
 
-  //Mercado Pago
-
-  // Agrega credenciales
-  const client = new MercadoPagoConfig({
-    accessToken: process.env.MP_ACCESS_TOKEN!,
+  const allNotesUserId = await prisma.note.findMany({
+    where: {
+      userId: userId,
+      Nivel: "2",
+    },
   });
 
-  // async function donate() {
-  //   "use server";
-  //   const preference = await new Preference(client).create({
-  //     body: {
-  //       items: [
-  //         { id: "donacion", title: "Mi producto", quantity: 1, unit_price: 20 },
-  //       ],
-  //     },
-  //   });
-  //   redirect(preference.sandbox_init_point!, { permanent: false });
+  const allNotes = [...allNotesGeneral, ...allNotesUserId];
 
-  //   }
-
-  // .then(console.log)
-  // .catch(console.log);
+  //Mercado Pago
 
   return (
     <div className="flex flex-row">

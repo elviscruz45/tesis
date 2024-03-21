@@ -36,9 +36,16 @@ export default async function Section({ params }: any) {
 
   if (!userId) throw new Error("You must be logged in to view this page");
 
-  const allNotes = await prisma.note.findMany({
-    where: { userId, title3: titulo3, Nivel: "3" },
+  const allNotesGeneral = await prisma.note.findMany({
+    where: { userId: "todos", title3: titulo3, Nivel: "3" },
   });
+
+  const allNotesUserId = await prisma.note.findMany({
+    where: { userId: userId, title3: titulo3, Nivel: "3" },
+  });
+
+  const allNotes = [...allNotesGeneral, ...allNotesUserId];
+
   return (
     <div className="flex flex-row">
       <div className=" basis-1/5 overflow-y-auto ">

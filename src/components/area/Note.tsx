@@ -11,7 +11,18 @@ import {
   CardTitle,
 } from "../ui/card";
 import Link from "next/link";
-
+import {
+  Bot,
+  Save,
+  NotebookPen,
+  Brain,
+  Undo2,
+  FileCode,
+  SendHorizontal,
+  DatabaseBackup,
+  RefreshCw,
+  Pencil,
+} from "lucide-react";
 interface NoteProps {
   note: NoteModel;
 }
@@ -43,29 +54,35 @@ export default function Note({ note }: NoteProps) {
 
   return (
     <>
-      <Link href={`/notes/${note.title2}/${sectionPage}`}>
-        <Card
-          className="cursor-pointer transition-shadow hover:shadow-lg"
-          // onClick={() => setShowEditDialog(true)}
-          // onClick={() => goToSectionPage(note.title)}
-        >
-          <CardHeader>
-            <CardTitle>{note.title}</CardTitle>
-            <CardDescription>
-              {createdUpdatedAtTimestamp}
-              {wasUpdated && " (updated)"}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="whitespace-pre-line">{note.content}</p>
-          </CardContent>
-        </Card>
-        {/* <AddEditNoteDialog
+      <Card
+        className="cursor-pointer transition-shadow hover:shadow-lg"
+        // onClick={() => setShowEditDialog(true)}
+        // onClick={() => goToSectionPage(note.title)}
+      >
+        <CardHeader>
+          <div className="flex">
+            <Link href={`/notes/${note.title2}/${sectionPage}`}>
+              <CardTitle>{note.title} &nbsp;&nbsp;</CardTitle>
+            </Link>
+            {note.userId !== "todos" && (
+              <Pencil size={15} onClick={() => setShowEditDialog(true)} />
+            )}
+          </div>
+          <CardDescription>
+            {createdUpdatedAtTimestamp}
+            {wasUpdated && " (updated)"}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="whitespace-pre-line">{note.content}</p>
+        </CardContent>
+      </Card>
+
+      <AddEditNoteDialog
         open={showEditDialog}
         setOpen={setShowEditDialog}
         noteToEdit={note}
-      /> */}
-      </Link>
+      />
     </>
   );
 }
