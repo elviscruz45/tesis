@@ -15,8 +15,9 @@ import {
 import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
 import { Input } from "@/components/ui/input";
 import { ResultItem } from "./Item";
+import { ResultItemGuardado } from "./ItemGuardado";
 
-export const ChatGPT = ({ result, allInfo, index, titulo }: any) => {
+export const ChatGPT = ({ result, userId }: any) => {
   const [newData, setNewData] = useState<string>("");
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [newQuery, setNewQuery] = useState(false);
@@ -144,7 +145,13 @@ export const ChatGPT = ({ result, allInfo, index, titulo }: any) => {
           <SendHorizontal size={20} />
         </Button>
       </div>
-      {newData && <ResultItem chatGPTresult={newData} />}
+      {newData && <ResultItem chatGPTresult={newData} userId={userId} />}
+      <br />
+      <br />
+      <div>Historial</div>
+      <br />
+
+      {result && <ResultItemGuardado result={result} userId={userId} />}
     </div>
   );
 };

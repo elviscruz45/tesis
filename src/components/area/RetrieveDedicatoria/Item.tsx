@@ -21,6 +21,7 @@ export const ResultItem = ({
   index,
   titulo,
   chatGPTresult,
+  userId,
 }: any) => {
   const [newData, setNewData] = useState<string>("");
   const [showEditDialog, setShowEditDialog] = useState(false);
@@ -34,6 +35,7 @@ export const ResultItem = ({
   const [loading5, setLoading5] = useState(false);
   const [activateActualizar, setActivateActualizar] = useState(false);
   const [newTextSaved, setNewTextSaved] = useState("");
+  const [disabledSave, setDisabledSave] = useState(false);
   const router = useRouter();
 
   const guardar = async () => {
@@ -60,12 +62,13 @@ export const ResultItem = ({
       //   setSavingMarcoTeorico(false);
       //   setIsSaved(true);
       // }
-      router.refresh();
       setNewTextSaved(newData);
       setNewData("");
       setNewQuery(false);
       setLoading3(false);
       setActivateActualizar(true);
+      setDisabledSave(true);
+      router.refresh();
     } catch (error) {
       console.error(error);
       alert("Sucedio algo mal, por favor intente de nuevo.");
@@ -333,7 +336,7 @@ export const ResultItem = ({
         setOpen={setShowEditDialog}
         setNewTextSaved={setNewTextSaved}
         noteToEdit={{
-          id: "",
+          id: "prueba",
           title: "no hay titulo",
           title2: "",
           title3: null,
@@ -342,9 +345,9 @@ export const ResultItem = ({
           title6: null,
           title7: null,
           title8: null,
-          Nivel: "4",
+          Nivel: "5",
           content: newTextSaved ? newTextSaved : chatGPTresult,
-          userId: "",
+          userId: userId,
           createdAt: new Date(),
           updatedAt: new Date(),
         }}

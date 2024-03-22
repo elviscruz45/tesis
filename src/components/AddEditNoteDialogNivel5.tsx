@@ -19,15 +19,16 @@ import { Textarea } from "./ui/textarea";
 import LoadingButton from "./ui/loading-button";
 import { useRouter } from "next/navigation";
 import { Note } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface AddEditNoteDialogProps {
   open: boolean;
   setOpen: (open: boolean) => void;
-  noteToEdit?: Note;
+  noteToEdit?: any;
   sectionName?: string;
   titulo3?: string;
   setNewTextSaved?: any;
+  content?: string;
 }
 
 export default function AddEditNoteDialogNivel5({
@@ -37,9 +38,15 @@ export default function AddEditNoteDialogNivel5({
   sectionName,
   titulo3,
   setNewTextSaved,
+  content,
 }: AddEditNoteDialogProps) {
+  console.log(
+    "com oestas que tal te va ahuy en es de dia o es  de noche ------------",
+    noteToEdit?.content,
+  );
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
+
   const form = useForm<CreateContentSchema>({
     resolver: zodResolver(createContentSchema),
     defaultValues: {
@@ -51,6 +58,16 @@ export default function AddEditNoteDialogNivel5({
       content: noteToEdit?.content || "",
     },
   });
+  const { setValue } = form;
+
+  useEffect(() => {
+    setValue("title", noteToEdit?.title || "");
+    setValue("title2", sectionName || "");
+    setValue("title3", titulo3 || "");
+    setValue("title4", titulo3 || "");
+    setValue("content", noteToEdit?.content || "");
+  }, [noteToEdit, sectionName, titulo3, setValue]);
+
   async function onSubmit(input: CreateContentSchema) {
     console.log("onSubmit111");
     console.log("input111", input);
@@ -66,7 +83,6 @@ export default function AddEditNoteDialogNivel5({
         if (!response.ok) throw Error("Status code: " + response.status);
       }
       setNewTextSaved(input.content);
-
       router.refresh();
       setOpen(false);
     } catch (error) {
@@ -132,7 +148,7 @@ export default function AddEditNoteDialogNivel5({
               )}
             />
             <DialogFooter>
-              {noteToEdit && (
+              {noteToEdit && noteToEdit.id !== "prueba" && (
                 <LoadingButton
                   variant="destructive"
                   loading={deleteInProgress}

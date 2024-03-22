@@ -25,9 +25,11 @@ export default async function RetriveDedicatoria({
     where: {
       userId,
       title4: "dedicatoria",
-      Nivel: "4",
+      Nivel: "5",
     },
   });
+  const result = allInfo[allInfo.length - 1];
+  console.log("result   88888", result);
 
   return (
     <>
@@ -35,18 +37,7 @@ export default async function RetriveDedicatoria({
         <div className="items-center justify-center">Titulo: {titulo}</div>
       </div>
       <br />
-      <ChatGPT titulo={titulo} />
-      {/* {allInfo.map((result: any, index) => (
-        <div className="mb-4 rounded-lg border-2 border-gray-300 p-6  shadow-md">
-          <ResultItem
-            key={result?.identifiers?.doi}
-            result={result}
-            allInfo={allInfo}
-            index={index}
-            titulo={titulo}
-          />
-        </div>
-      ))} */}
+      <ChatGPT titulo={titulo} result={result} userId={userId} />
     </>
   );
 }
