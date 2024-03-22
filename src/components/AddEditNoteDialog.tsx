@@ -15,7 +15,7 @@ import { Textarea } from "./ui/textarea";
 import LoadingButton from "./ui/loading-button";
 import { useRouter } from "next/navigation";
 import { Note } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface AddEditNoteDialogProps {
   open: boolean;
@@ -30,6 +30,7 @@ export default function AddEditNoteDialog({
 }: AddEditNoteDialogProps) {
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
+
   const form = useForm<CreateNoteSchema>({
     resolver: zodResolver(createNoteSchema),
     defaultValues: {
@@ -37,6 +38,15 @@ export default function AddEditNoteDialog({
       content: noteToEdit?.content || "",
     },
   });
+
+  const { setValue } = form;
+
+  useEffect(() => {
+    setValue("title", noteToEdit?.title || "");
+
+    setValue("content", noteToEdit?.content || "");
+  }, [noteToEdit, setValue]);
+
   async function onSubmit(input: CreateNoteSchema) {
     try {
       if (noteToEdit) {
