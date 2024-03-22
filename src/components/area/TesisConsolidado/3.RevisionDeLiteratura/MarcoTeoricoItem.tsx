@@ -23,6 +23,7 @@ export const MarcoTeoricoItem = ({ result, allInfo, index }: any) => {
   const [loading3, setLoading3] = useState(false);
   const [loading4, setLoading4] = useState(false);
   const [loading5, setLoading5] = useState(false);
+  const [newTextSaved, setNewTextSaved] = useState("");
 
   const router = useRouter();
 
@@ -54,6 +55,7 @@ export const MarcoTeoricoItem = ({ result, allInfo, index }: any) => {
         open={showEditDialog}
         setOpen={setShowEditDialog}
         noteToEdit={result}
+        setNewTextSaved={setNewTextSaved}
       />
     </>
   );

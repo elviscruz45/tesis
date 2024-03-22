@@ -79,7 +79,7 @@ export default function Tesis({ sectionName }: any) {
       <Link href={`/notes/${sectionName}/hola`}>
         <div>Abstract</div>
       </Link>
-      <Link href={`/notes/${sectionName}/hola`}>
+      <Link href={`/notes/consolidado/consolidado/consolidado/dedicatoria`}>
         <div>Dedicatoria</div>
       </Link>
       <Link href={`/notes/${sectionName}/hola`}>

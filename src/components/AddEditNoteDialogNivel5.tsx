@@ -50,7 +50,7 @@ export default function AddEditNoteDialogNivel5({
   const form = useForm<CreateContentSchema>({
     resolver: zodResolver(createContentSchema),
     defaultValues: {
-      title: noteToEdit?.title || "",
+      title: noteToEdit?.title5 || "",
       title2: sectionName || "",
       title3: titulo3 || "",
       title4: titulo3 || "",

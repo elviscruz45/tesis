@@ -46,8 +46,9 @@ export const ResultItem = ({
       const response = await fetch("/api/section", {
         method: "POST",
         body: JSON.stringify({
-          title: "no hay titulo",
+          title: "Dedicatoria",
           title4: "dedicatoria",
+          title5: "Dedicatoria",
           Nivel: "5",
           content: newData === "" ? chatGPTresult : newData,
           section: "dedicatoria",
@@ -341,7 +342,7 @@ export const ResultItem = ({
           title2: "",
           title3: null,
           title4: null,
-          title5: null,
+          title5: "Dedicatoria",
           title6: null,
           title7: null,
           title8: null,

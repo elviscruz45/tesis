@@ -29,7 +29,6 @@ export default async function RetriveDedicatoria({
     },
   });
   const result = allInfo[allInfo.length - 1];
-  console.log("result   88888", result);
 
   return (
     <>
