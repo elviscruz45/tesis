@@ -91,7 +91,7 @@ const ChatWithPdf = ({
       {response &&
         lines?.map((line: string, index: any) => {
           return (
-            <div key={index} className=" mb-2 border  ">
+            <div key={index} className=" borde mb-4   border-white">
               {line.length > 2 && line.match(/(\d+\.)/) && (
                 <>
                   <div className="">{line}</div>

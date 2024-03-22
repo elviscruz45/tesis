@@ -15,6 +15,7 @@ import Tesis from "@/components/area/TesisConsolidado/tesis";
 import NavBarConsolidado from "../../../NavBarConsolidado";
 import SideNavbar from "../../../SideNavbar";
 import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
+import RetriveDedicatoria from "@/components/area/RetrieveDedicatoria/RetriveInformacion";
 
 export const metadata: Metadata = {
   title: "Section",
@@ -28,8 +29,16 @@ export default async function Section({ params }: any) {
   //   const searchParams = useSearchParams();
   //   const sectionPageName = searchParams.get("sectionPage");
   //   const [sectionPageName, setSectionPageName] = useState("");
-
   if (!userId) throw new Error("You must be logged in to view this page");
+
+  const titulo = await prisma.note.findMany({
+    where: {
+      userId,
+      Nivel: "1",
+    },
+  });
+
+  const tituloString = titulo.map((item: any) => item.title);
 
   return (
     <div className="flex flex-row">
@@ -52,6 +61,10 @@ export default async function Section({ params }: any) {
             // noteToEdit={params}
           />
         )} */}
+
+        {sectionName === "dedicatoria" && (
+          <RetriveDedicatoria sectionName={sectionName} titulo={tituloString} />
+        )}
 
         {sectionName === "busqueda_de_informacion_antecedentes" && (
           <SearchInfoAntecedentes sectionName={sectionName} />
