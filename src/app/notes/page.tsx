@@ -4,6 +4,7 @@ import prisma from "@/lib/db/prisma";
 import Note from "@/components/area/Note";
 import SideNavbar from "./SideNavbar";
 import NavBarInicio from "./NavBarInicio";
+import NoteTitulo from "@/components/area/NoteTituloTesis";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -13,6 +14,13 @@ export default async function NotesPages() {
   const { userId } = auth();
 
   if (!userId) throw new Error("You must be logged in to view this page");
+
+  const titulo = await prisma.note.findMany({
+    where: {
+      userId,
+      Nivel: "1",
+    },
+  });
 
   const allNotesGeneral = await prisma.note.findMany({
     where: {
@@ -39,6 +47,13 @@ export default async function NotesPages() {
       </div>
       <div className="basis-4/5 overflow-y-auto ">
         <NavBarInicio />
+
+        {titulo.length > 0 ? (
+          titulo.map((note: any) => <NoteTitulo note={note} key={note.id} />)
+        ) : (
+          <NoteTitulo />
+        )}
+
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {allNotes.map((note: any) => (
             <Note note={note} key={note.id} />
