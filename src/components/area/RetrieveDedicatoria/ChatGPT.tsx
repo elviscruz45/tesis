@@ -50,7 +50,7 @@ export const ChatGPT = ({ result, allInfo, index, titulo }: any) => {
       const userAssitantMessage: any = [
         {
           role: "user",
-          content: `incluye el nombre de la persona: ${nombre} y la carrera en la que se esta graduando ${carrera} `,
+          content: `incluye el nombre de las personas: ${nombre} y la carrera en la que se esta graduando ${carrera} `,
         },
       ];
 

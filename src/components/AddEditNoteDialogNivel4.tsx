@@ -36,6 +36,7 @@ export default function AddEditNoteDialogNivel4({
   sectionName,
   titulo3,
 }: AddEditNoteDialogProps) {
+  console.log("mmmmmmmm", noteToEdit);
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
   const form = useForm<CreateContentSchema>({

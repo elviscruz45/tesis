@@ -27,6 +27,7 @@ interface AddEditNoteDialogProps {
   noteToEdit?: Note;
   sectionName?: string;
   titulo3?: string;
+  setNewTextSaved?: any;
 }
 
 export default function AddEditNoteDialogNivel5({
@@ -35,6 +36,7 @@ export default function AddEditNoteDialogNivel5({
   noteToEdit,
   sectionName,
   titulo3,
+  setNewTextSaved,
 }: AddEditNoteDialogProps) {
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
@@ -63,6 +65,7 @@ export default function AddEditNoteDialogNivel5({
         });
         if (!response.ok) throw Error("Status code: " + response.status);
       }
+      setNewTextSaved(input.content);
 
       router.refresh();
       setOpen(false);
@@ -101,18 +104,20 @@ export default function AddEditNoteDialogNivel5({
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Titulo</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+            {noteToEdit?.title !== "no hay titulo" && (
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Titulo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            )}
 
             <FormField
               control={form.control}
