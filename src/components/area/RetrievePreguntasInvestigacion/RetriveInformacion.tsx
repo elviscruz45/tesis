@@ -11,7 +11,7 @@ interface RetriveInformacion {
   titulo?: any;
 }
 
-export default async function RetriveAgradecimientos({
+export default async function RetrievePreguntasInvestigacion({
   open,
   setOpen,
   contentData,
@@ -24,7 +24,7 @@ export default async function RetriveAgradecimientos({
   const allInfo = await prisma.sectionContent.findMany({
     where: {
       userId,
-      title4: "agradecimientos",
+      title4: "dedicatoria",
       Nivel: "5",
     },
   });

@@ -16,6 +16,8 @@ import NavBarConsolidado from "../../../NavBarConsolidado";
 import SideNavbar from "../../../SideNavbar";
 import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
 import RetriveDedicatoria from "@/components/area/RetrieveDedicatoria/RetriveInformacion";
+import RetriveAgradecimientos from "@/components/area/RetrieveDedicatoria/RetriveInformacion";
+import RetrievePreguntasInvestigacion from "@/components/area/RetrievePreguntasInvestigacion/RetriveInformacion";
 
 export const metadata: Metadata = {
   title: "Section",
@@ -52,19 +54,86 @@ export default async function Section({ params }: any) {
           <NavBarSection />
         )}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-        {/* {sectionName === "dedicatoria" && (
-          <Dedicatoria
-            contentData={allSection[0]}
-            // setSectionPageName={setSectionPageName}
-            // open={showEditDialog}
-            // setOpen={setShowEditDialog}
-            // noteToEdit={params}
+
+        {sectionName === "documentos" && (
+          <RetriveInformacionOtrosDocumentos sectionName={sectionName} />
+        )}
+
+        {/* Secciones Peliminares  */}
+
+        {sectionName === "resumen" && (
+          <RetriveAgradecimientos
+            sectionName={sectionName}
+            titulo={tituloString}
           />
-        )} */}
+        )}
+        {sectionName === "abstract" && (
+          <RetriveAgradecimientos
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
 
         {sectionName === "dedicatoria" && (
           <RetriveDedicatoria sectionName={sectionName} titulo={tituloString} />
         )}
+        {sectionName === "agradecimientos" && (
+          <RetriveAgradecimientos
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+        {sectionName === "informacion_guardada_introduccion" && (
+          <RetriveInformacionIntroduccion sectionName={sectionName} />
+        )}
+
+        {sectionName === "introduccion" && (
+          <RetriveAgradecimientos
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+
+        {/* Capítulo I: Planteamiento del problema   */}
+        {sectionName === "linea_de_investigacion" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+        {sectionName === "descripcion_del_problema" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+        {sectionName === "preguntas_de_investigacion" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+        {sectionName === "objetivos_del_proyecto" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+
+        {sectionName === "justificacion_de_la_investigacion" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+
+        {sectionName === "delimitaciones" && (
+          <RetrievePreguntasInvestigacion
+            sectionName={sectionName}
+            titulo={tituloString}
+          />
+        )}
+        {/* Capítulo II: Revisión de literatura   */}
 
         {sectionName === "busqueda_de_informacion_antecedentes" && (
           <SearchInfoAntecedentes sectionName={sectionName} />
@@ -79,12 +148,52 @@ export default async function Section({ params }: any) {
         {sectionName === "informacion_guardada_marco_teorico" && (
           <RetriveInformacionMarcoTeorico sectionName={sectionName} />
         )}
-        {sectionName === "informacion_guardada_introduccion" && (
-          <RetriveInformacionIntroduccion sectionName={sectionName} />
+
+        {sectionName === "desarrollo_de_la_hipotesis" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
         )}
-        {sectionName === "documentos" && (
-          <RetriveInformacionOtrosDocumentos sectionName={sectionName} />
+        {/* Capítulo III: Planteamiento metodológico   */}
+        {sectionName === "diseno_general_de_la_investigacion" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
         )}
+        {sectionName === "unidades_de_analisis" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "variables" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "medicion_de_las_variables" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "metodos_para_el_analisis_de_datos" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {/* Capítulo IV: Resultados   */}
+        {sectionName === "resultados_demograficos" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "analisis_de_resultados_descriptivos" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "pruebas_de_hipotesis" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "pruebas_adicionales" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {/* Capítulo V: Discusión    */}
+        {sectionName === "discusion" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {/* Capítulo VI: Conclusiones y Recomendaciones   */}
+        {sectionName === "conclusiones" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {sectionName === "recomendaciones" && (
+          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+        )}
+        {/* Capítulo VI: Consolidado  */}
+
         {sectionName === "consolidado" && <Tesis sectionName={sectionName} />}
       </div>
     </div>

@@ -106,9 +106,10 @@ export const ChatGPT = ({ result, userId }: any) => {
         <div className=" text-gray-900">Instrucciones:</div>
         <ul className="list-inside list-disc space-y-2 text-gray-700">
           <li>
-            Agradecimiento de la misma manera (1 párrafo muy breve de dos
+            Redacta Dedicatoria simple de tesis (1 párrafo muy breve de dos
             líneas)
           </li>
+
           <li>
             Debajo de cada párrafo pon en el nombre del tesista o tesistas
           </li>
@@ -145,7 +146,6 @@ export const ChatGPT = ({ result, userId }: any) => {
       <br />
       <br />
       <div className="flex items-center justify-center">Historial</div>
-
       <br />
 
       {result && <ResultItemGuardado result={result} userId={userId} />}
