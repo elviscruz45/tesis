@@ -11,7 +11,7 @@ interface RetriveInformacion {
   titulo?: any;
 }
 
-export default async function RetriveDedicatoria({
+export default async function RetriveVariables({
   open,
   setOpen,
   contentData,
@@ -24,7 +24,7 @@ export default async function RetriveDedicatoria({
   const allInfo = await prisma.sectionContent.findMany({
     where: {
       userId,
-      title4: "dedicatoria",
+      title4: "variables",
       Nivel: "5",
     },
   });

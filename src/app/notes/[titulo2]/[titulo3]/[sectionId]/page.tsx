@@ -6,18 +6,43 @@ import Dedicatoria from "@/components/area/Dedicatoria";
 import NavBarSection from "../../../NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import SearchInfoAntecedentes from "@/components/area/SearchInfoAntecedentes/Informacion";
-import RetrieveAntecedentes from "@/components/area/RetrieveAntecedentes/RetriveInformacion";
-import RetriveInformacionMarcoTeorico from "@/components/area/RetrieveMarcoTeorico/RetriveInformacion";
-import SearchInfoMarcoTeorico from "@/components/area/SearchInfoMarcoTeorico/Informacion";
+
 import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDocumentos/RetriveInformacion";
 import Tesis from "@/components/area/TesisConsolidado/tesis";
 import NavBarConsolidado from "../../../NavBarConsolidado";
 import SideNavbar from "../../../SideNavbar";
-import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
-import RetriveDedicatoria from "@/components/area/RetrieveDedicatoria/RetriveInformacion";
-import RetriveAgradecimientos from "@/components/area/RetrieveDedicatoria/RetriveInformacion";
+
 import RetrievePreguntasInvestigacion from "@/components/area/RetrievePreguntasInvestigacion/RetriveInformacion";
+
+import RetriveResumen from "@/components/secciones/1.Preliminares/Resumen/RetriveInformacion";
+import RetriveAbstract from "@/components/secciones/1.Preliminares/Abstract/RetriveInformacion";
+import RetriveDedicatoria from "@/components/secciones/1.Preliminares/Dedicatoria/RetriveInformacion";
+import RetriveAgradecimientos from "@/components/secciones/1.Preliminares/Agradecimientos/RetriveInformacion";
+import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
+import RetriveIntroduccion from "@/components/secciones/1.Preliminares/Introduccion/RetriveInformacion";
+import RetriveLineaDeInvestigacion from "@/components/secciones/2.PlanteamientoProblema/LineaDeInvestigacion/RetriveInformacion";
+import RetriveDescripcionDelProblema from "@/components/secciones/2.PlanteamientoProblema/DescripcionDelProblema/RetriveInformacion";
+import RetrivePreguntasDeInvestigacion from "@/components/secciones/2.PlanteamientoProblema/PreguntasDeInvestigacion/RetriveInformacion";
+import RetriveObjetivosDelProyecto from "@/components/secciones/2.PlanteamientoProblema/ObjetivosDelProyecto/RetriveInformacion";
+import RetriveJustificacionDeLaInvestigacion from "@/components/secciones/2.PlanteamientoProblema/JustificacionDeLaInvestigacion/RetriveInformacion";
+import RetriveDelimitaciones from "@/components/secciones/2.PlanteamientoProblema/Delimitaciones/RetriveInformacion";
+import SearchInfoAntecedentes from "@/components/area/SearchInfoAntecedentes/Informacion";
+import SearchInfoMarcoTeorico from "@/components/area/SearchInfoMarcoTeorico/Informacion";
+import RetrieveAntecedentes from "@/components/area/RetrieveAntecedentes/RetriveInformacion";
+import RetriveInformacionMarcoTeorico from "@/components/area/RetrieveMarcoTeorico/RetriveInformacion";
+import RetriveDesarrolloDeLaHipotesis from "@/components/secciones/3.RevisionLiteratura/DesarrolloDeLaHipotesis/RetriveInformacion";
+import RetriveDisenoGeneralDeLaInvestigacion from "@/components/secciones/4.PlanteamientoMetodologico/DisenoGeneralDeLaInvestigacion/RetriveInformacion";
+import RetriveUnidadesDeAnalisis from "@/components/secciones/4.PlanteamientoMetodologico/UnidadesDeAnalisis/RetriveInformacion";
+import RetriveVariables from "@/components/secciones/4.PlanteamientoMetodologico/Variables/RetriveInformacion";
+import RetriveMedicionDeLasVariables from "@/components/secciones/4.PlanteamientoMetodologico/MedicionDeLasVariables/RetriveInformacion";
+import RetriveMetodosParaElAnalisisDeDatos from "@/components/secciones/4.PlanteamientoMetodologico/MetodosParaElAnalisisDeDatos/RetriveInformacion";
+import RetriveResultadosDemograficos from "@/components/secciones/5.Resultados/ResultadosDemograficos/RetriveInformacion";
+import RetriveAnalisisDeResultadosDescriptivos from "@/components/secciones/5.Resultados/AnalisisDeResultadosDescriptivos/RetriveInformacion";
+import RetrivePruebasDeHipotesis from "@/components/secciones/5.Resultados/PruebasDeHipotesis/RetriveInformacion";
+import RetrivePruebasAdicionales from "@/components/secciones/5.Resultados/PruebasAdicionales/RetriveInformacion";
+import RetriveDiscusion from "@/components/secciones/6.Discusion/Discusion/RetriveInformacion";
+import RetriveConclusiones from "@/components/secciones/7.ConclusionesRecomendaciones/Conclusiones/RetriveInformacion";
+import RetriveRecomendaciones from "@/components/secciones/7.ConclusionesRecomendaciones/Recomendaciones/RetriveInformacion";
 
 export const metadata: Metadata = {
   title: "Section",
@@ -62,16 +87,10 @@ export default async function Section({ params }: any) {
         {/* Secciones Peliminares  */}
 
         {sectionName === "resumen" && (
-          <RetriveAgradecimientos
-            sectionName={sectionName}
-            titulo={tituloString}
-          />
+          <RetriveResumen sectionName={sectionName} titulo={tituloString} />
         )}
         {sectionName === "abstract" && (
-          <RetriveAgradecimientos
-            sectionName={sectionName}
-            titulo={tituloString}
-          />
+          <RetriveAbstract sectionName={sectionName} titulo={tituloString} />
         )}
 
         {sectionName === "dedicatoria" && (
@@ -88,7 +107,7 @@ export default async function Section({ params }: any) {
         )}
 
         {sectionName === "introduccion" && (
-          <RetriveAgradecimientos
+          <RetriveIntroduccion
             sectionName={sectionName}
             titulo={tituloString}
           />
@@ -96,39 +115,39 @@ export default async function Section({ params }: any) {
 
         {/* Capítulo I: Planteamiento del problema   */}
         {sectionName === "linea_de_investigacion" && (
-          <RetrievePreguntasInvestigacion
+          <RetriveLineaDeInvestigacion
             sectionName={sectionName}
             titulo={tituloString}
           />
         )}
         {sectionName === "descripcion_del_problema" && (
-          <RetrievePreguntasInvestigacion
+          <RetriveDescripcionDelProblema
             sectionName={sectionName}
             titulo={tituloString}
           />
         )}
         {sectionName === "preguntas_de_investigacion" && (
-          <RetrievePreguntasInvestigacion
+          <RetrivePreguntasDeInvestigacion
             sectionName={sectionName}
             titulo={tituloString}
           />
         )}
         {sectionName === "objetivos_del_proyecto" && (
-          <RetrievePreguntasInvestigacion
+          <RetriveObjetivosDelProyecto
             sectionName={sectionName}
             titulo={tituloString}
           />
         )}
 
         {sectionName === "justificacion_de_la_investigacion" && (
-          <RetrievePreguntasInvestigacion
+          <RetriveJustificacionDeLaInvestigacion
             sectionName={sectionName}
             titulo={tituloString}
           />
         )}
 
         {sectionName === "delimitaciones" && (
-          <RetrievePreguntasInvestigacion
+          <RetriveDelimitaciones
             sectionName={sectionName}
             titulo={tituloString}
           />
@@ -150,47 +169,47 @@ export default async function Section({ params }: any) {
         )}
 
         {sectionName === "desarrollo_de_la_hipotesis" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveDesarrolloDeLaHipotesis sectionName={sectionName} />
         )}
         {/* Capítulo III: Planteamiento metodológico   */}
         {sectionName === "diseno_general_de_la_investigacion" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveDisenoGeneralDeLaInvestigacion sectionName={sectionName} />
         )}
         {sectionName === "unidades_de_analisis" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveUnidadesDeAnalisis sectionName={sectionName} />
         )}
         {sectionName === "variables" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveVariables sectionName={sectionName} />
         )}
         {sectionName === "medicion_de_las_variables" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveMedicionDeLasVariables sectionName={sectionName} />
         )}
         {sectionName === "metodos_para_el_analisis_de_datos" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveMetodosParaElAnalisisDeDatos sectionName={sectionName} />
         )}
         {/* Capítulo IV: Resultados   */}
         {sectionName === "resultados_demograficos" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveResultadosDemograficos sectionName={sectionName} />
         )}
         {sectionName === "analisis_de_resultados_descriptivos" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveAnalisisDeResultadosDescriptivos sectionName={sectionName} />
         )}
         {sectionName === "pruebas_de_hipotesis" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetrivePruebasDeHipotesis sectionName={sectionName} />
         )}
         {sectionName === "pruebas_adicionales" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetrivePruebasAdicionales sectionName={sectionName} />
         )}
         {/* Capítulo V: Discusión    */}
         {sectionName === "discusion" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveDiscusion sectionName={sectionName} />
         )}
         {/* Capítulo VI: Conclusiones y Recomendaciones   */}
         {sectionName === "conclusiones" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveConclusiones sectionName={sectionName} />
         )}
         {sectionName === "recomendaciones" && (
-          <RetriveInformacionMarcoTeorico sectionName={sectionName} />
+          <RetriveRecomendaciones sectionName={sectionName} />
         )}
         {/* Capítulo VI: Consolidado  */}
 

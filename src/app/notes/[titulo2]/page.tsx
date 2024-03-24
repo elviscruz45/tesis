@@ -55,7 +55,8 @@ export default async function NotesPages({ params }: any) {
         </div>
         <div className="basis-4/5 overflow-y-auto ">
           <NavBarNivel2 sectionName={sectionName} />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {/* <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"> */}
+          <div className=" grid gap-3 ">
             {allNotes.map((note: any) => (
               <NoteNivel2 note={note} key={note.id} />
             ))}

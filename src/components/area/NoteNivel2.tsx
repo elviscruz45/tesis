@@ -51,8 +51,6 @@ export default function NoteNivel2({ note }: NoteProps) {
     sectionPage === "marco_teorico" ||
     sectionPage === "antecedentes_de_la_investigacion";
 
-  console.log("SpecialDataParse", SpecialDataParse);
-
   return (
     <>
       <Card
