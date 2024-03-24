@@ -25,7 +25,6 @@ async function SideNavbar() {
   // const { theme } = useTheme();
   // Agrega credenciales
   // // const handleSubscriptionDialogOpen = () => {
-  // //   console.log(subscriptionDialogOpen);
   // //   setSubscriptionDialogOpen((prev) => !prev);
   // // };
   // const sidebarBgColor = theme === "dark" ? "dark" : "bg-white";
@@ -49,13 +48,9 @@ async function SideNavbar() {
         ],
       },
     });
-
-    console.log(response);
   } catch (error) {
     console.log(error);
   }
-
-  console.log("donate22");
 
   // redirect(preference.sandbox_init_point!, { permanent: false });
 

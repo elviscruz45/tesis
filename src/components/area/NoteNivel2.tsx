@@ -45,7 +45,6 @@ export default function NoteNivel2({ note }: NoteProps) {
   ).toDateString();
 
   const currentSectionNameRoute = note.title2;
-  console.log("currentSectionNameRoute", currentSectionNameRoute);
 
   const SpecialDataParse =
     sectionPage === "marco_teorico" ||

@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 export default async function Section({ params }: any) {
   const titulo3 = params?.titulo3;
   const titulo2 = params?.titulo2;
-  console.log("sdfasdf", titulo2);
 
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);

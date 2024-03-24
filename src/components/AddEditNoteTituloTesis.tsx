@@ -53,19 +53,14 @@ export default function AddEditNoteTituloTesis({
   async function onSubmit(input: CreateContentSchema) {
     try {
       if (noteToEdit?.title === "Agregar Titulo a este Proyecto") {
-        console.log("como estas que tal te va", input);
-
         const response = await fetch("/api/notes", {
           method: "POST",
           body: JSON.stringify(input),
         });
-        console.log("input 22255555", input);
 
         if (!response.ok) throw Error("Status code: " + response.status);
         form.reset();
       } else {
-        console.log("como estas que tal te va put", input);
-
         const response = await fetch("/api/notes", {
           method: "PUT",
           body: JSON.stringify({

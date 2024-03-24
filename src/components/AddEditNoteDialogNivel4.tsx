@@ -36,7 +36,6 @@ export default function AddEditNoteDialogNivel4({
   sectionName,
   titulo3,
 }: AddEditNoteDialogProps) {
-  console.log("mmmmmmmm", noteToEdit);
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
   const form = useForm<CreateContentSchema>({
@@ -62,8 +61,6 @@ export default function AddEditNoteDialogNivel4({
   }, [noteToEdit, sectionName, titulo3, setValue]);
 
   async function onSubmit(input: CreateContentSchema) {
-    console.log("onSubmit111");
-    console.log("input111", input);
     try {
       if (noteToEdit) {
         const response = await fetch("/api/section", {

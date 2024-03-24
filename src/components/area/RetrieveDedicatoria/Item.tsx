@@ -39,7 +39,6 @@ export const ResultItem = ({
   const router = useRouter();
 
   const guardar = async () => {
-    console.log("result", result);
     try {
       setLoading3(true);
 
@@ -152,7 +151,6 @@ export const ResultItem = ({
   //     });
 
   //     const data = await response.json();
-  //     console.log(data);
   //     setNewData(data);
   //     setLoading2(false);
   //   } catch (error) {
@@ -162,7 +160,6 @@ export const ResultItem = ({
   // };
 
   const regresar = async () => {
-    console.log("regresar");
     setNewData("");
     setNewTextSaved("");
   };
@@ -199,7 +196,6 @@ export const ResultItem = ({
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading4(false);
     } catch (error) {

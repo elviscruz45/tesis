@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 
 export default async function NotesPages({ params }: any) {
   const sectionName = params?.titulo2;
-  console.log(sectionName);
   const { userId } = auth();
 
   if (!userId) throw new Error("You must be logged in to view this page");

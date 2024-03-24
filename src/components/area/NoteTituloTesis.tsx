@@ -33,7 +33,6 @@ interface NoteProps {
 
 export default function NoteTitulo({ note }: NoteProps) {
   const [showEditDialog, setShowEditDialog] = useState(false);
-  console.log("note", note);
   if (note) {
     return (
       <div className=" items-center justify-center">

@@ -31,7 +31,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
   const router = useRouter();
 
   const guardar = async () => {
-    console.log("result", result);
     try {
       setLoading3(true);
 

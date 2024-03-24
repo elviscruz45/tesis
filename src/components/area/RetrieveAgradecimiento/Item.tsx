@@ -31,7 +31,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
   const router = useRouter();
 
   const guardar = async () => {
-    console.log("result", result);
     try {
       setLoading3(true);
 
@@ -154,7 +153,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
   // };
 
   const regresar = async () => {
-    console.log("regresar");
     setNewData("");
     setNewTextSaved("");
   };
@@ -191,7 +189,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading4(false);
     } catch (error) {
@@ -201,7 +198,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
   };
   // const consolidado = async () => {
   //   try {
-  //     console.log("consolidado 11111");
   //     const response = await fetch("/api/section", {
   //       method: "POST",
   //       body: JSON.stringify({
@@ -215,7 +211,6 @@ export const ResultItem = ({ result, chatGPTresult, userId }: any) => {
   //     });
   //     if (!response.ok) throw new Error("Status Code" + response.status);
   //     setLoading5(true);
-  //     console.log("consolidado 222");
   //   } catch (error) {
   //     console.error(error);
   //     alert("Sucedio algo mal, por favor intente de nuevo.");

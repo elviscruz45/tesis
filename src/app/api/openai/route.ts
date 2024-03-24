@@ -24,11 +24,6 @@ export async function POST(req: Request) {
     const content = completion.choices[0].message.content;
     return new Response(JSON.stringify(content), { status: 200 });
 
-    // console.log("POST 111");
-    // console.log("reqbody", req.body);
-    // const { model, stream, messages } = req.body;
-    // console.log("POST 222");
-
     // const response = await openai.chat.completions.create({
     //   messages,
     //   model,

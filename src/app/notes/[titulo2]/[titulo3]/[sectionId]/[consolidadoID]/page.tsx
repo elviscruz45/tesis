@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 
 export default async function Section({ params }: any) {
   const sectionName = params?.consolidadoID;
-  console.log("sectionName 555", sectionName);
   const { userId } = auth();
   //   const [showEditDialog, setShowEditDialog] = useState(false);
   //   const sectionPage = navigation.query.sectionPage;

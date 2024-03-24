@@ -40,10 +40,6 @@ export default function AddEditNoteDialogNivel5({
   setNewTextSaved,
   content,
 }: AddEditNoteDialogProps) {
-  console.log(
-    "com oestas que tal te va ahuy en es de dia o es  de noche ------------",
-    noteToEdit?.content,
-  );
   const [deleteInProgress, setDeleteInProgress] = useState(false);
   const router = useRouter();
 
@@ -69,8 +65,6 @@ export default function AddEditNoteDialogNivel5({
   }, [noteToEdit, sectionName, titulo3, setValue]);
 
   async function onSubmit(input: CreateContentSchema) {
-    console.log("onSubmit111");
-    console.log("input111", input);
     try {
       if (noteToEdit) {
         const response = await fetch("/api/section", {

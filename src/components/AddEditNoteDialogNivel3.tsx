@@ -55,7 +55,6 @@ export default function AddEditNoteDialogNivel3({
   }, [noteToEdit, sectionName, titulo3, setValue]);
 
   async function onSubmit(input: CreateNoteSchema) {
-    console.log("onSubmit");
     try {
       if (noteToEdit) {
         const response = await fetch("/api/notes", {
@@ -67,13 +66,10 @@ export default function AddEditNoteDialogNivel3({
         });
         if (!response.ok) throw Error("Status code: " + response.status);
       } else {
-        console.log("22222onSubmit");
-
         const response = await fetch("/api/notes", {
           method: "POST",
           body: JSON.stringify(input),
         });
-        console.log("33333onSubmit");
 
         if (!response.ok) throw new Error("Status Code" + response.status);
         form.reset();

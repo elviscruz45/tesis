@@ -35,8 +35,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
 
   const router = useRouter();
 
-  console.log("allInfo123456", allInfo[0]?.content);
-
   const edit = async () => {
     setShowEditDialog(true);
   };
@@ -69,7 +67,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading1(false);
     } catch (error) {
@@ -115,7 +112,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading2(false);
     } catch (error) {
@@ -125,7 +121,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
   };
 
   const guardar = async () => {
-    console.log("result", result);
     try {
       setLoading3(true);
 
@@ -159,7 +154,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
   };
 
   const regresar = async () => {
-    console.log("regresar");
     setNewData("");
   };
 
@@ -195,7 +189,6 @@ export const ResultItem = ({ result, allInfo, index }: any) => {
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading4(false);
     } catch (error) {

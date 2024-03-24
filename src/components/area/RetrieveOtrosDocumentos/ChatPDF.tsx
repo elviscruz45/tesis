@@ -57,7 +57,6 @@ const ChatWithPdf = ({
         },
       );
       setResponse(response.data.content.split("\n\n"));
-      console.log("response", response.data.content);
     } catch (error) {
       console.log(error);
 

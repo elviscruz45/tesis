@@ -71,7 +71,6 @@ export const ResultItemGuardado = ({ result, userId }: any) => {
   };
 
   const regresar = async () => {
-    console.log("regresar");
     setNewData("");
     setNewTextSaved("");
   };

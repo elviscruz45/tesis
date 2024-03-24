@@ -31,8 +31,6 @@ export const ResultItemGuardado = ({ result, userId }: any) => {
   const [disabledSave, setDisabledSave] = useState(false);
   const router = useRouter();
 
-  console.log("result 999999", result);
-
   const guardar = async () => {
     try {
       setLoading3(true);
@@ -71,7 +69,6 @@ export const ResultItemGuardado = ({ result, userId }: any) => {
   };
 
   const regresar = async () => {
-    console.log("regresar");
     setNewData("");
     setNewTextSaved("");
   };
@@ -103,7 +100,6 @@ export const ResultItemGuardado = ({ result, userId }: any) => {
       });
 
       const data = await response.json();
-      console.log(data);
       setNewData(data);
       setLoading4(false);
     } catch (error) {
@@ -111,7 +107,6 @@ export const ResultItemGuardado = ({ result, userId }: any) => {
       // setErrores("An error occurred.");
     }
   };
-  console.log("newTextSaved", newTextSaved);
 
   return (
     <div className="mb-2 border border-white">
