@@ -10,15 +10,16 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const messages: ChatCompletionMessage[] = body.messages;
+    const model = body.model;
 
     const completion = await openai.chat.completions.create({
       messages: [...messages],
-      model: "gpt-3.5-turbo-0125",
-      temperature: 1,
-      max_tokens: 1000,
+      model: model,
+      temperature: 1.2,
+      max_tokens: 4000,
       top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
+      frequency_penalty: 0.1,
+      presence_penalty: 0.1,
     });
 
     const content = completion.choices[0].message.content;

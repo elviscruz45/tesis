@@ -1,22 +1,21 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/area/Note";
-import NoteNivel3 from "@/components/area/NoteNivel3";
-import Dedicatoria from "@/components/area/Dedicatoria";
-import NavBarSection from "../../NavBarSection";
+import Note from "@/components/secciones/Notes/Note";
+import NoteNivel3 from "@/components/secciones/Notes/NoteNivel3";
+import Dedicatoria from "@/components/secciones/Dedicatoria";
+import NavBarSection from "../../NavBarSideBar/NavBarSection";
 // import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import SearchInfoAntecedentes from "@/components/area/SearchInfoAntecedentes/Informacion";
-import RetrieveAntecedentes from "@/components/area/RetrieveAntecedentes/RetriveInformacion";
-import RetriveInformacionMarcoTeorico from "@/components/area/RetrieveMarcoTeorico/RetriveInformacion";
-import SearchInfoMarcoTeorico from "@/components/area/SearchInfoMarcoTeorico/Informacion";
-import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDocumentos/RetriveInformacion";
-import Tesis from "@/components/area/TesisConsolidado/tesis";
-import NavBarConsolidado from "../../NavBarConsolidado";
-import SideNavbar from "../../SideNavbar";
-import NavBar from "../../NavBar";
-import NavBarNivel3 from "../../NavBarNivel3";
+import SearchInfoAntecedentes from "@/components/secciones/3.RevisionLiteratura/Antecedentes/Search/Informacion";
+import RetrieveAntecedentes from "@/components/secciones/3.RevisionLiteratura/Antecedentes/RetriveInformacion";
+import RetriveInformacionMarcoTeorico from "@/components/secciones/3.RevisionLiteratura/MarcoTeorico/RetriveInformacion";
+import SearchInfoMarcoTeorico from "@/components/secciones/3.RevisionLiteratura/MarcoTeorico/Search/Informacion";
+import RetriveInformacionOtrosDocumentos from "@/components/secciones/0.Documentos/RetriveInformacion";
+import NavBarConsolidado from "../../NavBarSideBar/NavBarConsolidado";
+import SideNavbar from "../../NavBarSideBar/SideNavbar";
+import NavBar from "../../NavBarSideBar/NavBar";
+import NavBarNivel3 from "../../NavBarSideBar/NavBarNivel3";
 
 export const metadata: Metadata = {
   title: "Section",

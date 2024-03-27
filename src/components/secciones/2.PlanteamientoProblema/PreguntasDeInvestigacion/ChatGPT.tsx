@@ -12,10 +12,11 @@ import {
   SendHorizontal,
   DatabaseBackup,
 } from "lucide-react";
-import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
+import AddEditNoteDialogNivel4 from "@/components/ui/AddEditNoteDialog/AddEditNoteDialogNivel4";
 import { Input } from "@/components/ui/input";
 import { ResultItem } from "./Item";
 import { ResultItemGuardado } from "./ItemGuardado";
+import { Textarea } from "@/components/ui/textarea";
 
 export const ChatGPT = ({ result, userId }: any) => {
   const [newData, setNewData] = useState<string>("");
@@ -102,46 +103,115 @@ export const ChatGPT = ({ result, userId }: any) => {
         </ul>
       </div>
       <br />
+
+      <Textarea
+        className="border-gray-300"
+        placeholder=" Contexto de estudio: "
+      />
+      <div>&nbsp;&nbsp;</div>
+      <Input
+        className="border-gray-300"
+        // value={input}
+        onChange={(e: any) => setNombre(e.target.value)}
+        placeholder=" Variable 1, dimensiones:"
+        // ref={inputRef}
+      />
+      <div>&nbsp;&nbsp;</div>
+      <Input
+        className="border-gray-300"
+        // value={input}
+        onChange={(e: any) => setCarrera(e.target.value)}
+        placeholder=" Variable 2, dimensiones:"
+        // ref={inputRef}
+      />
+      <div>&nbsp;&nbsp;</div>
+
+      <Input
+        className="border-gray-300"
+        // value={input}
+        onChange={(e: any) => setCarrera(e.target.value)}
+        placeholder="Dirección de la relación:"
+        // ref={inputRef}
+      />
+      <br />
       <div className="rounded-md  bg-slate-300 p-6 shadow-md">
-        <div className=" text-gray-900">Instrucciones:</div>
+        <ul className="list-inside list-disc space-y-2 text-gray-700">
+          Pregunta General
+          <li>
+            ¿qué relación existe entre variable 1 y variable 2 en "contexto de
+            estudio"?
+          </li>
+        </ul>
+      </div>
+      <br />
+
+      <div className="rounded-md  bg-slate-300 p-6 shadow-md">
+        {/* <div className=" text-gray-900">Instrucciones:</div> */}
+        <ul className="list-inside list-disc space-y-2 text-gray-700">
+          <li>Preguntas específicas</li>
+          Sigue las mismas estructuras (excepto lo que está entre paréntesis,
+          que solo es aclaratorio) y repite el contexto para cada pregunta por
+          más que sea redundante.
+          <li>
+            - ¿Qué relación existe entre variable 1 y dimensión 1 (de la
+            variable 2) en "contexto de estudio"?
+          </li>
+          <li>
+            ¿Qué relación existe entre variable 1 y dimensión 2 (de la variable
+            2) en "contexto de estudio"?
+          </li>
+          Y continúas con todas las dimensiones de la variable 2. Luego continúa
+          con estas preguntas
+          <li>
+            ¿Qué relación existe entre variable 2 y dimensión 1 (de la variable
+            1) en (contexto)?
+          </li>
+          <li>
+            ¿Qué relación existe entre variable 2 y dimensión 2 (de la variable
+            1) en (contexto)?
+          </li>
+          Y continúas con todas las dimensiones de la variable 1
+        </ul>
+      </div>
+      <br />
+      <div className="rounded-md  bg-slate-300 p-6 shadow-md">
+        {/* <div className=" text-gray-900">Instrucciones:</div> */}
         <ul className="list-inside list-disc space-y-2 text-gray-700">
           <li>
-            Redacta Dedicatoria simple de tesis (1 párrafo muy breve de dos
-            líneas)
+            Objetivo general y objetivos específicos (alineados con la pregunta
+            general y las específicas, respectivamente)
           </li>
-
+          Sigue esta estructura:
           <li>
-            Debajo de cada párrafo pon en el nombre del tesista o tesistas
+            Identificar (o verbo similar) la relación entre variable 1 y
+            variable 2 en “contexto de estudio”
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div className="rounded-md  bg-slate-300 p-6 shadow-md">
+        {/* <div className=" text-gray-900">Instrucciones:</div> */}
+        <ul className="list-inside list-disc space-y-2 text-gray-700">
+          <ul>Hipótesis</ul>
+          Plantea una hipótesis general e hipótesis específicas, alineadas al
+          objetivo general y a los objetivos específicos, según esta estructura
+          <li>
+            Existe una relación (positiva o negativa, según las instrucciones)
+            entre variable 1 y variable 2 en “contexto de estudio”.
           </li>
         </ul>
       </div>
       <br />
       <br />
-      <div className="flex items-start text-xl">
-        <Input
-          className="border-gray-300"
-          // value={input}
-          onChange={(e: any) => setNombre(e.target.value)}
-          placeholder="Nombre de la persona..."
-          // ref={inputRef}
-        />
-        <div>&nbsp;&nbsp;</div>
-        <Input
-          className="border-gray-300"
-          // value={input}
-          onChange={(e: any) => setCarrera(e.target.value)}
-          placeholder="Carrera..."
-          // ref={inputRef}
-        />
-        <Button
-          size="sm"
-          className="m-3 "
-          onClick={() => consultarGPT()}
-          disabled={loading4}
-        >
-          <SendHorizontal size={20} />
-        </Button>
-      </div>
+      <Button
+        size="sm"
+        className="m-3 "
+        onClick={() => consultarGPT()}
+        disabled={loading4}
+      >
+        <SendHorizontal size={20} />
+      </Button>
+      <div className="flex items-start text-xl"></div>
       {newData && <ResultItem chatGPTresult={newData} userId={userId} />}
       <br />
       <br />

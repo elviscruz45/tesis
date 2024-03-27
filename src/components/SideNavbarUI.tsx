@@ -176,6 +176,16 @@ function SideNavbarUI() {
                   </h3>
                 </div>
               </Link>
+              <Link href={"/notes/instrucciones"} className="">
+                <div className="group m-auto mb-2 flex cursor-pointer items-center justify-start gap-4 rounded-md p-2 pl-5 hover:bg-gray-900 hover:shadow-lg">
+                  <MdOutlineSettings className="text-2xl text-gray-600 group-hover:text-white " />
+                  <h3
+                    className={`dark text-base font-semibold group-hover:text-white `}
+                  >
+                    Intrucciones
+                  </h3>
+                </div>
+              </Link>
             </div>
             <div className=" my-4 border-b border-gray-100 pb-4">
               <div

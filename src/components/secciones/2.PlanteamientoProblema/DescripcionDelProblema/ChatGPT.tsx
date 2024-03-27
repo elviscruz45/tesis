@@ -12,7 +12,7 @@ import {
   SendHorizontal,
   DatabaseBackup,
 } from "lucide-react";
-import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
+import AddEditNoteDialogNivel4 from "@/components/ui/AddEditNoteDialog/AddEditNoteDialogNivel4";
 import { Input } from "@/components/ui/input";
 import { ResultItem } from "./Item";
 import { ResultItemGuardado } from "./ItemGuardado";

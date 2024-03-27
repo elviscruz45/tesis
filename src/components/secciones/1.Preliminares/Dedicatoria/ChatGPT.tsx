@@ -12,7 +12,7 @@ import {
   SendHorizontal,
   DatabaseBackup,
 } from "lucide-react";
-import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
+import AddEditNoteDialogNivel4 from "@/components/ui/AddEditNoteDialog/AddEditNoteDialogNivel4";
 import { Input } from "@/components/ui/input";
 import { ResultItem } from "./Item";
 import { ResultItemGuardado } from "./ItemGuardado";
@@ -38,7 +38,7 @@ export const ChatGPT = ({ result, userId }: any) => {
       setLoading4(true);
       const systemMessage: any = {
         role: "system",
-        content: `. Eres un especialista en crear tesis para graduados profesionales. Tus respuestas deben estar diseñadas para ser incluidas en el documento de tesis. Usa adjetivos no comunes para que el texto sea original , tener muy en cuenta que el texto no debe ser detectable por turnitin. Incluir datos numericos,estadisticos y la referencia en formato APA `,
+        content: `Eres un especialista en crear tesis para graduados profesionales. Tus respuestas deben estar diseñadas para ser incluidas en el documento de tesis. Usa adjetivos no comunes para que el texto sea original , tener muy en cuenta que el texto no debe ser detectable por turnitin. Incluir datos numericos,estadisticos y la referencia en formato APA `,
       };
       const systemMessage2: any = {
         role: "system",

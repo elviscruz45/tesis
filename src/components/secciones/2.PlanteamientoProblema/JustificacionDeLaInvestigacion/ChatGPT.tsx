@@ -12,7 +12,7 @@ import {
   SendHorizontal,
   DatabaseBackup,
 } from "lucide-react";
-import AddEditNoteDialogNivel4 from "@/components/AddEditNoteDialogNivel4";
+import AddEditNoteDialogNivel4 from "@/components/ui/AddEditNoteDialog/AddEditNoteDialogNivel4";
 import { Input } from "@/components/ui/input";
 import { ResultItem } from "./Item";
 import { ResultItemGuardado } from "./ItemGuardado";
@@ -103,15 +103,33 @@ export const ChatGPT = ({ result, userId }: any) => {
       </div>
       <br />
       <div className="rounded-md  bg-slate-300 p-6 shadow-md">
-        <div className=" text-gray-900">Instrucciones:</div>
+        <div className=" text-gray-900">Justificacion de la investigacion:</div>
         <ul className="list-inside list-disc space-y-2 text-gray-700">
           <li>
-            Redacta Dedicatoria simple de tesis (1 párrafo muy breve de dos
-            líneas)
+            Haz en un párrafo una justificación profesional y en otro una
+            justificación académica para esta tesis, según esta problemática
+            identificada. Toma de base esta información y considera algunas
+            referencias de ésta que consideres necesarias.
           </li>
-
           <li>
-            Debajo de cada párrafo pon en el nombre del tesista o tesistas
+            Haz en un párrafo una justificación social y en otro una
+            justificación práctica para esta tesis, según esta problemática
+            identificada. Toma de base esta información y considera algunas
+            referencias de ésta que consideres necesarias.
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div className="rounded-md  bg-slate-300 p-6 shadow-md">
+        <div className=" text-gray-900">Viabilidad:</div>
+        <ul className="list-inside list-disc space-y-2 text-gray-700">
+          <li>
+            Haz un texto de dos párrafos donde digas que la tesis es viable
+            porque se trata de un estudio cuantitativo que requiere
+            principalmente de tiempo para la aplicación de los cuestionarios en
+            la muestra respectiva. Además, no se necesitan una fuerte inversión
+            económica, más allá de lo básico para llevar a cabo esta
+            investigación, por lo que no hay impedimento significativo
           </li>
         </ul>
       </div>

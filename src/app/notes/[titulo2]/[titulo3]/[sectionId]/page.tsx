@@ -1,24 +1,22 @@
 import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
-import Note from "@/components/area/Note";
-import Dedicatoria from "@/components/area/Dedicatoria";
-import NavBarSection from "../../../NavBarSection";
-// import { useState } from "react";
+import Note from "@/components/secciones/Notes/Note";
+import Dedicatoria from "@/components/secciones/Dedicatoria";
+import NavBarSection from "../../../NavBarSideBar/NavBarSection";
 import { usePathname, useSearchParams } from "next/navigation";
 
-import RetriveInformacionOtrosDocumentos from "@/components/area/RetrieveOtrosDocumentos/RetriveInformacion";
-import Tesis from "@/components/area/TesisConsolidado/tesis";
-import NavBarConsolidado from "../../../NavBarConsolidado";
-import SideNavbar from "../../../SideNavbar";
+import RetriveInformacionOtrosDocumentos from "@/components/secciones/0.Documentos/RetriveInformacion";
+import NavBarConsolidado from "../../../NavBarSideBar/NavBarConsolidado";
+import SideNavbar from "../../../NavBarSideBar/SideNavbar";
 
-import RetrievePreguntasInvestigacion from "@/components/area/RetrievePreguntasInvestigacion/RetriveInformacion";
+import RetrievePreguntasInvestigacion from "@/components/secciones/2.PlanteamientoProblema/PreguntasDeInvestigacion/RetriveInformacion";
 
 import RetriveResumen from "@/components/secciones/1.Preliminares/Resumen/RetriveInformacion";
 import RetriveAbstract from "@/components/secciones/1.Preliminares/Abstract/RetriveInformacion";
 import RetriveDedicatoria from "@/components/secciones/1.Preliminares/Dedicatoria/RetriveInformacion";
 import RetriveAgradecimientos from "@/components/secciones/1.Preliminares/Agradecimientos/RetriveInformacion";
-import RetriveInformacionIntroduccion from "@/components/area/RetrieveIntroduccion/RetriveInformacion";
+import RetriveInformacionIntroduccion from "@/components/secciones/1.Preliminares/Introduccion/RetriveInformacion";
 import RetriveIntroduccion from "@/components/secciones/1.Preliminares/Introduccion/RetriveInformacion";
 import RetriveLineaDeInvestigacion from "@/components/secciones/2.PlanteamientoProblema/LineaDeInvestigacion/RetriveInformacion";
 import RetriveDescripcionDelProblema from "@/components/secciones/2.PlanteamientoProblema/DescripcionDelProblema/RetriveInformacion";
@@ -26,10 +24,10 @@ import RetrivePreguntasDeInvestigacion from "@/components/secciones/2.Planteamie
 import RetriveObjetivosDelProyecto from "@/components/secciones/2.PlanteamientoProblema/ObjetivosDelProyecto/RetriveInformacion";
 import RetriveJustificacionDeLaInvestigacion from "@/components/secciones/2.PlanteamientoProblema/JustificacionDeLaInvestigacion/RetriveInformacion";
 import RetriveDelimitaciones from "@/components/secciones/2.PlanteamientoProblema/Delimitaciones/RetriveInformacion";
-import SearchInfoAntecedentes from "@/components/area/SearchInfoAntecedentes/Informacion";
-import SearchInfoMarcoTeorico from "@/components/area/SearchInfoMarcoTeorico/Informacion";
-import RetrieveAntecedentes from "@/components/area/RetrieveAntecedentes/RetriveInformacion";
-import RetriveInformacionMarcoTeorico from "@/components/area/RetrieveMarcoTeorico/RetriveInformacion";
+import SearchInfoAntecedentes from "@/components/secciones/3.RevisionLiteratura/Antecedentes/Search/Informacion";
+import SearchInfoMarcoTeorico from "@/components/secciones/3.RevisionLiteratura/MarcoTeorico/Search/Informacion";
+import RetrieveAntecedentes from "@/components/secciones/3.RevisionLiteratura/Antecedentes/RetriveInformacion";
+import RetriveInformacionMarcoTeorico from "@/components/secciones/3.RevisionLiteratura/MarcoTeorico/RetriveInformacion";
 import RetriveDesarrolloDeLaHipotesis from "@/components/secciones/3.RevisionLiteratura/DesarrolloDeLaHipotesis/RetriveInformacion";
 import RetriveDisenoGeneralDeLaInvestigacion from "@/components/secciones/4.PlanteamientoMetodologico/DisenoGeneralDeLaInvestigacion/RetriveInformacion";
 import RetriveUnidadesDeAnalisis from "@/components/secciones/4.PlanteamientoMetodologico/UnidadesDeAnalisis/RetriveInformacion";
@@ -211,12 +209,8 @@ export default async function Section({ params }: any) {
         {sectionName === "recomendaciones" && (
           <RetriveRecomendaciones sectionName={sectionName} />
         )}
-        {/* Capítulo VI: Consolidado  */}
-
-        {sectionName === "consolidado" && <Tesis sectionName={sectionName} />}
       </div>
     </div>
   );
-
   // return <div>{JSON.stringify(allNotes)} </div>;
 }

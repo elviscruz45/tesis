@@ -12,7 +12,7 @@ import {
   SendHorizontal,
   DatabaseBackup,
 } from "lucide-react";
-import AddEditNoteDialogNivel5 from "@/components/AddEditNoteDialogNivel5";
+import AddEditNoteDialogNivel5 from "@/components/ui/AddEditNoteDialog/AddEditNoteDialogNivel5";
 import { Input } from "@/components/ui/input";
 
 export const ResultItem = ({ result, chatGPTresult, userId }: any) => {

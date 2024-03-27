@@ -1,4 +1,4 @@
-import NavBar from "./NavBar";
+import NavBar from "./NavBarSideBar/NavBar";
 
 export default function Layout({
   children,

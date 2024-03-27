@@ -20,6 +20,7 @@ export async function POST(req: Request) {
     }
 
     const { title, content, title2, title3, Nivel } = parseResult.data;
+    console.log("title", title, Nivel);
 
     const { userId } = auth();
 
